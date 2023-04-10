@@ -6,12 +6,21 @@
             "id": "7be829df-01c7-45aa-9a63-9c00d12923ab",
             "actions": [
                 {
-                    "name": "Tap",
+                    "name": "DownTouch",
                     "type": "Button",
                     "id": "ec1deb68-289b-4cd2-9c1d-746c8b189bea",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold(duration=0.001,pressPoint=0.001)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UpTouch",
+                    "type": "Button",
+                    "id": "02149202-adae-4d65-9879-43d0d89d9d81",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "SlowTap(duration=0.001)",
                     "initialStateCheck": false
                 }
             ],
@@ -23,7 +32,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse",
-                    "action": "Tap",
+                    "action": "DownTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe1c93d8-649f-43ec-a5b0-babd9619de04",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "UpTouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

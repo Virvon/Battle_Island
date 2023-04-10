@@ -30,12 +30,21 @@ namespace BattleIsland.Input
             ""id"": ""7be829df-01c7-45aa-9a63-9c00d12923ab"",
             ""actions"": [
                 {
-                    ""name"": ""Tap"",
+                    ""name"": ""DownTouch"",
                     ""type"": ""Button"",
                     ""id"": ""ec1deb68-289b-4cd2-9c1d-746c8b189bea"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=0.001,pressPoint=0.001)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UpTouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""02149202-adae-4d65-9879-43d0d89d9d81"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""SlowTap(duration=0.001)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -47,7 +56,18 @@ namespace BattleIsland.Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",
-                    ""action"": ""Tap"",
+                    ""action"": ""DownTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe1c93d8-649f-43ec-a5b0-babd9619de04"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse"",
+                    ""action"": ""UpTouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -70,7 +90,8 @@ namespace BattleIsland.Input
 }");
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Tap = m_Player.FindAction("Tap", throwIfNotFound: true);
+            m_Player_DownTouch = m_Player.FindAction("DownTouch", throwIfNotFound: true);
+            m_Player_UpTouch = m_Player.FindAction("UpTouch", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -130,12 +151,14 @@ namespace BattleIsland.Input
         // Player
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
-        private readonly InputAction m_Player_Tap;
+        private readonly InputAction m_Player_DownTouch;
+        private readonly InputAction m_Player_UpTouch;
         public struct PlayerActions
         {
             private @PlayerInput m_Wrapper;
             public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Tap => m_Wrapper.m_Player_Tap;
+            public InputAction @DownTouch => m_Wrapper.m_Player_DownTouch;
+            public InputAction @UpTouch => m_Wrapper.m_Player_UpTouch;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -145,16 +168,22 @@ namespace BattleIsland.Input
             {
                 if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
                 {
-                    @Tap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTap;
-                    @Tap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTap;
-                    @Tap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTap;
+                    @DownTouch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDownTouch;
+                    @DownTouch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDownTouch;
+                    @DownTouch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDownTouch;
+                    @UpTouch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpTouch;
+                    @UpTouch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpTouch;
+                    @UpTouch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUpTouch;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @Tap.started += instance.OnTap;
-                    @Tap.performed += instance.OnTap;
-                    @Tap.canceled += instance.OnTap;
+                    @DownTouch.started += instance.OnDownTouch;
+                    @DownTouch.performed += instance.OnDownTouch;
+                    @DownTouch.canceled += instance.OnDownTouch;
+                    @UpTouch.started += instance.OnUpTouch;
+                    @UpTouch.performed += instance.OnUpTouch;
+                    @UpTouch.canceled += instance.OnUpTouch;
                 }
             }
         }
@@ -170,7 +199,8 @@ namespace BattleIsland.Input
         }
         public interface IPlayerActions
         {
-            void OnTap(InputAction.CallbackContext context);
+            void OnDownTouch(InputAction.CallbackContext context);
+            void OnUpTouch(InputAction.CallbackContext context);
         }
     }
 }

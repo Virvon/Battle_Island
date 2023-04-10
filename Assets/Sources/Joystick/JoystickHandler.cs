@@ -14,22 +14,27 @@ public class JoystickHandler : MonoBehaviour, IDragHandler
     private PlayerInput _input;
 
     public event Action Activated;
+    public event Action Deactivated;
 
     private void OnEnable()
     {
         _input = new PlayerInput();
         _input.Enable();
+
+        _input.Player.UpTouch.performed += ctx => OnUpTouh();
     }
 
     private void OnDisable()
     {
         _input.Disable();
+
+        _input.Player.UpTouch.performed -= ctx => OnUpTouh();
     }
 
     private void Update()
     {
-        if (_input.Player.Tap.phase == UnityEngine.InputSystem.InputActionPhase.Performed)
-            OnTap();
+        if (_input.Player.DownTouch.phase == UnityEngine.InputSystem.InputActionPhase.Performed)
+            OnDownTouch();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -48,11 +53,14 @@ public class JoystickHandler : MonoBehaviour, IDragHandler
         }
     }
 
-    private void OnTap()
+    private void OnDownTouch()
     {
-        Debug.Log(Output);
-
         if(Output != Vector2.zero)
             Activated?.Invoke();
+    }
+
+    private void OnUpTouh()
+    {
+        Deactivated?.Invoke();
     }
 }

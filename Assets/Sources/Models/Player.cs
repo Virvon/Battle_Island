@@ -18,7 +18,7 @@ namespace BattleIsland.Model
 
         public void Rotate(Vector2 direction, float deltaTime)
         {
-            var lookDirection = new Vector3(direction.x, 0, direction.y).normalized;
+            var lookDirection = (Quaternion.Euler(0, 45, 0) * new Vector3(direction.x, 0, direction.y));
             var targetRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
             var currentRotation = Quaternion.RotateTowards(Rotation, targetRotation, 1080 * deltaTime);
 
@@ -34,7 +34,7 @@ namespace BattleIsland.Model
 
         private void Move(float acceleration, float deltaTime)
         {
-            Position += Rotation * Vector3.forward * acceleration * deltaTime * 10;
+            Position += Rotation * Vector3.forward * acceleration * deltaTime * 6;
             Moved?.Invoke();
         }
     }
