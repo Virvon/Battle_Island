@@ -42,6 +42,6 @@ public class PlayerPresenter
 
     private void OnMoved()
     {
-        _view.Move(_model.Position);
+        _view.Move(_model.Velocity);
     }
 }

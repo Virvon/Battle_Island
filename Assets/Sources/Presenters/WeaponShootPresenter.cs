@@ -18,20 +18,34 @@ public class WeaponShootPresenter
     {
         _model.Shotted += OnShotted;
         _model.Comeback += OnComeback;
+        _model.TrajectoryChanged += ChangeTrajectory;
 
         _view.Shotted += TryShoot;
         _view.Comebacked += TryComeback;
         _view.StateChanged += OnStateChanged;
+        _view.CollisionEntered += ChangeTrajectory;
     }
 
     public void Disable()
     {
         _model.Shotted -= OnShotted;
         _model.Comeback -= OnComeback;
+        _model.TrajectoryChanged -= ChangeTrajectory;
 
         _view.Shotted -= TryShoot;
         _view.Comebacked -= TryComeback;
         _view.StateChanged -= OnStateChanged;
+        _view.CollisionEntered -= ChangeTrajectory;
+    }
+
+    private void ChangeTrajectory(Vector3 forward, Vector3 normal)
+    {
+        _model.ChangeTrajectory(forward, normal);
+    }
+
+    private void ChangeTrajectory(Vector3 resultDirection)
+    {
+        _view.ChangeTrajectory(resultDirection);
     }
 
     private void TryShoot()

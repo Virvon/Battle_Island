@@ -6,15 +6,13 @@ namespace BattleIsland.Model
     public class Player
     {
         public Quaternion Rotation { get; private set; }
-        public Vector3 Position { get; private set; }
+
+        public Vector3 Velocity { get; private set; }
+
+        private float _velocityForce = 6;
 
         public event Action Rotated;
         public event Action Moved;
-
-        public Player()
-        {
-            Position = new Vector3(0, 0.5f, 0);
-        }
 
         public void Rotate(Vector2 direction, float deltaTime)
         {
@@ -23,7 +21,7 @@ namespace BattleIsland.Model
             var currentRotation = Quaternion.RotateTowards(Rotation, targetRotation, 1080 * deltaTime);
 
             Rotate(currentRotation);
-            Move(direction.magnitude, deltaTime);
+            Move(direction.magnitude);
         }
 
         private void Rotate(Quaternion rotation)
@@ -32,9 +30,9 @@ namespace BattleIsland.Model
             Rotated?.Invoke();
         }
 
-        private void Move(float acceleration, float deltaTime)
+        private void Move(float force)
         {
-            Position += Rotation * Vector3.forward * acceleration * deltaTime * 6;
+            Velocity = Rotation * Vector3.forward * _velocityForce * force;
             Moved?.Invoke();
         }
     }

@@ -3,27 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(WeaponView))]
 public class WeaponFollowParentView : MonoBehaviour
 {
-    [SerializeField] private PlayerView _player;
-    [SerializeField] private Transform _idlePosition;
+    private WeaponView _weaponView;
 
     public event Action PlayerPositionChanged;
 
     public void OnEnable()
     {
-        _player.PositionChanged += OnPlayerPositionChanged;
+        _weaponView = GetComponent<WeaponView>();
+
+        _weaponView.Player.PositionChanged += OnPlayerPositionChanged;
     }
 
     public void OnDisable()
     {
-        _player.PositionChanged -= OnPlayerPositionChanged;
+        _weaponView.Player.PositionChanged -= OnPlayerPositionChanged;
     }
 
     public void ChangePosition()
     {
-        transform.position = _idlePosition.position;
-        transform.rotation = _player.transform.rotation;
+        transform.position = _weaponView.IdlePosition.position;
+        transform.rotation = _weaponView.Player.transform.rotation;
     }
 
     private void OnPlayerPositionChanged()

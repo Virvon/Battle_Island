@@ -3,17 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerView : MonoBehaviour
 {
     [SerializeField] private JoystickHandler _joystick;
+
+    private Rigidbody _rigidbody;
 
     public event Action<Vector2> InputedRotation;
     public event Action<Vector2> Shooted;
     public event Action Stopped;
     public event Action PositionChanged;
+    public event Action<Vector3> CollisionEntered;
 
     private void OnEnable()
     {
+        _rigidbody = GetComponent<Rigidbody>();
+
         _joystick.Activated += OnJoystickActivated;
         _joystick.Deactivated += OnJoystickDeactivated;
     }
@@ -29,9 +35,9 @@ public class PlayerView : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    public void Move(Vector3 position)
+    public void Move(Vector3 velocity)
     {
-        transform.position = position;
+        _rigidbody.velocity = velocity;
 
         PositionChanged?.Invoke();
     }

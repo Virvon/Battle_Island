@@ -12,6 +12,7 @@ namespace BattleIsland.Model
         public event Action Shotted;
         public event Action Comeback;
         public event Action PositionChanged;
+        public event Action<Vector3> TrajectoryChanged;
 
         public Weapon()
         {
@@ -39,6 +40,13 @@ namespace BattleIsland.Model
         {
             if(_state.CanShoot())
                 PositionChanged?.Invoke();
+        }
+
+        public void ChangeTrajectory(Vector3 forward, Vector3 normal)
+        {
+            var resultDirection = Vector3.Reflect(forward, normal);
+
+            TrajectoryChanged?.Invoke(resultDirection);
         }
     }
 }
