@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using BattleIsland.Model;
 
+[RequireComponent(typeof(PlayerView))]
 public class PlayerSetup : MonoBehaviour
 {
-    [SerializeField] private PlayerView _vew;
-
+    private PlayerView _view;
     private Player _model;
     private PlayerPresenter _presenter;
 
     private void Awake()
     {
+        _view = GetComponent<PlayerView>();
+
         _model = new Player();
-        _presenter = new PlayerPresenter(_model, _vew);
+        _presenter = new PlayerPresenter(_model, _view);
     }
 
     private void OnEnable()

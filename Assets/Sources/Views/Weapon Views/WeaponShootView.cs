@@ -21,21 +21,34 @@ public class WeaponShootView : MonoBehaviour
         _weaponView = GetComponent<WeaponView>();
         _agent = GetComponent<NavMeshAgent>();
 
-        _weaponView.Deactivate();
-        _agent.enabled = false;
+        _weaponView.Inited += OnInited;
+    }
 
-        _weaponView.Player.Stopped += TryShoot;
+    private void Start()
+    {
+        _weaponView.Deactivate();
+        _agent.enabled = false; 
     }
 
     private void OnDisable()
     {
-        _weaponView.Player.Stopped -= TryShoot;
+        _weaponView.Inited -= OnInited;
+        _weaponView.Parent.Stopped -= TryShoot;
     }
 
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.TryGetComponent(out Let let))
             CollisionEntered?.Invoke(transform.rotation * Vector3.forward, collision.contacts[0].normal);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out IDamageable iDamageble))
+        {
+            if (iDamageble != _weaponView.Parent)
+                iDamageble.TakeDamage();
+        }
     }
 
     public void Shoot()
@@ -79,6 +92,11 @@ public class WeaponShootView : MonoBehaviour
         Comebacked?.Invoke();
     }
 
+    private void OnInited()
+    {
+        _weaponView.Parent.Stopped += TryShoot;
+    }
+
     private IEnumerator ComebackTimer()
     {
         do
@@ -91,7 +109,7 @@ public class WeaponShootView : MonoBehaviour
 
     private IEnumerator ChangeStateTimer(State state) 
     {
-        while ((transform.position - _weaponView.IdlePosition.position).magnitude > 0.1f)
+        while ((transform.position - _weaponView.IdlePosition.position).magnitude > 0.5f)
         {
             _agent.destination = _weaponView.IdlePosition.position;
 

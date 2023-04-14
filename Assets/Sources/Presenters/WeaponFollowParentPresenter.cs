@@ -18,14 +18,14 @@ public class WeaponFollowParentPresenter
     {
         _model.PositionChanged += OnPositionChanged;
 
-        _view.PlayerPositionChanged += TryChangePosition;
+        _view.ParentPositionChanged += TryChangePosition;
     }
 
     public void Disable()
     {
         _model.PositionChanged -= OnPositionChanged;
 
-        _view.PlayerPositionChanged -= TryChangePosition;
+        _view.ParentPositionChanged -= TryChangePosition;
     }
 
     private void OnPositionChanged()

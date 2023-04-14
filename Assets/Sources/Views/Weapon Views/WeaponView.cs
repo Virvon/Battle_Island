@@ -1,25 +1,30 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using BattleIsland.Model;
-using UnityEngine.AI;
 
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class WeaponView : MonoBehaviour
 {
-    [SerializeField] private PlayerView _player;
-    [SerializeField] private Transform _idlePosition;
-
-    public PlayerView Player => _player;
+    public MovementObject Parent => _parent;
     public Transform IdlePosition => _idlePosition;
     public Rigidbody Rigidbody { get; private set; }
 
+    private MovementObject _parent;
+    private Transform _idlePosition;
     private Collider _collider;
+
+    public event Action Inited;
 
     private void Awake()
     {
-        _collider = GetComponent<Collider>();
         Rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
+    }
+
+    public void Init(MovementObject parent, Transform idlePosition)
+    {
+        _parent = parent;
+        _idlePosition = idlePosition;
+        Inited?.Invoke();
     }
 
     public void Activate()

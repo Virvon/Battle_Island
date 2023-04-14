@@ -9,7 +9,7 @@ namespace BattleIsland.Model
 
         public Vector3 Velocity { get; private set; }
 
-        private float _velocityForce = 6;
+        private float _velocityForce = 8;
 
         public event Action Rotated;
         public event Action Moved;

@@ -1,32 +1,33 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerView : MonoBehaviour
+public class PlayerView : MovementObject, IDamageable
 {
-    [SerializeField] private JoystickHandler _joystick;
+    private JoystickHandler _joystick;
 
     private Rigidbody _rigidbody;
 
+    private Vector3 _spawnPoint;
+
     public event Action<Vector2> InputedRotation;
     public event Action<Vector2> Shooted;
-    public event Action Stopped;
-    public event Action PositionChanged;
-    public event Action<Vector3> CollisionEntered;
-
-    private void OnEnable()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-
-        _joystick.Activated += OnJoystickActivated;
-        _joystick.Deactivated += OnJoystickDeactivated;
-    }
+    public override event Action PositionChanged;
+    public override event Action Stopped;
 
     private void OnDisable()
     {
         _joystick.Activated -= OnJoystickActivated;
+        _joystick.Deactivated += OnJoystickDeactivated;
+    }
+    public void Init(JoystickHandler joystick)
+    {
+        _joystick = joystick;
+        _spawnPoint = transform.position;
+
+        _rigidbody = GetComponent<Rigidbody>();
+
+        _joystick.Activated += OnJoystickActivated;
         _joystick.Deactivated += OnJoystickDeactivated;
     }
 
@@ -42,6 +43,17 @@ public class PlayerView : MonoBehaviour
         PositionChanged?.Invoke();
     }
 
+
+    public void Respawn()
+    {
+        transform.position = _spawnPoint;
+    }
+
+    public void TakeDamage()
+    {
+        Respawn();
+    }
+
     private void OnJoystickActivated()
     {
         InputedRotation?.Invoke(_joystick.Output);
@@ -52,4 +64,5 @@ public class PlayerView : MonoBehaviour
         Shooted?.Invoke(transform.rotation * Vector3.forward);
         Stopped?.Invoke();
     }
+
 }
