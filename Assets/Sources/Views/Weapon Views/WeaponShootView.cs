@@ -47,7 +47,10 @@ public class WeaponShootView : MonoBehaviour
         if (other.TryGetComponent(out IDamageable iDamageble))
         {
             if (iDamageble != _weaponView.Parent)
+            {
                 iDamageble.TakeDamage();
+                _weaponView.Parent.TakeMurder();
+            }
         }
     }
 

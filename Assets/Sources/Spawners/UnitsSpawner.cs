@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
-public class EnemiesSpawner : MonoBehaviour
+public class UnitsSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private EnemyView _enemyPrefab;
     [SerializeField] private PlayerView _playerPrefab;
     [SerializeField] private WeaponsSpawner _weaponSpawner;
     [SerializeField] private JoystickHandler _joystickHandler;
+    [SerializeField] private CameraView _camera;
 
     private List<MovementObject> _targets;
+
+    public List<MovementObject> Targets => _targets;
+
+    public event Action<MovementObject[]> CreationEnded;
 
     private void Start()
     {
@@ -19,10 +25,16 @@ public class EnemiesSpawner : MonoBehaviour
         CreateEnemys(_spawnPoints);
     }
 
+    public void DisableEnemies()
+    {
+        foreach (var target in _targets)
+            target.enabled = false;
+    }
+
     private void CreateEnemys(Transform[] spawnPoints)
     {
         List<EnemyView> enemies = new List<EnemyView>();
-        int playerSpawnPoint = Random.Range(0, spawnPoints.Length - 1);
+        int playerSpawnPoint = UnityEngine.Random.Range(0, spawnPoints.Length - 1);
 
         for (var i = 0; i < spawnPoints.Length; i++)
         {
@@ -39,6 +51,7 @@ public class EnemiesSpawner : MonoBehaviour
                 PlayerView player = Instantiate(_playerPrefab, spawnPoints[i].position, Quaternion.identity, transform);
                 InitPlayer(player);
                 character = player;
+                _camera.Init(player);
             }
 
             
@@ -46,7 +59,8 @@ public class EnemiesSpawner : MonoBehaviour
             _targets.Add(character);
         }
 
-         InitEnemys(enemies);
+        InitEnemys(enemies);
+        CreationEnded?.Invoke(_targets.ToArray());
     }
 
     private void InitEnemys(List<EnemyView> enemies)

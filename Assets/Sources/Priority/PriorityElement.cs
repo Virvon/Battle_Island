@@ -16,6 +16,11 @@ public class PriorityElement
     public float CalculatePriorityValue(MovementObject parent)
     {
         var priorityValue = 100 / (Target.transform.position - parent.transform.position).magnitude;
+        priorityValue += Target.MurdersCount * 1.5f;
+
+        if (Target is PlayerView)
+            priorityValue *= 1.1f;
+
         priorityValue += Random.Range(-(priorityValue / 2), (priorityValue / 2));
 
         PriorityValue = priorityValue;

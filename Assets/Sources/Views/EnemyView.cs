@@ -8,83 +8,41 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyView : MovementObject, IDamageable
 {
+    private Vector3 _startPoint;
+    private Priority _priority;
     private MovementObject _currentTarget;
     private NavMeshAgent _agent;
-    private Priority _priority;
-    private Coroutine _coroutine;
-    private Vector3 _spawnPoint;
-
-    public event Action TargetChoosed;
-    public event Action DamageTaked;
 
     public override event Action PositionChanged;
     public override event Action Stopped;
 
-    public void Init(MovementObject[] targets)
+    private void Update()
     {
-        _agent = GetComponent<NavMeshAgent>();
-        _priority = new Priority(targets.ToList());
-        _spawnPoint = transform.position;
+        _currentTarget = _priority.Choose(this);
 
-        StartCoroutine(TargetChanger());
-        TargetChoosed?.Invoke();
-    }
-
-    public void MoveToTarget()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        if (_currentTarget != null && (_currentTarget.transform.position - transform.position).magnitude > _agent.stoppingDistance)
-            _coroutine = StartCoroutine(Follower(_currentTarget));
+        if (_currentTarget != null)
+            _agent.destination = _currentTarget.transform.position;
         else
-            _agent.destination = new Vector3(UnityEngine.Random.Range(-20, 20), 0, UnityEngine.Random.Range(-20, 20));
+        {
+            _agent.destination = _startPoint;
+            return;
+        }
+
+        if((transform.position - _currentTarget.transform.position).magnitude <= _agent.stoppingDistance)
+        {
+            Stopped?.Invoke();
+        }
     }
 
     public void TakeDamage()
     {
-        DamageTaked?.Invoke();
+        transform.position = _startPoint;
     }
 
-    public void Respawn()
+    public void Init(MovementObject[] targets)
     {
-        transform.position = _spawnPoint;
-
-        _currentTarget = _priority.Choose(this);
-
-        TargetChoosed?.Invoke();
-        PositionChanged?.Invoke();
-    }
-
-    private IEnumerator Follower(MovementObject target)
-    {
-        float distance = UnityEngine.Random.Range(_agent.stoppingDistance, _agent.stoppingDistance * 1.5f);
-
-        while ((transform.position - target.transform.position).magnitude > distance)
-        {
-            _agent.destination = target.transform.position;
-            PositionChanged?.Invoke();
-
-            yield return null;
-        }
-
-        Quaternion rotation = Quaternion.Euler(((transform.position - target.transform.position) * UnityEngine.Random.Range(0.6f, 1.4f)).normalized);
-
-        transform.rotation = rotation;
-
-        Stopped?.Invoke();
-        _currentTarget = _priority.Choose(this);
-        TargetChoosed?.Invoke();
-    }
-
-    private IEnumerator TargetChanger()
-    {
-        while (1 == 2)
-        {
-            _currentTarget = _priority.Choose(this);
-            TargetChoosed?.Invoke();
-
-            yield return new WaitForSeconds(2);
-        }
+        _priority = new Priority(targets.ToList());
+        _startPoint = transform.position;
+        _agent = GetComponent<NavMeshAgent>();
     }
 }

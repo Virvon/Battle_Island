@@ -47,6 +47,7 @@ public class PlayerView : MovementObject, IDamageable
     public void Respawn()
     {
         transform.position = _spawnPoint;
+        PositionChanged?.Invoke();
     }
 
     public void TakeDamage()

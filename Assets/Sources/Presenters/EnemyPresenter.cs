@@ -19,8 +19,8 @@ public class EnemyPresenter
         _model.Moved += OnMoved;
         _model.Died += OnDied;
 
-        _view.TargetChoosed += OnTargetChoosed;
-        _view.DamageTaked += OnDamageTaked;
+        //_view.TargetChoosed += OnTargetChoosed;
+        //_view.DamageTaked += OnDamageTaked;
     }
 
     public void Disable()
@@ -28,13 +28,13 @@ public class EnemyPresenter
         _model.Moved -= OnMoved;
         _model.Died -= OnDied;
 
-        _view.TargetChoosed -= OnTargetChoosed;
-        _view.DamageTaked -= OnDamageTaked;
+        //_view.TargetChoosed -= OnTargetChoosed;
+        //_view.DamageTaked -= OnDamageTaked;
     }
 
     private void OnMoved()
     {
-        _view.MoveToTarget();
+        //_view.MoveToTarget();
     }
 
     private void OnTargetChoosed()
@@ -49,6 +49,6 @@ public class EnemyPresenter
 
     private void OnDied()
     {
-        _view.Respawn();
+        //_view.Respawn();
     }
 }
