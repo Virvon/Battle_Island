@@ -43,7 +43,6 @@ public class PlayerView : MovementObject, IDamageable
         PositionChanged?.Invoke();
     }
 
-
     public void Respawn()
     {
         transform.position = _spawnPoint;
@@ -65,5 +64,4 @@ public class PlayerView : MovementObject, IDamageable
         Shooted?.Invoke(transform.rotation * Vector3.forward);
         Stopped?.Invoke();
     }
-
 }

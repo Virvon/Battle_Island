@@ -8,17 +8,28 @@ namespace BattleIsland.Menu
     public class Player : MonoBehaviour
     {
         private int _momey;
-        private const string SaveKey = "SaveKey";
+        private const string SaveKey = "PlayerSaveKey";
 
         private void OnEnable()
         {
             _momey = LoadMoney(SaveKey) + ScoreCounter.Money;
-            Save(SaveKey);
+            SaveMoney(SaveKey);
 
             Debug.Log("Money: " + _momey);
         }
 
-        private void Save(string key)
+        public bool TryGetMoney(int count)
+        {
+            if(count > _momey)
+                return false;
+
+            _momey -= count;
+            SaveMoney(SaveKey);
+
+            return true;
+        }
+
+        private void SaveMoney(string key)
         {
             SaveManger.Save(key, CreateSaveSnapshot());
         }

@@ -25,7 +25,7 @@ public class WeaponFollowParentView : MonoBehaviour
 
     private void Update()
     {
-        ParentPositionChanged?.Invoke();
+        //ParentPositionChanged?.Invoke();
     }
 
     public void ChangePosition()
@@ -36,7 +36,7 @@ public class WeaponFollowParentView : MonoBehaviour
 
     private void OnParentPositionChanged()
     {
-        //ParentPositionChanged?.Invoke();
+        ParentPositionChanged?.Invoke();
     }
 
     private void OnInited()

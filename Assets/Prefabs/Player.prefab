@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3296147118709706091}
   - component: {fileID: 3296147118709706090}
   - component: {fileID: -5321384833823165394}
+  - component: {fileID: 6674448804989185636}
+  - component: {fileID: 1093597539541600590}
   - component: {fileID: 3296147118709706095}
   m_Layer: 0
   m_Name: Player
@@ -54,7 +56,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3296147118709706085}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -128,6 +130,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a37f5dc93f9c244e90e8509af04db56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6674448804989185636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3296147118709706085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df1ab2b95457c344a5aa960b7d0bfb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1093597539541600590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3296147118709706085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9e35397e25c684e90fc17b1dc1e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &3296147118709706095
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -193,7 +219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3296147118840455808
 Transform:
   m_ObjectHideFlags: 0

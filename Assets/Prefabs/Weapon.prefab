@@ -102,9 +102,9 @@ Rigidbody:
   m_Drag: 1.7
   m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &5853978920159056160
 SphereCollider:
@@ -131,8 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17399801096b1274584ec61818409e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parent: {fileID: 0}
-  _idlePosition: {fileID: 0}
 --- !u!114 &5853978920159056175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be0a55655f26fc4b89b1ac225db20e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootViews: []
-  _followParentViews: []
 --- !u!195 &5853978920159056174
 NavMeshAgent:
   m_ObjectHideFlags: 0
