@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BattleIsland.Menu;
 using BattleIsland.SaveData;
-using System;
 
 public class Item : MonoBehaviour
 {
@@ -67,23 +64,13 @@ public class Item : MonoBehaviour
         ItemPofile profile = SaveManger.Load<ItemPofile>(key);
 
         IsBuyed = profile.IsBuyed;
-        //IsChoosed = profile.IsChoosed;
-        //IsBuyed = false;
-
-        //Debug.Log("load isBuyed " + profile.IsBuyed + " isChoosed " + profile.IsChoosed);
     }
 
     private ItemPofile CreateSaveSnapshot()
     {
         ItemPofile data = new ItemPofile();
 
-        //Debug.Log("savesnapshot isbuyed " + IsBuyed + " ischoosed " + IsChoosed);
-
         data.IsBuyed = IsBuyed;
-        //data.IsChoosed = IsChoosed;
-
-        //data.IsBuyed = false;
-        //data.IsChoosed = false;
 
         return data;
     }

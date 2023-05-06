@@ -23,11 +23,6 @@ public class WeaponFollowParentView : MonoBehaviour
         _weaponView.Parent.PositionChanged -= OnParentPositionChanged;
     }
 
-    private void Update()
-    {
-        //ParentPositionChanged?.Invoke();
-    }
-
     public void ChangePosition()
     {
         transform.position = _weaponView.IdlePosition.position;

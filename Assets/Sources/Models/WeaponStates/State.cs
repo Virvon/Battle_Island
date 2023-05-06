@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace BattleIsland.Model
 {
     public abstract class State
     {
-        public virtual bool CanShoot() 
-        { 
+        public virtual bool CanShoot()
+        {
             return false;
         }
 

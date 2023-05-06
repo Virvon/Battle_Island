@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using BattleIsland.Input;
 
 public class JoystickHandler : MonoBehaviour, IDragHandler
@@ -61,6 +60,9 @@ public class JoystickHandler : MonoBehaviour, IDragHandler
 
     private void OnUpTouh()
     {
+        _handle.anchoredPosition = Vector3.zero;
+        Output = Vector2.zero;
+
         Deactivated?.Invoke();
     }
 }

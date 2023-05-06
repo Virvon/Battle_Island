@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using BattleIsland.Menu;
-using BattleIsland.SaveData;
 
 public class Store : MonoBehaviour
 {
@@ -14,7 +10,6 @@ public class Store : MonoBehaviour
 
     private List<Item> _items;
     private Item _currentItem;
-
     private Item _selectItem;
 
     public static GameObject SelectSkin { get; private set; }
@@ -23,17 +18,18 @@ public class Store : MonoBehaviour
     {
         _items = GetComponentsInChildren<Item>().ToList();
 
+
         _view.NextItemSetted += OnNextItemSetted;
         _view.PreviousItemSetted += OnPreviousItemSetted;
         _view.ItemSelected += OnItemSelected;
 
         _selectItem = Load(SaveKey);
 
-        if(_selectItem == null || _selectItem.IsBuyed == false)
+        if (_selectItem == null || _selectItem.IsBuyed == false)
             _selectItem = _items.Where(item => item.IsBuyed).First();
 
         _currentItem = _selectItem;
-        
+
 
         SetItem(_currentItem, _view);
     }
@@ -70,18 +66,17 @@ public class Store : MonoBehaviour
         if(_currentItem.TrySecelct(_view.Player))
         {
             _selectItem = _currentItem;
-            _view.SetButton(_currentItem, _currentItem == _selectItem);
+            _view.SetButton(_currentItem == _selectItem);
             _view.SetPrice(_currentItem);
 
             Save(SaveKey);
         }
-
     }
 
     private void SetItem(Item item, StoreView view)
     {
         view.SetItem(item);
-        view.SetButton(item, _currentItem == _selectItem);
+        view.SetButton(_currentItem == _selectItem);
         view.SetPrice(item);
     }
 
@@ -101,7 +96,7 @@ public class Store : MonoBehaviour
     {
         StoreProfile data = new()
         {
-            SelectItem = _selectItem,
+            SelectItem = _selectItem
         };
 
         return data;

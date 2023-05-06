@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -7,9 +6,10 @@ using System;
 public class UnitsSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private EnemyView _enemyPrefab;
+    [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private PlayerView _playerPrefab;
     [SerializeField] private WeaponsSpawner _weaponSpawner;
+    [SerializeField] private NameSpawner _nameSpawner;
     [SerializeField] private JoystickHandler _joystickHandler;
     [SerializeField] private CameraView _camera;
     [SerializeField] private GameObject[] _skins;
@@ -23,19 +23,19 @@ public class UnitsSpawner : MonoBehaviour
     private void Start()
     {
         _targets = new List<MovementObject>();
-        CreateEnemys(_spawnPoints);
+        CreateEnemys(_spawnPoints); 
     }
 
     public void DisableEnemies()
     {
         foreach (var target in _targets)
-            target.enabled = false;
+            target.gameObject.SetActive(false);
     }
 
     private void CreateEnemys(Transform[] spawnPoints)
     {
-        List<EnemyView> enemies = new List<EnemyView>();
-        int playerSpawnPoint = UnityEngine.Random.Range(0, spawnPoints.Length - 1);
+        List<Enemy> enemies = new List<Enemy>();
+        int playerSpawnPoint = UnityEngine.Random.Range(0, spawnPoints.Length);
 
         for (var i = 0; i < spawnPoints.Length; i++)
         {
@@ -43,7 +43,7 @@ public class UnitsSpawner : MonoBehaviour
 
             if (i != playerSpawnPoint)
             {
-                EnemyView enemy = Instantiate(_enemyPrefab, spawnPoints[i].position, Quaternion.identity, transform);
+                Enemy enemy = Instantiate(_enemyPrefab, spawnPoints[i].position, Quaternion.identity, transform);
                 enemies.Add(enemy);
                 character = enemy;
             }
@@ -58,6 +58,7 @@ public class UnitsSpawner : MonoBehaviour
             }
 
             _weaponSpawner.CreateWeapon(character);
+            _nameSpawner.CreateName(character);
             _targets.Add(character);
             
         }
@@ -66,7 +67,7 @@ public class UnitsSpawner : MonoBehaviour
         CreationEnded?.Invoke(_targets.ToArray());
     }
 
-    private void InitEnemys(List<EnemyView> enemies)
+    private void InitEnemys(List<Enemy> enemies)
     {
         for(var i = 0; i < enemies.Count; i++)
         {

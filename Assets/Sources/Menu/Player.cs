@@ -1,30 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BattleIsland.SaveData;
+using System;
 
 namespace BattleIsland.Menu
 {
     public class Player : MonoBehaviour
     {
-        private int _momey;
+        public int Money { get; private set; }
+
         private const string SaveKey = "PlayerSaveKey";
 
-        private void OnEnable()
+        public event Action MoneyCountChanged;
+
+        private void Start()
         {
-            _momey = LoadMoney(SaveKey) + ScoreCounter.Money;
+            Money = LoadMoney(SaveKey) + ScoreCounter.Money;
             SaveMoney(SaveKey);
 
-            Debug.Log("Money: " + _momey);
+            MoneyCountChanged?.Invoke();
         }
 
         public bool TryGetMoney(int count)
         {
-            if(count > _momey)
+            if(count > Money)
                 return false;
 
-            _momey -= count;
+            Money -= count;
             SaveMoney(SaveKey);
+            MoneyCountChanged?.Invoke();
 
             return true;
         }
@@ -45,7 +48,7 @@ namespace BattleIsland.Menu
         {
             PlayerProfile data = new PlayerProfile()
             {
-                Money = _momey
+                Money = Money
             };
 
             return data;

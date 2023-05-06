@@ -12,6 +12,7 @@ public class GameMenu : Menu
 
     private void OnEnable()
     {
+        Time.timeScale = 1;
         _timer.TimeOvered += OpenResultPanel;
     }
 
@@ -24,6 +25,7 @@ public class GameMenu : Menu
     {
         _resultPanel.SetActive(true);
         _joystick.gameObject.SetActive(false);
-        _enemySpawner.DisableEnemies();
+
+        Time.timeScale = 0;
     }
 }

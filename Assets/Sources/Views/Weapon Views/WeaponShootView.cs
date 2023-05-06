@@ -4,12 +4,16 @@ using UnityEngine;
 using BattleIsland.Model;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(WeaponView), typeof(NavMeshAgent))]
+[RequireComponent(typeof(WeaponView), typeof(NavMeshAgent), typeof(WeaponAudio))]
 public class WeaponShootView : MonoBehaviour
 {
     private Coroutine _coroutine;
     private NavMeshAgent _agent;
     private WeaponView _weaponView;
+
+    private WeaponAnimationsController _animationsController;
+    private ParticlesController _particlesController;
+    private WeaponAudio _weaponAudio;
 
     public event Action Shotted;
     public event Action Comebacked;
@@ -20,6 +24,10 @@ public class WeaponShootView : MonoBehaviour
     {
         _weaponView = GetComponent<WeaponView>();
         _agent = GetComponent<NavMeshAgent>();
+
+        _particlesController = GetComponentInChildren<ParticlesController>();
+        _animationsController = GetComponentInChildren<WeaponAnimationsController>();
+        _weaponAudio = GetComponent<WeaponAudio>();
 
         _weaponView.Inited += OnInited;
     }
@@ -38,7 +46,7 @@ public class WeaponShootView : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent(out Let let))
+        if (collision.collider.TryGetComponent(out Let let) || collision.collider.TryGetComponent(out WeaponView weapon))
             CollisionEntered?.Invoke(transform.rotation * Vector3.forward, collision.contacts[0].normal);
     }
 
@@ -46,10 +54,12 @@ public class WeaponShootView : MonoBehaviour
     {
         if (other.TryGetComponent(out IDamageable iDamageble))
         {
-            if (iDamageble != _weaponView.Parent)
+            if ((object)iDamageble != _weaponView.Parent)
             {
                 iDamageble.TakeDamage();
                 _weaponView.Parent.TakeMurder();
+
+                _weaponAudio.PlayHitAudio();
             }
         }
     }
@@ -60,7 +70,11 @@ public class WeaponShootView : MonoBehaviour
         _weaponView.Activate();
         StateChanged?.Invoke(new AttackState());
 
-        _weaponView.Rigidbody.AddForce(transform.forward * 1000);
+        _animationsController.Shoot();
+        _particlesController.Activate();
+        _weaponAudio.PlayShootAudio();
+
+        _weaponView.Rigidbody.AddForce(transform.forward * 1100);
         
 
         if (_coroutine != null)
@@ -82,7 +96,7 @@ public class WeaponShootView : MonoBehaviour
 
     public void ChangeTrajectory(Vector3 direction)
     {
-        _weaponView.Rigidbody.AddForce(direction * 500);
+        _weaponView.Rigidbody.AddForce(direction * 600);
     }
 
     private void TryShoot()
@@ -120,6 +134,10 @@ public class WeaponShootView : MonoBehaviour
         }
 
         StateChanged?.Invoke(state);
+
+        _animationsController.ComeBack();
+        _particlesController.Deactivate();
+
         _agent.enabled = false;
     }
 }

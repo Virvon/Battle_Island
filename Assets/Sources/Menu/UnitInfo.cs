@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -20,7 +18,7 @@ public class UnitInfo : MonoBehaviour
 
     public void ChangeInfo(MovementObject unit)
     {
-        _name.text = unit.name;
+        _name.text = unit.Name;
         _murdersCount.text = unit.MurdersCount.ToString();
         Unit = unit;
     }

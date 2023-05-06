@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using BattleIsland.Menu;
+using Lean.Localization;
 
 public class StoreView : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class StoreView : MonoBehaviour
     [SerializeField] private SelectButton _selectButton;
     [SerializeField] private TMP_Text _price;
 
-    private Item _currentItem;
-
     public Player Player => _player;
+
+    private Item _currentItem;
 
     public event Action NextItemSetted;
     public event Action PreviousItemSetted;
@@ -42,7 +43,7 @@ public class StoreView : MonoBehaviour
         item.Activate(_itemPosition.position);
     }
 
-    public void SetButton(Item item, bool isChoosed)
+    public void SetButton(bool isChoosed)
     {
         if (isChoosed)
             _selectButton.Activate();
@@ -53,7 +54,7 @@ public class StoreView : MonoBehaviour
     public void SetPrice(Item item)
     {
         if (item.IsBuyed)
-            _price.text = "Select";
+            _price.text = LeanLocalization.GetTranslationText("Select");
         else
             _price.text = item.Price.ToString();
     }

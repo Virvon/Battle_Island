@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using BattleIsland.SaveData;
-using TMPro;
 
 public class GameTimer : MonoBehaviour
 {
@@ -12,7 +9,7 @@ public class GameTimer : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Timer(30, 0.1f));
+        StartCoroutine(Timer(60, 0.1f));
     }
 
     private IEnumerator Timer(float delay, float step)
@@ -28,6 +25,9 @@ public class GameTimer : MonoBehaviour
 
             yield return waitTime;
         }
+
+        if (StartTime < 0)
+            TimeChanged?.Invoke(0);
 
         TimeOvered?.Invoke();
     }
