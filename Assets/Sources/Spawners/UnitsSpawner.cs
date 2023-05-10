@@ -46,6 +46,8 @@ public class UnitsSpawner : MonoBehaviour
                 Enemy enemy = Instantiate(_enemyPrefab, spawnPoints[i].position, Quaternion.identity, transform);
                 enemies.Add(enemy);
                 character = enemy;
+
+                _nameSpawner.CreateName(character);
             }
             else
             {
@@ -58,9 +60,7 @@ public class UnitsSpawner : MonoBehaviour
             }
 
             _weaponSpawner.CreateWeapon(character);
-            _nameSpawner.CreateName(character);
             _targets.Add(character);
-            
         }
 
         InitEnemys(enemies);

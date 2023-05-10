@@ -2895,7 +2895,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405dcb7dc3abbb7409b5f7a649b7f969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextScene: EnemyScene1
+  _nextScenes:
+  - EnemyScene2
+  - EnemyScene2
+  - EnemyScene2
   _loadPanel: {fileID: 2516155966071556519}
   _settingsPanel: {fileID: 1783000761}
 --- !u!114 &1000813813

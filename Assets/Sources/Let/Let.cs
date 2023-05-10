@@ -7,6 +7,7 @@ public class Let : MonoBehaviour
     [SerializeField] private int _health;
 
     private bool _isStatic;
+    private bool _isBroking;
 
     public event Action Broked;
     public event Action Hited;
@@ -14,6 +15,7 @@ public class Let : MonoBehaviour
     private void Start()
     {
         _isStatic = gameObject.isStatic;
+        _isBroking = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,9 +28,15 @@ public class Let : MonoBehaviour
             _health--;
 
             if (_health > 0)
+            {
                 Hited?.Invoke();
-            else
+            }
+            else if(_isBroking == false)
+            {
+                _isBroking = true;
+                _health = 0;
                 Broked?.Invoke();
+            }
         }
     }
 }

@@ -101,11 +101,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.69900006, y: 0.98700005, z: 0.95400006}
+  m_Extents: {x: 0.5, y: 1, z: 0.77}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
-  m_Center: {x: -0.19000001, y: 0.726, z: -0.079}
+  m_Center: {x: -0.09, y: 0.7, z: -0.1}
   m_TimeToStationary: 0.5
 --- !u!65 &3681544613753576454
 BoxCollider:
@@ -118,8 +118,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3988388, y: 1.9738545, z: 1.9086243}
-  m_Center: {x: -0.19001558, y: 0.7259393, z: -0.07948917}
+  m_Size: {x: 1, y: 2, z: 1.54}
+  m_Center: {x: -0.09, y: 0.7, z: -0.1}
 --- !u!114 &4670086272847492144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +284,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 9117329357441966156, guid: 137950a65290b1a43a150ee477617581, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9240f1fd04ae28341890aadc0690b8ee, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0

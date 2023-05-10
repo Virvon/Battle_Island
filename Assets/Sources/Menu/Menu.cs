@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Menu : MonoBehaviour
 {
-    [SerializeField] private string _nextScene;
+    [SerializeField] private string[] _nextScenes;
     [SerializeField] private GameObject _loadPanel;
 
     private SceneLoader _gameSceneLoader;
@@ -10,7 +10,7 @@ public abstract class Menu : MonoBehaviour
     public void LoadNextScene()
     {
         _loadPanel.SetActive(true);
-        _gameSceneLoader = new SceneLoader(_nextScene);
+        _gameSceneLoader = new SceneLoader(_nextScenes[Random.Range(0, _nextScenes.Length)]);
         _gameSceneLoader.Load();
     }
 }

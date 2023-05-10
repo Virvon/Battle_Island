@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4809904008994882}
   - component: {fileID: 198536722342428144}
   - component: {fileID: 199717617902896242}
+  - component: {fileID: 4149041691439918542}
   m_Layer: 0
   m_Name: ShieldSoftBlue
   m_TagString: Untagged
@@ -4706,7 +4707,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 139f4c1696c68e54390a5ad669273cab, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4757,3 +4757,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4149041691439918542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135644536747142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5dbf46d1f5d194d9e242f09f062ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delay: 2
