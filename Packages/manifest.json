@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.agava.yandexgames": "file:C:/Users/Danii/Desktop/com.agava.yandexgames-12.0.1/com.agava.yandexgames-12.0.1",
     "com.unity.collab-proxy": "2.0.4",
     "com.unity.feature.development": "1.0.1",
     "com.unity.inputsystem": "1.5.1",

@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.agava.yandexgames": {
+      "version": "file:C:/Users/Danii/Desktop/com.agava.yandexgames-12.0.1/com.agava.yandexgames-12.0.1",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.collab-proxy": {
       "version": "2.0.4",
       "depth": 0,
