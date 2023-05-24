@@ -11,6 +11,7 @@ public class UnitsSpawner : MonoBehaviour
     [SerializeField] private WeaponsSpawner _weaponSpawner;
     [SerializeField] private NameSpawner _nameSpawner;
     [SerializeField] private JoystickHandler _joystickHandler;
+    [SerializeField] private DesktopInput _desktopInput;
     [SerializeField] private CameraView _camera;
     [SerializeField] private GameObject[] _skins;
 
@@ -53,7 +54,7 @@ public class UnitsSpawner : MonoBehaviour
             {
                 PlayerView player = Instantiate(_playerPrefab, spawnPoints[i].position, Quaternion.identity, transform);
 
-                Instantiate(Store.SelectSkin, player.transform.position + new Vector3(0, -1, 0), player.transform.rotation, player.transform);
+                Instantiate(SkinStore.SelectSkin, player.transform.position + new Vector3(0, -1, 0), player.transform.rotation, player.transform);
                 InitPlayer(player);
                 character = player;
                 _camera.Init(player);
@@ -79,6 +80,10 @@ public class UnitsSpawner : MonoBehaviour
 
     private void InitPlayer(PlayerView player)
     {
-        player.Init(_joystickHandler);
+        DirectionInput directionInput = GameInit.Platform == Platform.Mobile ? _joystickHandler : _desktopInput;
+
+        directionInput.gameObject.SetActive(true);
+        directionInput.Init(player);
+        player.Init(directionInput);
     }
 }

@@ -7,6 +7,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(WeaponView), typeof(NavMeshAgent), typeof(WeaponAudio))]
 public class WeaponShootView : MonoBehaviour
 {
+    private const float ShootForce = 1350;
+
     private Coroutine _coroutine;
     private NavMeshAgent _agent;
     private WeaponView _weaponView;
@@ -74,7 +76,7 @@ public class WeaponShootView : MonoBehaviour
         _particlesController.Activate();
         _weaponAudio.PlayShootAudio();
 
-        _weaponView.Rigidbody.AddForce(transform.forward * 1100);
+        _weaponView.Rigidbody.AddForce(transform.forward * ShootForce);
         
 
         if (_coroutine != null)
@@ -96,7 +98,7 @@ public class WeaponShootView : MonoBehaviour
 
     public void ChangeTrajectory(Vector3 direction)
     {
-        _weaponView.Rigidbody.AddForce(direction * 600);
+        _weaponView.Rigidbody.AddForce(direction * (ShootForce / 2));
     }
 
     private void TryShoot()
@@ -119,7 +121,7 @@ public class WeaponShootView : MonoBehaviour
         do
         {
             yield return new WaitForSeconds(0.1f);
-        } while (_weaponView.Rigidbody.velocity.magnitude > 1.5f);
+        } while (_weaponView.Rigidbody.velocity.magnitude > 3.8f);
 
         TryComeback();
     }

@@ -251,6 +251,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8570284500539369517, guid: 4d77b47f753caf24493215b264f25ad6, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d77b47f753caf24493215b264f25ad6, type: 3}
 --- !u!4 &32422884 stripped
@@ -500,6 +504,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: -847096291343470575, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8710283916073956558, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
       propertyPath: m_Name
       value: Fantasy_House_6 (2)
@@ -4480,6 +4488,10 @@ PrefabInstance:
       propertyPath: MinDistance
       value: 1.0852315
       objectReference: {fileID: 0}
+    - target: {fileID: -847096291343470575, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8710283916073956558, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
       propertyPath: m_Name
       value: Fantasy_House_6 (4)
@@ -4771,6 +4783,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7074466223257522104, guid: 7a552cd1c51c7a84b975268e3d8e0f58, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a552cd1c51c7a84b975268e3d8e0f58, type: 3}
 --- !u!4 &530187063 stripped
@@ -4836,6 +4852,10 @@ PrefabInstance:
     - target: {fileID: 3204218202950055891, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
@@ -5560,6 +5580,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8011617818381776812, guid: 0946bcaea5e045d488e49b6b2cdc0a84, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0946bcaea5e045d488e49b6b2cdc0a84, type: 3}
 --- !u!4 &611096254 stripped
@@ -6282,6 +6306,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: 802122952614573816, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5780034516089840320, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
       propertyPath: m_Name
       value: WoodenBarbedWireBarrier_33_v1 (2)
@@ -6905,6 +6933,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: 802122952614573816, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5780034516089840320, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
       propertyPath: m_Name
       value: WoodenBarbedWireBarrier_33_v1 (1)
@@ -7096,6 +7128,10 @@ PrefabInstance:
     - target: {fileID: 3204218202950055891, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
@@ -8150,6 +8186,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
 --- !u!4 &913916349 stripped
@@ -8368,6 +8408,10 @@ PrefabInstance:
     - target: {fileID: 3204218202950055891, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
@@ -8757,6 +8801,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: -5247018352111934695, guid: 45876c976c3170d47a50df7a3ce95b6a, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3501491591976136957, guid: 45876c976c3170d47a50df7a3ce95b6a, type: 3}
       propertyPath: m_Name
       value: Birch03
@@ -9066,6 +9114,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: -8048032872695575019, guid: 9ad4b6abc899ddd47930ada5076be74f, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 518986451079457084, guid: 9ad4b6abc899ddd47930ada5076be74f, type: 3}
       propertyPath: m_Name
       value: Cedar01
@@ -10222,6 +10274,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
 --- !u!4 &1128763430 stripped
@@ -10757,6 +10813,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: -3635576368352173907, guid: 58cae4b1e24999c479b4ad95cf5c8f43, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8537319396382129293, guid: 58cae4b1e24999c479b4ad95cf5c8f43, type: 3}
       propertyPath: m_Name
       value: Magnolia_Fallen
@@ -10889,6 +10949,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: -4542510012578363014, guid: bd04195c5afec8b4db062057654c5cfe, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4832113689933495222, guid: bd04195c5afec8b4db062057654c5cfe, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -11208,6 +11272,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: 802122952614573816, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5780034516089840320, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
       propertyPath: m_Name
       value: WoodenBarbedWireBarrier_33_v1
@@ -11409,6 +11477,10 @@ PrefabInstance:
     - target: {fileID: 3204218202950055891, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
@@ -11679,6 +11751,10 @@ PrefabInstance:
     - target: {fileID: 3204218202950055891, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
@@ -11960,6 +12036,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: 802122952614573816, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5780034516089840320, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
       propertyPath: m_Name
       value: WoodenBarbedWireBarrier_33_v1 (4)
@@ -12713,7 +12793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: English
+  currentLanguage: Russian
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 1
@@ -18048,6 +18128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: -847096291343470575, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8710283916073956558, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
       propertyPath: m_Name
       value: Fantasy_House_6 (3)
@@ -19478,6 +19562,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5494715315550764140, guid: e6567bad14fb56e46a7da63fd644b99a, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6567bad14fb56e46a7da63fd644b99a, type: 3}
 --- !u!4 &1612560578 stripped
@@ -20825,6 +20913,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
 --- !u!4 &1745599910 stripped
@@ -21118,6 +21210,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: 3113023978572031778, guid: 0371f61bcdd2799478720637ee746b4f, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7032112302698976235, guid: 0371f61bcdd2799478720637ee746b4f, type: 3}
       propertyPath: m_Name
       value: SandBarrier_28_v1
@@ -21398,6 +21494,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: -4542510012578363014, guid: bd04195c5afec8b4db062057654c5cfe, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4832113689933495222, guid: bd04195c5afec8b4db062057654c5cfe, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -22243,6 +22343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: -6000585006232156904, guid: f56ca85733bdde349a7fdd8c9cb91705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5943628770001560494, guid: f56ca85733bdde349a7fdd8c9cb91705, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -22549,6 +22653,10 @@ PrefabInstance:
       propertyPath: MinDistance
       value: 1.0852315
       objectReference: {fileID: 0}
+    - target: {fileID: -847096291343470575, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8710283916073956558, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
       propertyPath: m_Name
       value: Fantasy_House_6
@@ -22784,6 +22892,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: 802122952614573816, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5780034516089840320, guid: b4b7339fb3082864b8444ec917d80cf4, type: 3}
       propertyPath: m_Name
       value: WoodenBarbedWireBarrier_33_v1 (5)
@@ -23728,6 +23840,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1660457791}
     m_Modifications:
+    - target: {fileID: -847096291343470575, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8710283916073956558, guid: 2d9da87be1b3c6d439774bf505e3a787, type: 3}
       propertyPath: m_Name
       value: Fantasy_House_6 (1)

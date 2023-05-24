@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class Let : MonoBehaviour
 {
+    [SerializeField] private bool _isDamagable;
     [SerializeField] private int _health;
 
-    private bool _isStatic;
     private bool _isBroking;
 
     public event Action Broked;
@@ -14,13 +13,12 @@ public class Let : MonoBehaviour
 
     private void Start()
     {
-        _isStatic = gameObject.isStatic;
         _isBroking = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_isStatic)
+        if (_isDamagable == false)
             return;
 
         if(collision.collider.TryGetComponent(out WeaponView weapon))

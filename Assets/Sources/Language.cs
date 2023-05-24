@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Language : MonoBehaviour
 {
     private void Start()
     {
-        Lean.Localization.LeanLocalization.SetCurrentLanguageAll("English");
+        var language = Application.systemLanguage;
+
+        Debug.Log(language + " | " + language.ToString());
+
+        Lean.Localization.LeanLocalization.SetCurrentLanguageAll(language.ToString());
     }
 }

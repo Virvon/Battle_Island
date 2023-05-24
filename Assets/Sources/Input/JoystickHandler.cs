@@ -3,17 +3,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using BattleIsland.Input;
 
-public class JoystickHandler : MonoBehaviour, IDragHandler
+public class JoystickHandler : DirectionInput, IDragHandler
 {
     [SerializeField] private RectTransform _handleSlideArea;
     [SerializeField] private RectTransform _handle;
 
-    public Vector2 Output { get; private set; }
-
     private PlayerInput _input;
 
-    public event Action Activated;
-    public event Action Deactivated;
+    public override event Action Activated;
+    public override event Action Deactivated;
 
     private void OnEnable()
     {
@@ -43,25 +41,25 @@ public class JoystickHandler : MonoBehaviour, IDragHandler
             joystickPosition.x = (joystickPosition.x * (2 / _handleSlideArea.sizeDelta.x));
             joystickPosition.y = (joystickPosition.y * (2 / _handleSlideArea.sizeDelta.y));
 
-            Output = joystickPosition;
+            Direction = joystickPosition;
 
-            if (Output.magnitude > 1)
-                Output = Output.normalized;
+            if (Direction.magnitude > 1)
+                Direction = Direction.normalized;
 
-            _handle.anchoredPosition = new Vector2(Output.x * (_handleSlideArea.sizeDelta.x / 2), Output.y * (_handleSlideArea.sizeDelta.y / 2));
+            _handle.anchoredPosition = new Vector2(Direction.x * (_handleSlideArea.sizeDelta.x / 2), Direction.y * (_handleSlideArea.sizeDelta.y / 2));
         }
     }
 
     private void OnDownTouch()
     {
-        if(Output != Vector2.zero)
+        if(Direction != Vector2.zero)
             Activated?.Invoke();
     }
 
     private void OnUpTouh()
     {
         _handle.anchoredPosition = Vector3.zero;
-        Output = Vector2.zero;
+        Direction = Vector2.zero;
 
         Deactivated?.Invoke();
     }

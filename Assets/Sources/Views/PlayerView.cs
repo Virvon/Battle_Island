@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(Shield))]
 public class PlayerView : MovementObject, IDamageable
 {
-    private JoystickHandler _joystick;
+    private DirectionInput _input;
     private Rigidbody _rigidbody;
     private Vector3 _spawnPoint;
     private Shield _shield;
@@ -18,21 +18,21 @@ public class PlayerView : MovementObject, IDamageable
 
     private void OnDisable()
     {
-        _joystick.Activated -= OnJoystickActivated;
-        _joystick.Deactivated += OnJoystickDeactivated;
+        _input.Activated -= OnJoystickActivated;
+        _input.Deactivated += OnJoystickDeactivated;
     }
-    public void Init(JoystickHandler joystick)
+    public void Init(DirectionInput directionInput)
     {
         Name = "You";
 
-        _joystick = joystick;
+        _input = directionInput;
         _spawnPoint = transform.position;
 
         _rigidbody = GetComponent<Rigidbody>();
         _shield = GetComponent<Shield>();
 
-        _joystick.Activated += OnJoystickActivated;
-        _joystick.Deactivated += OnJoystickDeactivated;
+        _input.Activated += OnJoystickActivated;
+        _input.Deactivated += OnJoystickDeactivated;
     }
 
     public void Rotate(Quaternion rotation)
@@ -66,7 +66,7 @@ public class PlayerView : MovementObject, IDamageable
 
     private void OnJoystickActivated()
     {
-        InputedRotation?.Invoke(_joystick.Output);
+        InputedRotation?.Invoke(_input.Direction);
     }
 
     private void OnJoystickDeactivated()

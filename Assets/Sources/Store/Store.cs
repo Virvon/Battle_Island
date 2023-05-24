@@ -2,88 +2,96 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Store : MonoBehaviour
+public abstract class Store : MonoBehaviour
 {
     [SerializeField] private StoreView _view;
+    [SerializeField] private string SaveKey;
 
-    private const string SaveKey = "StoreSaveKey";
-
-    private List<Item> _items;
     private Item _currentItem;
-    private Item _selectItem;
 
-    public static GameObject SelectSkin { get; private set; }
+    protected List<Item> Items;
+    protected Item SelectItem;
 
     private void Start()
     {
-        _items = GetComponentsInChildren<Item>().ToList();
+        Items = GetComponentsInChildren<Item>().ToList();
 
+        Open();
+    }
 
+    private void OnDisable() => Close();
+
+    public void Open()
+    {
         _view.NextItemSetted += OnNextItemSetted;
         _view.PreviousItemSetted += OnPreviousItemSetted;
         _view.ItemSelected += OnItemSelected;
 
-        _selectItem = Load(SaveKey);
+        if(Items != null)
+            LoadStaticItem();
 
-        if (_selectItem == null || _selectItem.IsBuyed == false)
-            _selectItem = _items.Where(item => item.IsBuyed).First();
+        if (SelectItem == null)
+            SelectItem = Load(SaveKey);
 
-        _currentItem = _selectItem;
+        if (SelectItem == null)
+            SelectItem = Items.Where(item => item.IsBuyed).First();
 
+        _currentItem = SelectItem;
 
-        SetItem(_currentItem, _view);
+        Debug.Log("item: " + SelectItem);
+
+        SetItem(_currentItem);
     }
 
-    private void OnDisable()
+    public void Close()
     {
+        _view.TryDeactivateItem();
+
         _view.NextItemSetted -= OnNextItemSetted;
         _view.PreviousItemSetted -= OnPreviousItemSetted;
         _view.ItemSelected -= OnItemSelected;
 
-        SelectSkin = _selectItem.Skin;
+        Save(SaveKey);
     }
 
     private void OnNextItemSetted()
     {
-        var currentItemIndex = _items.IndexOf(_currentItem);
+        var currentItemIndex = Items.IndexOf(_currentItem);
 
-        _currentItem = currentItemIndex + 1 < _items.Count  ? _items[currentItemIndex + 1] : _items.First();
+        _currentItem = currentItemIndex + 1 < Items.Count ? Items[currentItemIndex + 1] : Items.First();
 
-        SetItem(_currentItem, _view);
+        SetItem(_currentItem);
     }
 
     private void OnPreviousItemSetted()
     {
-        var currentItemIndex = _items.IndexOf(_currentItem);
+        var currentItemIndex = Items.IndexOf(_currentItem);
 
-        _currentItem = currentItemIndex - 1 >= 0 ? _items[currentItemIndex - 1] : _items.Last();
+        _currentItem = currentItemIndex - 1 >= 0 ? Items[currentItemIndex - 1] : Items.Last();
 
-        SetItem(_currentItem, _view);
+        SetItem(_currentItem);
     }
 
     private void OnItemSelected()
     {
-        if(_currentItem.TrySecelct(_view.Player))
+        if (_currentItem.TrySecelct(_view.Player))
         {
-            _selectItem = _currentItem;
-            _view.SetButton(_currentItem == _selectItem);
+            SelectItem = _currentItem;
+            _view.SetButton(_currentItem == SelectItem);
             _view.SetPrice(_currentItem);
 
             Save(SaveKey);
         }
     }
 
-    private void SetItem(Item item, StoreView view)
+    private void SetItem(Item item)
     {
-        view.SetItem(item);
-        view.SetButton(_currentItem == _selectItem);
-        view.SetPrice(item);
+        _view.SetItem(item);
+        _view.SetButton(_currentItem == SelectItem);
+        _view.SetPrice(item);
     }
 
-    private void Save(string key)
-    {
-        SaveManger.Save(key, CreateSavesnapshot());
-    }
+    private void Save(string key) => SaveManger.Save(key, CreateSavesnapshot());
 
     private Item Load(string key)
     {
@@ -96,9 +104,11 @@ public class Store : MonoBehaviour
     {
         StoreProfile data = new()
         {
-            SelectItem = _selectItem
+            SelectItem = SelectItem
         };
 
         return data;
     }
+
+    protected abstract void LoadStaticItem();
 }

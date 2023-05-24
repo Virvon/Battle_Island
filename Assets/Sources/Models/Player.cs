@@ -5,7 +5,7 @@ namespace BattleIsland.Model
 {
     public class Player
     {
-        private readonly float _velocityForce = 5;
+        private readonly float _velocityForce = 6.5f;
 
         public event Action Rotated;
 

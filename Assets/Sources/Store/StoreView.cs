@@ -13,7 +13,7 @@ public class StoreView : MonoBehaviour
 
     public Player Player => _player;
 
-    private Item _currentItem;
+    private Item _currentSkinItem;
 
     public event Action NextItemSetted;
     public event Action PreviousItemSetted;
@@ -36,11 +36,13 @@ public class StoreView : MonoBehaviour
 
     public void SetItem(Item item)
     {
-        if (_currentItem != null)
-            _currentItem.Deactivate();
+        if (_currentSkinItem != null)
+            _currentSkinItem.Deactivate();
 
-        _currentItem = item;
+        _currentSkinItem = item;
         item.Activate(_itemPosition.position);
+
+        Debug.Log("set item " + item);
     }
 
     public void SetButton(bool isChoosed)
@@ -57,5 +59,11 @@ public class StoreView : MonoBehaviour
             _price.text = LeanLocalization.GetTranslationText("Select");
         else
             _price.text = item.Price.ToString();
+    }
+
+    public void TryDeactivateItem()
+    {
+        if(_currentSkinItem != null)
+            _currentSkinItem.Deactivate();
     }
 }

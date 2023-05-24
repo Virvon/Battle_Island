@@ -1,41 +1,30 @@
 using UnityEngine;
 using BattleIsland.Menu;
 using BattleIsland.SaveData;
+using System;
 
-public class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
-    [SerializeField] private GameObject _skinPrefab;
     [SerializeField] private int _price;
     [SerializeField] private string _saveKey;
 
-    private Skin _skin;
-
     public int Price => _price;
-    public bool IsBuyed { get; private set; } = false;
-    public GameObject Skin => _skinPrefab;
+    public bool IsBuyed { get; private set; }
 
-    private void OnEnable()
+    public event Action Selled;
+
+    private void Awake()
     {
         Load(_saveKey);
 
-        _skin = GetComponentInChildren<Skin>();
-
-        _skin.gameObject.SetActive(false);
-
         if (_price == 0)
             IsBuyed = true;
+
     }
 
-    public void Activate(Vector3 position)
-    {
-        _skin.gameObject.SetActive(true);
-        _skin.transform.position = position;
-    }
+    public abstract void Activate(Vector3 position);
 
-    public void Deactivate()
-    {
-        _skin.gameObject.SetActive(false);
-    }
+    public abstract void Deactivate();
 
     public bool TrySecelct(Player player)
     {
@@ -50,6 +39,7 @@ public class Item : MonoBehaviour
         if (player.TryGetMoney(Price))
         {
             IsBuyed = true;
+            Selled?.Invoke();
             Save(_saveKey);
         }
     }

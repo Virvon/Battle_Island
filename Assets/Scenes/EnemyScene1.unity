@@ -390,6 +390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 725999340}
     m_Modifications:
+    - target: {fileID: -8048032872695575019, guid: 9ad4b6abc899ddd47930ada5076be74f, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8010151629613342117, guid: 9ad4b6abc899ddd47930ada5076be74f, type: 3}
       propertyPath: m_Pitch
       value: -1.35
@@ -503,6 +507,10 @@ PrefabInstance:
     - target: {fileID: 1127682765380122180, guid: d6e6dbb5fb753754d8123e09d254ffaa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195429342852356294, guid: d6e6dbb5fb753754d8123e09d254ffaa, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6e6dbb5fb753754d8123e09d254ffaa, type: 3}
@@ -650,6 +658,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 725999340}
     m_Modifications:
+    - target: {fileID: -3635576368352173907, guid: 58cae4b1e24999c479b4ad95cf5c8f43, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8537319396382129293, guid: 58cae4b1e24999c479b4ad95cf5c8f43, type: 3}
       propertyPath: m_Name
       value: Magnolia_Fallen (1)
@@ -1073,6 +1085,10 @@ PrefabInstance:
     - target: {fileID: 408956, guid: be320b6d231cacc4894038f2c3375674, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670086272847492144, guid: be320b6d231cacc4894038f2c3375674, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be320b6d231cacc4894038f2c3375674, type: 3}
@@ -1695,6 +1711,10 @@ PrefabInstance:
     - target: {fileID: 441272, guid: 85f4229977c9ee247bc4425710c5b0c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 671877321115384801, guid: 85f4229977c9ee247bc4425710c5b0c4, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85f4229977c9ee247bc4425710c5b0c4, type: 3}
@@ -2519,6 +2539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oak_Fallen
       objectReference: {fileID: 0}
+    - target: {fileID: 5494715315550764140, guid: e6567bad14fb56e46a7da63fd644b99a, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6567bad14fb56e46a7da63fd644b99a, type: 3}
 --- !u!4 &628975689 stripped
@@ -3302,6 +3326,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 725999340}
     m_Modifications:
+    - target: {fileID: -8310351157605755161, guid: 36100188caa20714684ccf6bb61bca9e, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 572604998900036604, guid: 36100188caa20714684ccf6bb61bca9e, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -4554,6 +4582,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
 --- !u!4 &1119132773 stripped
@@ -4835,6 +4867,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 725999340}
     m_Modifications:
+    - target: {fileID: -5247018352111934695, guid: 45876c976c3170d47a50df7a3ce95b6a, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3501491591976136957, guid: 45876c976c3170d47a50df7a3ce95b6a, type: 3}
       propertyPath: m_Name
       value: Birch03
@@ -5520,6 +5556,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 671877321115384801, guid: 85f4229977c9ee247bc4425710c5b0c4, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85f4229977c9ee247bc4425710c5b0c4, type: 3}
 --- !u!4 &1306793489 stripped
@@ -5945,6 +5985,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 725999340}
     m_Modifications:
+    - target: {fileID: -3635576368352173907, guid: 58cae4b1e24999c479b4ad95cf5c8f43, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8537319396382129293, guid: 58cae4b1e24999c479b4ad95cf5c8f43, type: 3}
       propertyPath: m_Name
       value: Magnolia_Fallen
@@ -6029,7 +6073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: English
+  currentLanguage: Russian
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 1
@@ -11450,6 +11494,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 725999340}
     m_Modifications:
+    - target: {fileID: -338819210791227541, guid: 0d1907a41e8be4c41af0e2494809fb60, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3574714663294195360, guid: 0d1907a41e8be4c41af0e2494809fb60, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -11776,6 +11824,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
 --- !u!4 &1568517291 stripped
@@ -11837,6 +11889,10 @@ PrefabInstance:
     - target: {fileID: 3204218202950055891, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7833272885257292098, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ae22a8c221d254f84fbe0e68ed0705, type: 3}
@@ -12405,6 +12461,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1118974836673660393, guid: 61b490990a08faa419b1bb6a6708ad09, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61b490990a08faa419b1bb6a6708ad09, type: 3}
 --- !u!4 &1685663441 stripped
@@ -12961,6 +13021,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1118974836673660393, guid: 61b490990a08faa419b1bb6a6708ad09, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61b490990a08faa419b1bb6a6708ad09, type: 3}
 --- !u!4 &1772535630 stripped
@@ -13088,6 +13152,10 @@ PrefabInstance:
     - target: {fileID: 408956, guid: be320b6d231cacc4894038f2c3375674, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670086272847492144, guid: be320b6d231cacc4894038f2c3375674, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be320b6d231cacc4894038f2c3375674, type: 3}
@@ -13269,6 +13337,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 725999340}
     m_Modifications:
+    - target: {fileID: 4043443822193825332, guid: c56da986b62f2464887f463f1dbf30f8, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4924530497163448313, guid: c56da986b62f2464887f463f1dbf30f8, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -14072,6 +14144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 725999340}
     m_Modifications:
+    - target: {fileID: -6000585006232156904, guid: f56ca85733bdde349a7fdd8c9cb91705, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5943628770001560494, guid: f56ca85733bdde349a7fdd8c9cb91705, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -14198,6 +14274,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4670086272847492144, guid: be320b6d231cacc4894038f2c3375674, type: 3}
+      propertyPath: _isDamagable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be320b6d231cacc4894038f2c3375674, type: 3}
 --- !u!4 &2110582272 stripped
@@ -14259,6 +14339,10 @@ PrefabInstance:
     - target: {fileID: 3101454670145594090, guid: e6567bad14fb56e46a7da63fd644b99a, type: 3}
       propertyPath: m_Name
       value: Oak_Fallen (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494715315550764140, guid: e6567bad14fb56e46a7da63fd644b99a, type: 3}
+      propertyPath: _isDamagable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6567bad14fb56e46a7da63fd644b99a, type: 3}
