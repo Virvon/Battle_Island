@@ -10,16 +10,20 @@ public abstract class Store : MonoBehaviour
     private Item _currentItem;
 
     protected List<Item> Items;
-    protected Item SelectItem;
+    protected Item _selectItem;
 
-    private void Start()
+    private void OnEnable()
     {
         Items = GetComponentsInChildren<Item>().ToList();
 
-        Open();
+        _selectItem = LoadItem();
+        SetSelectItem(_selectItem);
     }
 
-    private void OnDisable() => Close();
+    private void OnDisable()
+    {
+        Close();
+    }
 
     public void Open()
     {
@@ -27,29 +31,21 @@ public abstract class Store : MonoBehaviour
         _view.PreviousItemSetted += OnPreviousItemSetted;
         _view.ItemSelected += OnItemSelected;
 
-        if(Items != null)
-            LoadStaticItem();
+        _selectItem = LoadItem();
 
-        if (SelectItem == null)
-            SelectItem = Load(SaveKey);
-
-        if (SelectItem == null)
-            SelectItem = Items.Where(item => item.IsBuyed).First();
-
-        _currentItem = SelectItem;
-
-        Debug.Log("item: " + SelectItem);
+        _currentItem = _selectItem;
 
         SetItem(_currentItem);
+        SetSelectItem(_selectItem);
     }
 
     public void Close()
     {
-        _view.TryDeactivateItem();
-
         _view.NextItemSetted -= OnNextItemSetted;
         _view.PreviousItemSetted -= OnPreviousItemSetted;
         _view.ItemSelected -= OnItemSelected;
+
+        _view.TryDeactivateItem();
 
         Save(SaveKey);
     }
@@ -76,19 +72,36 @@ public abstract class Store : MonoBehaviour
     {
         if (_currentItem.TrySecelct(_view.Player))
         {
-            SelectItem = _currentItem;
-            _view.SetButton(_currentItem == SelectItem);
+            _selectItem = _currentItem;
+            _view.SetButton(_currentItem == _selectItem);
             _view.SetPrice(_currentItem);
 
             Save(SaveKey);
+            SetSelectItem(_selectItem);
         }
     }
 
     private void SetItem(Item item)
     {
         _view.SetItem(item);
-        _view.SetButton(_currentItem == SelectItem);
+        _view.SetButton(_currentItem == _selectItem);
         _view.SetPrice(item);
+    }
+
+    private Item LoadItem()
+    {
+        Item item = null;
+
+        if (Items != null)
+            item = LoadStaticItem();
+
+        if (item == null)
+            item = Load(SaveKey);
+
+        if (item == null)
+            item = Items.Where(itemElement => itemElement.IsBuyed).First();
+
+        return item;
     }
 
     private void Save(string key) => SaveManger.Save(key, CreateSavesnapshot());
@@ -104,11 +117,13 @@ public abstract class Store : MonoBehaviour
     {
         StoreProfile data = new()
         {
-            SelectItem = SelectItem
+            SelectItem = _selectItem
         };
 
         return data;
     }
 
-    protected abstract void LoadStaticItem();
+    protected abstract Item LoadStaticItem();
+
+    protected abstract void SetSelectItem(Item item);
 }

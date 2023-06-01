@@ -1,21 +1,26 @@
+using BattleIsland.SaveData;
 using UnityEngine;
 
 public class MainMenu : Menu
 {
     [SerializeField] private GameObject _settingsPanel;
+    [SerializeField] private string _learningScene;
+    [SerializeField] private string _learningSaveKey;
 
-    public void OpenSettingsPanel()
+    public void OpenSettingsPanel() => _settingsPanel.SetActive(true);
+
+    public void CloseSettingsPanel() => _settingsPanel.SetActive(false);
+
+    public override string GetScene()
     {
-        _settingsPanel.SetActive(true);
+        if (LoadLearningResult())
+            return MapStore.SelectMap;
+        else
+            return _learningScene;
     }
 
-    public void CloseSettingsPanel()
+    private bool LoadLearningResult()
     {
-        _settingsPanel.SetActive(false);
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
+        return SaveManger.Load<LearningProfile>(_learningSaveKey).IsFinish;
     }
 }

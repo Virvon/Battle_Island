@@ -4,15 +4,20 @@ public class MapStore : Store
 
     private void OnDisable()
     {
-        SelectMap = ((MapItem)SelectItem).Name;
+        if(_selectItem != null)
+            SelectMap = ((MapItem)_selectItem).Name;
     }
 
-    protected override void LoadStaticItem()
+    protected override Item LoadStaticItem()
     {
         foreach(var item in Items)
         {
             if (((MapItem)item).Name == SelectMap)
-                SelectItem = item;
+                return item;
         }
+
+        return null;
     }
+
+    protected override void SetSelectItem(Item item) => SelectMap = ((MapItem)item).Name;
 }

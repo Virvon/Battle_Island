@@ -14,6 +14,7 @@ namespace BattleIsland.Menu
 
         private void Start()
         {
+            Debug.Log(name);
             Money = LoadMoney(SaveKey) + ScoreCounter.Money;
             SaveMoney(SaveKey);
 

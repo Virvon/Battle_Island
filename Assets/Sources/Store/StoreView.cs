@@ -41,8 +41,6 @@ public class StoreView : MonoBehaviour
 
         _currentSkinItem = item;
         item.Activate(_itemPosition.position);
-
-        Debug.Log("set item " + item);
     }
 
     public void SetButton(bool isChoosed)

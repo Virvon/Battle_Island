@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NameSpawner : MonoBehaviour
 {
-    [SerializeField] private Name _namePrefab;
+    [SerializeField] private NamePanel _namePrefab;
 
     public void CreateName(MovementObject parent)
     {

@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class MapItem : Item
 {
-    [SerializeField] private Image _image;
     [SerializeField] private string _name;
+    [SerializeField] private Image _image;
 
     public string Name => _name;
 

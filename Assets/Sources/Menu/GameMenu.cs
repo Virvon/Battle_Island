@@ -6,6 +6,8 @@ public class GameMenu : Menu
     [SerializeField] private GameTimer _timer;
     [SerializeField] private UnitsSpawner _enemySpawner;
 
+    private const string NextScene = "Menu";
+
     private void OnEnable()
     {
         _timer.TimeOvered += OpenResultPanel;
@@ -22,5 +24,10 @@ public class GameMenu : Menu
         _resultPanel.SetActive(true);
 
         Time.timeScale = 0;
+    }
+
+    public override string GetScene()
+    {
+        return NextScene;
     }
 }

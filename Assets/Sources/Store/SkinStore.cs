@@ -6,15 +6,20 @@ public class SkinStore : Store
 
     private void OnDisable()
     {
-        SelectSkin = ((SkinItem)SelectItem).Skin;
+        if(_selectItem != null)
+            SelectSkin = ((SkinItem)_selectItem).Skin;
     }
 
-    protected override void LoadStaticItem()
+    protected override Item LoadStaticItem()
     {
         foreach (var item in Items)
         {
             if (((SkinItem)item).Skin == SelectSkin)
-                SelectItem = item;
+                return item;
         }
+
+        return null;
     }
+
+    protected override void SetSelectItem(Item item) => SelectSkin = ((SkinItem)item).Skin;
 }
