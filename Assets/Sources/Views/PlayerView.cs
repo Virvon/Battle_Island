@@ -1,27 +1,50 @@
+using Lean.Localization;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+[RequireComponent(typeof(Rigidbody), typeof(Shield))]
+public class PlayerView : MovementObject, IDamageable
 {
-    [SerializeField] private JoystickHandler _joystick;
+    private DirectionInput _input;
+    private Rigidbody _rigidbody;
+    private Vector3 _spawnPoint;
+    private Shield _shield;
 
     public event Action<Vector2> InputedRotation;
     public event Action<Vector2> Shooted;
-    public event Action Stopped;
-    public event Action PositionChanged;
 
-    private void OnEnable()
-    {
-        _joystick.Activated += OnJoystickActivated;
-        _joystick.Deactivated += OnJoystickDeactivated;
-    }
+    public override event Action PositionChanged;
+    public override event Action Stopped;
+    public override event Action Died;
 
     private void OnDisable()
     {
-        _joystick.Activated -= OnJoystickActivated;
-        _joystick.Deactivated += OnJoystickDeactivated;
+        _input.Activated -= OnJoystickActivated;
+        _input.Deactivated += OnJoystickDeactivated;
+    }
+    public void Init(DirectionInput directionInput)
+    {
+        switch (LeanLocalization.GetFirstCurrentLanguage())
+        {
+            case "Russian":
+                Name = "Ты";
+                break;
+            case "English":
+                Name = "You";
+                break;
+            case "Turkiye":
+                Name = "Sen";
+                break;
+        }
+
+        _input = directionInput;
+        _spawnPoint = transform.position;
+
+        _rigidbody = GetComponent<Rigidbody>();
+        _shield = GetComponent<Shield>();
+
+        _input.Activated += OnJoystickActivated;
+        _input.Deactivated += OnJoystickDeactivated;
     }
 
     public void Rotate(Quaternion rotation)
@@ -29,16 +52,33 @@ public class PlayerView : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    public void Move(Vector3 position)
+    public void Move(Vector3 velocity)
     {
-        transform.position = position;
+        _rigidbody.velocity = velocity;
 
         PositionChanged?.Invoke();
     }
 
+    public void Respawn()
+    {
+        Died?.Invoke();
+
+        transform.position = _spawnPoint;
+
+        PositionChanged?.Invoke();
+
+        _shield.Activate();
+    }
+
+    public void TakeDamage()
+    {
+        if(_shield.IsActive == false)
+            Respawn();
+    }
+
     private void OnJoystickActivated()
     {
-        InputedRotation?.Invoke(_joystick.Output);
+        InputedRotation?.Invoke(_input.Direction);
     }
 
     private void OnJoystickDeactivated()

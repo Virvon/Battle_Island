@@ -1,0 +1,44 @@
+﻿<Project>
+    <ItemGroup>
+        <EditorConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\content\Rules\.editorconfig"/>
+        <StyleCopFilesToCopy Include="$(MSBuildThisFileDirectory)..\content\Rules\stylecop.json"/>
+    </ItemGroup>
+
+    <Target Condition="$(MSBuildProjectName.ToLowerInvariant().Contains('test')) == 'false'" Name="CopyEditorConfig" BeforeTargets="BeforeBuild">
+        <Message Importance="high" Text="Copying the .editorconfig file from '@(EditorConfigFilesToCopy)' to '$(SolutionDir)' or '$(MSBuildProjectDirectory)\..\.'"/>
+        <Copy Condition="'$(SolutionDir)' != '' and '$(SolutionDir)' != '*Undefined*'"
+              SourceFiles="@(EditorConfigFilesToCopy)"
+              DestinationFolder="$(SolutionDir)\."
+              SkipUnchangedFiles="true"
+              UseHardlinksIfPossible="false"/>
+        <Copy Condition="'$(SolutionDir)' == '' or '$(SolutionDir)' == '*Undefined*'"
+              SourceFiles="@(EditorConfigFilesToCopy)"
+              DestinationFolder="$(MSBuildProjectDirectory)\..\."
+              SkipUnchangedFiles="true"
+              UseHardlinksIfPossible="false"/>
+    </Target>
+    <Target Condition="$(MSBuildProjectName.ToLowerInvariant().Contains('test')) == 'false'" Name="CopyStyleCop" BeforeTargets="BeforeBuild">
+        <Message Importance="high" Text="Copying the stylecop.json file from '@(StyleCopFilesToCopy)' to '$(MSBuildProjectDirectory)'"/>
+        <Copy
+            SourceFiles="@(StyleCopFilesToCopy)"
+            DestinationFolder="$(MSBuildProjectDirectory)\."
+            SkipUnchangedFiles="true"
+            UseHardlinksIfPossible="false"/>
+    </Target>
+
+    <Choose>
+        <When Condition="$(MSBuildProjectName.ToLowerInvariant().Contains('test')) == 'false'">
+            <PropertyGroup>
+                <EnableNETAnalyzers>true</EnableNETAnalyzers>
+                <AnalysisLevel>latest-All</AnalysisLevel>
+                <ErrorLog>codeanalysis.sarif.json</ErrorLog>
+                <AnalysisLevel>preview-recommended</AnalysisLevel>
+                <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+                <AnalysisMode>All</AnalysisMode>
+            </PropertyGroup>
+            <ItemGroup>
+                <AdditionalFiles Include="$(MSBuildProjectDirectory)\stylecop.json" Link="stylecop.json"/>
+            </ItemGroup>
+        </When>
+    </Choose>
+</Project>

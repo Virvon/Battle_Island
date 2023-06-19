@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BattleIsland.Model
@@ -9,14 +7,18 @@ namespace BattleIsland.Model
     {
         private State _state;
 
-        public event Action Shotted;
-        public event Action Comeback;
-        public event Action PositionChanged;
-
         public Weapon()
         {
             _state = new IdleState();
         }
+
+        public event Action Shotted;
+
+        public event Action Comeback;
+
+        public event Action PositionChanged;
+
+        public event Action<Vector3> TrajectoryChanged;
 
         public void TryShoot()
         {
@@ -26,7 +28,7 @@ namespace BattleIsland.Model
 
         public void TryComeback()
         {
-            if(_state.CanComeback())
+            if (_state.CanComeback())
                 Comeback?.Invoke();
         }
 
@@ -37,8 +39,15 @@ namespace BattleIsland.Model
 
         public void TryChangePosition()
         {
-            if(_state.CanShoot())
+            if (_state.CanShoot())
                 PositionChanged?.Invoke();
+        }
+
+        public void ChangeTrajectory(Vector3 forward, Vector3 normal)
+        {
+            var resultDirection = Vector3.Reflect(forward, normal);
+
+            TrajectoryChanged?.Invoke(resultDirection);
         }
     }
 }

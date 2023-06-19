@@ -55,7 +55,40 @@ namespace BattleIsland.Input
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse"",
+                    ""groups"": ""Mouse and keyboard"",
+                    ""action"": ""DownTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37741347-a22d-4f43-9a43-14254257bd68"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touchscreen"",
+                    ""action"": ""DownTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d30f85f-afa0-4c9e-80f1-a7af71a6c6b8"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and keyboard"",
+                    ""action"": ""DownTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50e0d700-26d2-4029-8891-addff5c8a5b6"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and keyboard"",
                     ""action"": ""DownTouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -66,7 +99,40 @@ namespace BattleIsland.Input
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse"",
+                    ""groups"": ""Mouse and keyboard"",
+                    ""action"": ""UpTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""738aea48-b74e-4f7a-b39e-2e51fd2dd848"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Touchscreen"",
+                    ""action"": ""UpTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8e449fd-b6f2-4bb4-a22a-bea3f0043e99"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and keyboard"",
+                    ""action"": ""UpTouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6807ee72-18ba-485a-b62b-c219ddf8a503"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and keyboard"",
                     ""action"": ""UpTouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -76,11 +142,27 @@ namespace BattleIsland.Input
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""Mouse"",
-            ""bindingGroup"": ""Mouse"",
+            ""name"": ""Mouse and keyboard"",
+            ""bindingGroup"": ""Mouse and keyboard"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Touchscreen"",
+            ""bindingGroup"": ""Touchscreen"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Touchscreen>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -188,13 +270,22 @@ namespace BattleIsland.Input
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
-        private int m_MouseSchemeIndex = -1;
-        public InputControlScheme MouseScheme
+        private int m_MouseandkeyboardSchemeIndex = -1;
+        public InputControlScheme MouseandkeyboardScheme
         {
             get
             {
-                if (m_MouseSchemeIndex == -1) m_MouseSchemeIndex = asset.FindControlSchemeIndex("Mouse");
-                return asset.controlSchemes[m_MouseSchemeIndex];
+                if (m_MouseandkeyboardSchemeIndex == -1) m_MouseandkeyboardSchemeIndex = asset.FindControlSchemeIndex("Mouse and keyboard");
+                return asset.controlSchemes[m_MouseandkeyboardSchemeIndex];
+            }
+        }
+        private int m_TouchscreenSchemeIndex = -1;
+        public InputControlScheme TouchscreenScheme
+        {
+            get
+            {
+                if (m_TouchscreenSchemeIndex == -1) m_TouchscreenSchemeIndex = asset.FindControlSchemeIndex("Touchscreen");
+                return asset.controlSchemes[m_TouchscreenSchemeIndex];
             }
         }
         public interface IPlayerActions

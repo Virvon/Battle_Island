@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BattleIsland.Model;
 
@@ -42,6 +40,6 @@ public class PlayerPresenter
 
     private void OnMoved()
     {
-        _view.Move(_model.Position);
+        _view.Move(_model.Velocity);
     }
 }

@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BattleIsland.Model;
 
+[RequireComponent(typeof(WeaponShootView), typeof(WeaponFollowParentView))]
 public class WeaponSetup : MonoBehaviour
 {
-    [SerializeField] private WeaponShootView _shootView;
-    [SerializeField] private WeaponFollowParentView _followParentView;
-
+    private WeaponShootView _shootView;
+    private WeaponFollowParentView _followParentView;
     private Weapon _model;
     private WeaponShootPresenter _shootPresenter;
     private WeaponFollowParentPresenter _followParentPresenter;
 
     private void Awake()
     {
+        _shootView = GetComponent<WeaponShootView>();
+        _followParentView = GetComponent<WeaponFollowParentView>();
+
         _model = new Weapon();
         _shootPresenter = new WeaponShootPresenter(_model, _shootView);
         _followParentPresenter = new WeaponFollowParentPresenter(_model, _followParentView);
