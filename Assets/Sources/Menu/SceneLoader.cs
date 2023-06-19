@@ -2,15 +2,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader
 {
-    private string _sceneName;
+    private SceneNames _scene;
 
-    public SceneLoader(string sceneName)
+    public SceneLoader(SceneNames sceneName)
     {
-        _sceneName = sceneName;
+        _scene = sceneName;
     }
 
     public void Load()
     {
-        SceneManager.LoadScene(_sceneName);
+        SceneManager.LoadScene((int)_scene);
     }
 }

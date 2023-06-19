@@ -9,7 +9,7 @@ public class ResultPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        _place.text = _leaderBoard.FindPlayerPlace().ToString();
+        _place.text = _leaderBoard.GetPlayerPlace().ToString();
         _reward.text = ScoreCounter.Money.ToString();
     }
 }

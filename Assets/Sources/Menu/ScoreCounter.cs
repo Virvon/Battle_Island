@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour
@@ -10,15 +11,22 @@ public class ScoreCounter : MonoBehaviour
     private void OnEnable()
     {
         _timer.TimeOvered += AddScore;
+        Advertisement.Rewarded += OnRewarded;
     }
 
     private void OnDisable()
     {
         _timer.TimeOvered -= AddScore;
+        Advertisement.Rewarded -= OnRewarded;
     }
 
     private void AddScore()
     {
-        Money = 100 / _leaderBoard.FindPlayerPlace();
+        Money = 100 / _leaderBoard.GetPlayerPlace();
+    }
+
+    private void OnRewarded()
+    {
+        Money *= 3;
     }
 }

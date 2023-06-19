@@ -13,5 +13,5 @@ public abstract class Menu : MonoBehaviour
         _gameSceneLoader.Load();
     }
 
-    public abstract string GetScene();
+    public abstract SceneNames GetScene();
 }

@@ -7,9 +7,9 @@ using System;
 public class DesktopInput : DirectionInput
 {
     [SerializeField] private Camera _camera;
+    [SerializeField] private Vector2 _offset;
 
     private PlayerInput _input;
-    private MovementObject _player;
 
     public override event Action Activated;
     public override event Action Deactivated;
@@ -53,7 +53,7 @@ public class DesktopInput : DirectionInput
         Vector2 playerScreenPosition = _camera.WorldToScreenPoint(Player.transform.position);
         Vector2 mousePosition = currentEvent.mousePosition;
 
-        Direction = (mousePosition - playerScreenPosition).normalized;
+        Direction = ((mousePosition - playerScreenPosition) + _offset).normalized;
         Direction = new Vector2(Direction.x, Direction.y * -1);
 
         //Debug.Log(mousePosition + " | " + playerScreenPosition);
@@ -61,9 +61,6 @@ public class DesktopInput : DirectionInput
 
     private void OnDownTouch()
     {
-        
-
-        
 
         if (Direction != Vector2.zero)
             Activated?.Invoke();

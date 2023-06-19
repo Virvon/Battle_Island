@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 5955962754398968527}
   - component: {fileID: 4618921992883300769}
   - component: {fileID: 8890990277740766988}
+  - component: {fileID: 7656472628814689031}
   m_Layer: 5
   m_Name: Logo
   m_TagString: Untagged
@@ -226,6 +227,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7656472628814689031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222453982155966000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b28f7e33d1e3e0408d7ff2c8a92a650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: 
+  FallbackSprite: {fileID: 0}
 --- !u!1 &7049935393054979832
 GameObject:
   m_ObjectHideFlags: 0

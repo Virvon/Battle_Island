@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LearnMenu : Menu
 {
-    [SerializeField] private string _nextScene;
+    [SerializeField] private SceneNames _nextScene;
     [SerializeField] private MonoBehaviour _triggerBehavior;
     [SerializeField] private float _delay;
     [SerializeField] private string _saveKey;
@@ -31,7 +31,7 @@ public class LearnMenu : Menu
 
     public override void LoadNextScene() => StartCoroutine(Waiter(_delay));
 
-    public override string GetScene()
+    public override SceneNames GetScene()
     {
         return _nextScene;
     }
@@ -47,7 +47,7 @@ public class LearnMenu : Menu
 
     private void Save()
     {
-        SaveManger.Save(_saveKey, CreateSaveSnapshot());
+        SaveManager.Save(_saveKey, CreateSaveSnapshot());
     }
 
     private LearningProfile CreateSaveSnapshot()

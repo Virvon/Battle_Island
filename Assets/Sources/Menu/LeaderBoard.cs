@@ -26,7 +26,7 @@ public class LeaderBoard : MonoBehaviour
             unit.MurdersCountChanged -= ChangeLeaderBoard;
     }
 
-    public int FindPlayerPlace()
+    public int GetPlayerPlace()
     {
         var result = _unitInfos.Where(unit => unit.Unit is PlayerView);
 

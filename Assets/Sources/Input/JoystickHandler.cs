@@ -58,9 +58,11 @@ public class JoystickHandler : DirectionInput, IDragHandler
 
     private void OnUpTouh()
     {
+        if(Direction != Vector2.zero)
+            Deactivated?.Invoke();
+
         _handle.anchoredPosition = Vector3.zero;
         Direction = Vector2.zero;
 
-        Deactivated?.Invoke();
     }
 }

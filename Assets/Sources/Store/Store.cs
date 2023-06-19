@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Store : MonoBehaviour
 {
     [SerializeField] private StoreView _view;
+    [SerializeField] private Item _defaultItem;
     [SerializeField] private string SaveKey;
 
     private Item _currentItem;
@@ -16,8 +17,7 @@ public abstract class Store : MonoBehaviour
     {
         Items = GetComponentsInChildren<Item>().ToList();
 
-        _selectItem = LoadItem();
-        SetSelectItem(_selectItem);
+        SetSelectItem(LoadItem());
     }
 
     private void OnDisable()
@@ -99,16 +99,25 @@ public abstract class Store : MonoBehaviour
             item = Load(SaveKey);
 
         if (item == null)
-            item = Items.Where(itemElement => itemElement.IsBuyed).First();
+        {
+            foreach (var element in Items)
+            {
+                if (element.IsBuyed)
+                    return element;
+            }
+        }
+
+        if (item == null)
+            item = _defaultItem;
 
         return item;
     }
 
-    private void Save(string key) => SaveManger.Save(key, CreateSavesnapshot());
+    private void Save(string key) => SaveManager.Save(key, CreateSavesnapshot());
 
     private Item Load(string key)
     {
-        StoreProfile data = SaveManger.Load<StoreProfile>(key);
+        StoreProfile data = SaveManager.Load<StoreProfile>(key);
 
         return data.SelectItem;
     }

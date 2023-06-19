@@ -1,3 +1,4 @@
+using Lean.Localization;
 using System;
 using UnityEngine;
 
@@ -23,7 +24,18 @@ public class PlayerView : MovementObject, IDamageable
     }
     public void Init(DirectionInput directionInput)
     {
-        Name = "You";
+        switch (LeanLocalization.GetFirstCurrentLanguage())
+        {
+            case "Russian":
+                Name = "Ты";
+                break;
+            case "English":
+                Name = "You";
+                break;
+            case "Turkiye":
+                Name = "Sen";
+                break;
+        }
 
         _input = directionInput;
         _spawnPoint = transform.position;

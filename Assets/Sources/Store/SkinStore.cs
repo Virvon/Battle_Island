@@ -21,5 +21,8 @@ public class SkinStore : Store
         return null;
     }
 
-    protected override void SetSelectItem(Item item) => SelectSkin = ((SkinItem)item).Skin;
+    protected override void SetSelectItem(Item item)
+    {
+        SelectSkin = ((SkinItem)item).Skin;
+    }
 }

@@ -14,7 +14,6 @@ namespace BattleIsland.Menu
 
         private void Start()
         {
-            Debug.Log(name);
             Money = LoadMoney(SaveKey) + ScoreCounter.Money;
             SaveMoney(SaveKey);
 
@@ -35,12 +34,12 @@ namespace BattleIsland.Menu
 
         private void SaveMoney(string key)
         {
-            SaveManger.Save(key, CreateSaveSnapshot());
+            SaveManager.Save(key, CreateSaveSnapshot());
         }
 
         private int LoadMoney(string key)
         {
-            PlayerProfile data = SaveManger.Load<PlayerProfile>(key);
+            PlayerProfile data = SaveManager.Load<PlayerProfile>(key);
 
             return data.Money;
         }
