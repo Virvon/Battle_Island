@@ -43,7 +43,7 @@ public class Enemy : MovementObject, IDamageable
         _targetRadius = pointRadius;
         _shield = GetComponent<Shield>();
 
-        Instantiate(skin, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity, transform);
+        Instantiate(skin, GetSkinPosition(), Quaternion.identity, transform);
 
         _path = new NavMeshPath();
         _currentTarget = _priority.Choose();
@@ -59,15 +59,15 @@ public class Enemy : MovementObject, IDamageable
         while(isCorrectPoint == false)
         {
             NavMeshHit hit;
-            NavMesh.SamplePosition(UnityEngine.Random.insideUnitSphere * _targetRadius + _currentTarget.transform.position, out hit, _targetRadius, NavMesh.AllAreas);
+            NavMesh.SamplePosition(GetCurrentTargetRadius(), out hit, _targetRadius, NavMesh.AllAreas);
 
             target = hit.position;
 
-            if(target.magnitude > int.MinValue && target.magnitude < int.MaxValue)
+            if (target.magnitude > int.MinValue && target.magnitude < int.MaxValue)
             {
                 _agent.CalculatePath(target, _path);
 
-                if(_path.status == NavMeshPathStatus.PathComplete && NavMesh.Raycast(_currentTarget.transform.position, target, out hit, NavMesh.AllAreas) == false)
+                if (_path.status == NavMeshPathStatus.PathComplete && CanCasted(target) == false)
                     isCorrectPoint = true;
             }
         }
@@ -75,15 +75,27 @@ public class Enemy : MovementObject, IDamageable
         return target;
     }
 
+    private Vector3 GetSkinPosition() =>
+        new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+
+    private bool CanCasted(Vector3 target) =>
+        NavMesh.Raycast(_currentTarget.transform.position, target, out _, NavMesh.AllAreas);
+
+    private Vector3 GetCurrentTargetRadius() => 
+        UnityEngine.Random.insideUnitSphere * _targetRadius + _currentTarget.transform.position;
+
+    private bool IsDistanceToTargetMoreTargetRadius(Vector3 targetPoint) =>
+        Vector3.Distance(targetPoint, _currentTarget.transform.position) > _targetRadius;
+
     private IEnumerator Movement()
     {
         Vector3 targetPoint = Vector3.zero;
 
         while (true)
         {
-            if (Vector3.Distance(transform.position, _currentTarget.transform.position) > _targetRadius)
+            if (IsDistanceToTargetMoreTargetRadius(transform.position))
             {
-                if(Vector3.Distance(targetPoint, _currentTarget.transform.position) > _targetRadius || targetPoint == Vector3.zero)
+                if (IsDistanceToTargetMoreTargetRadius(targetPoint) || targetPoint == Vector3.zero)
                     targetPoint = MoveToNearPoint();
             }
             else
