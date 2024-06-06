@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ParticlesController : MonoBehaviour
+public class Particle : MonoBehaviour
 {
     [SerializeField] private GameObject _effect;
 
@@ -9,7 +9,7 @@ public class ParticlesController : MonoBehaviour
     public void Activate()
     {
         if (_currentEffect == null)
-            _currentEffect = Instantiate(_effect, transform.position + new Vector3(0, 0.065f, 0.6f), Quaternion.identity, transform);
+            _currentEffect = InstantiateEffect();
 
         _currentEffect.SetActive(true);
     }
@@ -19,4 +19,7 @@ public class ParticlesController : MonoBehaviour
         if (_currentEffect != null)
             _currentEffect.SetActive(false);
     }
+
+    private GameObject InstantiateEffect() =>
+        Instantiate(_effect, transform.position + new Vector3(0, 0.065f, 0.6f), Quaternion.identity, transform);
 }

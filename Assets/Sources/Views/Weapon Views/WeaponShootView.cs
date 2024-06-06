@@ -14,7 +14,7 @@ public class WeaponShootView : MonoBehaviour
     private WeaponView _weaponView;
 
     private WeaponAnimationsController _animationsController;
-    private ParticlesController _particlesController;
+    private Particle _particle;
     private WeaponAudio _weaponAudio;
 
     public event Action Shotted;
@@ -27,7 +27,7 @@ public class WeaponShootView : MonoBehaviour
         _weaponView = GetComponent<WeaponView>();
         _agent = GetComponent<NavMeshAgent>();
 
-        _particlesController = GetComponentInChildren<ParticlesController>();
+        _particle = GetComponentInChildren<Particle>();
         _animationsController = GetComponentInChildren<WeaponAnimationsController>();
         _weaponAudio = GetComponent<WeaponAudio>();
 
@@ -73,7 +73,7 @@ public class WeaponShootView : MonoBehaviour
         StateChanged?.Invoke(new AttackState());
 
         _animationsController.Shoot();
-        _particlesController.Activate();
+        _particle.Activate();
         _weaponAudio.PlayShootAudio();
 
         _weaponView.Rigidbody.AddForce(transform.forward * ShootForce);
@@ -96,25 +96,17 @@ public class WeaponShootView : MonoBehaviour
         _coroutine = StartCoroutine(ChangeStateTimer(new IdleState()));
     }
 
-    public void ChangeTrajectory(Vector3 direction)
-    {
+    public void ChangeTrajectory(Vector3 direction) => 
         _weaponView.Rigidbody.AddForce(direction * (ShootForce / 2));
-    }
 
-    private void TryShoot()
-    {
+    private void TryShoot() => 
         Shotted?.Invoke();
-    }
 
-    private void TryComeback()
-    {
+    private void TryComeback() => 
         Comebacked?.Invoke();
-    }
 
-    private void OnInited()
-    {
+    private void OnInited() => 
         _weaponView.Parent.Stopped += TryShoot;
-    }
 
     private IEnumerator ComebackTimer()
     {
@@ -138,7 +130,7 @@ public class WeaponShootView : MonoBehaviour
         StateChanged?.Invoke(state);
 
         _animationsController.ComeBack();
-        _particlesController.Deactivate();
+        _particle.Deactivate();
 
         _agent.enabled = false;
     }
