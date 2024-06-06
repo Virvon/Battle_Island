@@ -38,15 +38,15 @@ public class JoystickHandler : DirectionInput, IDragHandler
     {
         if(RectTransformUtility.ScreenPointToLocalPointInRectangle(_handleSlideArea, eventData.position, null, out Vector2 joystickPosition))
         {
-            joystickPosition.x = (joystickPosition.x * (2 / _handleSlideArea.sizeDelta.x));
-            joystickPosition.y = (joystickPosition.y * (2 / _handleSlideArea.sizeDelta.y));
+            joystickPosition.x *= (2 / _handleSlideArea.sizeDelta.x);
+            joystickPosition.y *= (2 / _handleSlideArea.sizeDelta.y);
 
             Direction = joystickPosition;
 
             if (Direction.magnitude > 1)
                 Direction = Direction.normalized;
 
-            _handle.anchoredPosition = new Vector2(Direction.x * (_handleSlideArea.sizeDelta.x / 2), Direction.y * (_handleSlideArea.sizeDelta.y / 2));
+            _handle.anchoredPosition = GetNewHandlePosition();
         }
     }
 
@@ -63,6 +63,8 @@ public class JoystickHandler : DirectionInput, IDragHandler
 
         _handle.anchoredPosition = Vector3.zero;
         Direction = Vector2.zero;
-
     }
+
+    private Vector2 GetNewHandlePosition() =>
+        new Vector2(Direction.x * (_handleSlideArea.sizeDelta.x / 2), Direction.y * (_handleSlideArea.sizeDelta.y / 2));
 }
