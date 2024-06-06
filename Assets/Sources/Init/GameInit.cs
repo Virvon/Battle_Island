@@ -23,8 +23,7 @@ public class GameInit : MonoBehaviour
         SetPlatform();
         _sceneLoader.Load();
         yield break;
-#endif
-
+#else
         yield return YandexGamesSdk.Initialize();
 
         if (YandexGamesSdk.IsInitialized == false)
@@ -34,6 +33,7 @@ public class GameInit : MonoBehaviour
 
         SetPlatform();
         _sceneLoader.Load();
+#endif
     }
 
     private void SetPlatform()

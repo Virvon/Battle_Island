@@ -71,6 +71,8 @@ public class GameMenu : Menu
     {
 #if UNITY_WEBGL || !UNITY_EDITOR
         Advertisement.ShowQuickAd();
+#else
+        base.LoadNextScene();
 #endif
     }
 
