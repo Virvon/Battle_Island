@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(MovementObject))]
-public class UnitAnimaionsController : MonoBehaviour
+public class UnitAnimaions : MonoBehaviour
 {
     private Animator _animator;
     private MovementObject _unit;

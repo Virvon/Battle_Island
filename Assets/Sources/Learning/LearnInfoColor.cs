@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -17,7 +15,9 @@ public class LearnInfoColor : MonoBehaviour
         _learnPanel.ColorChanged += OnColorChanged;
     }
 
-    private void OnDisable() => _learnPanel.ColorChanged -= OnColorChanged;
+    private void OnDisable() =>
+        _learnPanel.ColorChanged -= OnColorChanged;
 
-    private void OnColorChanged(Color color) => _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, color.a);
+    private void OnColorChanged(Color color) => 
+        _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, color.a);
 }

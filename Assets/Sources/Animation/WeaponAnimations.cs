@@ -1,21 +1,15 @@
 using UnityEngine;
 
-public class WeaponAnimationsController : MonoBehaviour
+public class WeaponAnimations : MonoBehaviour
 {
     private Animator _animator;
 
-    private void Awake()
-    {
+    private void Awake() =>
         _animator = GetComponent<Animator>();
-    }
 
-    public void Shoot()
-    {
+    public void Shoot() => 
         _animator.SetBool("IsIdle", false);
-    }
 
-    public void ComeBack()
-    {
+    public void ComeBack() => 
         _animator.SetBool("IsIdle", true);
-    }
 }

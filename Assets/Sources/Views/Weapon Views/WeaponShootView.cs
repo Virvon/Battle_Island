@@ -13,7 +13,7 @@ public class WeaponShootView : MonoBehaviour
     private NavMeshAgent _agent;
     private WeaponView _weaponView;
 
-    private WeaponAnimationsController _animationsController;
+    private WeaponAnimations _animationsController;
     private Particle _particle;
     private WeaponAudio _weaponAudio;
 
@@ -28,7 +28,7 @@ public class WeaponShootView : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
 
         _particle = GetComponentInChildren<Particle>();
-        _animationsController = GetComponentInChildren<WeaponAnimationsController>();
+        _animationsController = GetComponentInChildren<WeaponAnimations>();
         _weaponAudio = GetComponent<WeaponAudio>();
 
         _weaponView.Inited += OnInited;

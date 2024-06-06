@@ -90,8 +90,9 @@ public class Enemy : MovementObject, IDamageable
     private IEnumerator Movement()
     {
         Vector3 targetPoint = Vector3.zero;
+        bool canMove = true;
 
-        while (true)
+        while (canMove)
         {
             if (IsDistanceToTargetMoreTargetRadius(transform.position))
             {
