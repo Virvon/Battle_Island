@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using BattleIsland.Input;
+using UnityEngine.InputSystem;
+using PlayerInput = BattleIsland.Input.PlayerInput;
 
 public class JoystickHandler : DirectionInput, IDragHandler
 {
@@ -18,19 +19,19 @@ public class JoystickHandler : DirectionInput, IDragHandler
         _input = new PlayerInput();
         _input.Enable();
 
-        _input.Player.UpTouch.performed += ctx => OnUpTouh();
+        _input.Player.UpTouch.performed += OnUpTouhPerformed;
     }
 
     private void OnDisable()
     {
         _input.Disable();
 
-        _input.Player.UpTouch.performed -= ctx => OnUpTouh();
+        _input.Player.UpTouch.performed -= OnUpTouhPerformed;
     }
 
     private void Update()
     {
-        if (_input.Player.DownTouch.phase == UnityEngine.InputSystem.InputActionPhase.Performed)
+        if (_input.Player.DownTouch.phase == InputActionPhase.Performed)
             OnDownTouch();
     }
 
@@ -55,6 +56,9 @@ public class JoystickHandler : DirectionInput, IDragHandler
         if(Direction != Vector2.zero)
             Activated?.Invoke();
     }
+
+    private void OnUpTouhPerformed(InputAction.CallbackContext obj) =>
+        OnUpTouh();
 
     private void OnUpTouh()
     {

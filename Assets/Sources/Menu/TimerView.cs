@@ -4,21 +4,17 @@ using System;
 
 public class TimerView : MonoBehaviour
 {
+    private const int RoundDigits = 1;
+
     [SerializeField] private GameTimer _game;
     [SerializeField] private TMP_Text _time;
 
-    private void OnEnable()
-    {
+    private void OnEnable() => 
         _game.TimeChanged += OnTimeChanged;
-    }
 
-    private void OnDisable()
-    {
+    private void OnDisable() =>
         _game.TimeChanged -= OnTimeChanged;
-    }
 
-    private void OnTimeChanged(float time)
-    {
-        _time.text = Math.Round(time, 1, MidpointRounding.AwayFromZero).ToString();
-    }
+    private void OnTimeChanged(float time) => 
+        _time.text = Math.Round(time, RoundDigits, MidpointRounding.AwayFromZero).ToString();
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Particle : MonoBehaviour
 {
     [SerializeField] private GameObject _effect;
+    [SerializeField] private Vector3 _effectSpawnPosition = new Vector3(0, 0.065f, 0.6f);
 
     private GameObject _currentEffect;
 
@@ -21,5 +22,5 @@ public class Particle : MonoBehaviour
     }
 
     private GameObject InstantiateEffect() =>
-        Instantiate(_effect, transform.position + new Vector3(0, 0.065f, 0.6f), Quaternion.identity, transform);
+        Instantiate(_effect, transform.position + _effectSpawnPosition, Quaternion.identity, transform);
 }

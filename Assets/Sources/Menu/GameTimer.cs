@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
+    private const int GameDuration = 60;
+    private const float TimerStep = 0.1f;
+
     public event Action<float> TimeChanged;
     public event Action TimeOvered;
 
     private void Start()
     {
-        StartCoroutine(Timer(60, 0.1f));
+        StartCoroutine(Timer(GameDuration, TimerStep));
     }
 
     private IEnumerator Timer(float delay, float step)
     {
-        float StartTime = delay;
+        float timeLeft = delay;
         WaitForSeconds waitTime = new WaitForSeconds(step);
 
-        while(StartTime > 0)
+        while(timeLeft > 0)
         {
-            StartTime -= step;
+            timeLeft -= step;
 
-            TimeChanged?.Invoke(StartTime);
+            TimeChanged?.Invoke(timeLeft);
 
             yield return waitTime;
         }
 
-        if (StartTime < 0)
+        if (timeLeft < 0)
             TimeChanged?.Invoke(0);
 
         TimeOvered?.Invoke();

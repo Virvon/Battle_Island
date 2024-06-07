@@ -1,8 +1,10 @@
-using System;
 using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour
 {
+    private const int RewardMultiplier = 3;
+    private const int MaxReward = 100;
+
     [SerializeField] private GameTimer _timer;
     [SerializeField] private LeaderBoard _leaderBoard;
 
@@ -20,13 +22,9 @@ public class ScoreCounter : MonoBehaviour
         Advertisement.Rewarded -= OnRewarded;
     }
 
-    private void AddScore()
-    {
-        Money = 100 / _leaderBoard.GetPlayerPlace();
-    }
+    private void AddScore() =>
+        Money = MaxReward / _leaderBoard.GetPlayerPlace();
 
-    private void OnRewarded()
-    {
-        Money *= 3;
-    }
+    private void OnRewarded() => 
+        Money *= RewardMultiplier;
 }

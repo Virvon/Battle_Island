@@ -7,6 +7,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent), typeof(Shield))]
 public class Enemy : MovementObject, IDamageable
 {
+    private const int StoppedDistance = 6;
+    private const int MinChooseDistance = 15;
+
     private Vector3 _startPoint;
     private Priority _priority;
     private MovementObject _currentTarget;
@@ -107,7 +110,7 @@ public class Enemy : MovementObject, IDamageable
             _agent.SetDestination(targetPoint);
             PositionChanged?.Invoke();
 
-            if (_agent.remainingDistance <= 6)
+            if (_agent.remainingDistance <= StoppedDistance)
             {
                 Stopped?.Invoke();
                 _currentTarget = _priority.ChooseLessPriority();
@@ -115,7 +118,7 @@ public class Enemy : MovementObject, IDamageable
 
             var target = _priority.Choose();
 
-            if((target.transform.position - transform.position).magnitude > 15)
+            if((target.transform.position - transform.position).magnitude > MinChooseDistance)
                 _currentTarget = target;
 
             yield return null;

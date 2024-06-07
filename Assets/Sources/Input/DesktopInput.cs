@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using BattleIsland.Input;
+using UnityEngine.InputSystem;
 using System;
+using PlayerInput = BattleIsland.Input.PlayerInput;
 
 public class DesktopInput : DirectionInput
 {
@@ -19,44 +18,31 @@ public class DesktopInput : DirectionInput
         _input = new PlayerInput();
         _input.Enable();
 
-        _input.Player.UpTouch.performed += ctx => OnUpTouh();
+        _input.Player.UpTouch.performed += OnUpTouchPerformed;
     }
 
     private void OnDisable()
     {
         _input.Disable();
 
-        _input.Player.UpTouch.performed -= ctx => OnUpTouh();
+        _input.Player.UpTouch.performed -= OnUpTouchPerformed;
     }
 
     private void Update()
     {
-        if (_input.Player.DownTouch.phase == UnityEngine.InputSystem.InputActionPhase.Performed)
+        if (_input.Player.DownTouch.phase == InputActionPhase.Performed)
             OnDownTouch();
     }
 
     private void OnGUI()
     {
         Event currentEvent = Event.current;
-        //Vector2 mousePosition = new Vector2();
-
-        //mousePosition.x = currentEvent.mousePosition.x;
-        //mousePosition.y = _camera.pixelHeight - currentEvent.mousePosition.y;
-
-        //Vector3 worldPosition = _camera.WorldToScreenPoint(new Vector3(mousePosition.x, mousePosition.y, _camera.nearClipPlane));
-        //Vector3 direction = worldPosition - Player.transform.position;
-
-        //Direction = new Vector2(direction.x, direction.y).normalized;
-
-        //---------------------------------------
-
+  
         Vector2 playerScreenPosition = _camera.WorldToScreenPoint(Player.transform.position);
         Vector2 mousePosition = currentEvent.mousePosition;
 
         Direction = ((mousePosition - playerScreenPosition) + _offset).normalized;
         Direction = new Vector2(Direction.x, Direction.y * -1);
-
-        //Debug.Log(mousePosition + " | " + playerScreenPosition);
     }
 
     private void OnDownTouch()
@@ -65,6 +51,9 @@ public class DesktopInput : DirectionInput
         if (Direction != Vector2.zero)
             Activated?.Invoke();
     }
+
+    private void OnUpTouchPerformed(InputAction.CallbackContext _) =>
+        OnUpTouh();
 
     private void OnUpTouh()
     {

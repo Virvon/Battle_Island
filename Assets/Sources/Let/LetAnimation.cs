@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Let))]
 public class LetAnimation : MonoBehaviour
 {
+    private const float Delta = 0.1f;
+
     [SerializeField] private float _hitAnimationSpeed = 5;
     [SerializeField] private float _dieAnimationSpeed = 2;
 
@@ -50,7 +52,7 @@ public class LetAnimation : MonoBehaviour
         Vector3 targetPosition = _startPosition + direction;
         float time = 0;
 
-        while ((transform.position - targetPosition).magnitude > 0.1f)
+        while ((transform.position - targetPosition).magnitude > Delta)
         {
             time += Time.deltaTime * speed;
 
@@ -61,7 +63,7 @@ public class LetAnimation : MonoBehaviour
 
         time = 0;
 
-        while ((transform.position - _startPosition).magnitude > 0.1f)
+        while ((transform.position - _startPosition).magnitude > Delta)
         {
             time += Time.deltaTime * speed;
 
@@ -76,7 +78,7 @@ public class LetAnimation : MonoBehaviour
         Vector3 targetPosition = _startPosition + direction;
         float time = 0;
 
-        while ((transform.position - targetPosition).magnitude > 0.1f)
+        while ((transform.position - targetPosition).magnitude > Delta)
         {
             time += Time.deltaTime * speed;
 

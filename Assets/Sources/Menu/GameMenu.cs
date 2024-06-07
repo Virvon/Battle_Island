@@ -3,6 +3,9 @@ using UnityEngine.Audio;
 
 public class GameMenu : Menu
 {
+    private const int IncludedSoundVolume = 0;
+    private const int SwitchedOffSoundVolume = -80;
+
     [SerializeField] private GameObject _resultPanel;
     [SerializeField] private GameTimer _timer;
     [SerializeField] private UnitsSpawner _enemySpawner;
@@ -45,7 +48,7 @@ public class GameMenu : Menu
     {
         if (isClosed)
         {
-            _mixerGroup.audioMixer.SetFloat("MusicVolume", 0);
+            _mixerGroup.audioMixer.SetFloat("MusicVolume", IncludedSoundVolume);
 
             base.LoadNextScene();
         }
@@ -58,11 +61,12 @@ public class GameMenu : Menu
         base.LoadNextScene();
     }
 
-    private void AdOpened() => _mixerGroup.audioMixer.SetFloat("MusicVolume", -80);
+    private void AdOpened() => 
+        _mixerGroup.audioMixer.SetFloat("MusicVolume", SwitchedOffSoundVolume);
 
     private void VideoAdClosed()
     {
-        _mixerGroup.audioMixer.SetFloat("MusicVolume", 0);
+        _mixerGroup.audioMixer.SetFloat("MusicVolume", IncludedSoundVolume);
 
         base.LoadNextScene();
     }
@@ -76,8 +80,6 @@ public class GameMenu : Menu
 #endif
     }
 
-    public override SceneNames GetScene()
-    {
-        return NextScene;
-    }
+    public override SceneNames GetScene() => 
+        NextScene;
 }
