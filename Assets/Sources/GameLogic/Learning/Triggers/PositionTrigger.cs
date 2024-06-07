@@ -1,19 +1,22 @@
 using System;
 using UnityEngine;
 
-public class PositionTrigger : MonoBehaviour, ITriggerable
+namespace BattleIsland.GameLogic.Learning
 {
-    [SerializeField] private SpatialTrigger _spatialTrigger;
-
-    public event Action Triggered;
-
-    private void OnEnable() => _spatialTrigger.PlayerEntered += OnPlayerEntered;
-
-    private void OnDisable() => _spatialTrigger.PlayerEntered -= OnPlayerEntered;
-
-    private void OnPlayerEntered()
+    public class PositionTrigger : MonoBehaviour, ITriggerable
     {
-        Triggered?.Invoke();
-        gameObject.SetActive(false);
+        [SerializeField] private SpatialTrigger _spatialTrigger;
+
+        public event Action Triggered;
+
+        private void OnEnable() => _spatialTrigger.PlayerEntered += OnPlayerEntered;
+
+        private void OnDisable() => _spatialTrigger.PlayerEntered -= OnPlayerEntered;
+
+        private void OnPlayerEntered()
+        {
+            Triggered?.Invoke();
+            gameObject.SetActive(false);
+        }
     }
 }

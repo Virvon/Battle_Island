@@ -1,23 +1,26 @@
 using UnityEngine;
 
-static class SaveLoadService
+namespace BattleIsland.SaveLoad
 {
-    public static void Save<T>(string key, T saveData)
+    static class SaveLoadService
     {
-        string jsonData = JsonUtility.ToJson(saveData, true);
-        PlayerPrefs.SetString(key, jsonData);
-    }
-
-    public static T Load<T>(string key) where T : new()
-    {
-        if(PlayerPrefs.HasKey(key))
+        public static void Save<T>(string key, T saveData)
         {
-            var loadedString = PlayerPrefs.GetString(key);
-            return JsonUtility.FromJson<T>(loadedString);
+            string jsonData = JsonUtility.ToJson(saveData, true);
+            PlayerPrefs.SetString(key, jsonData);
         }
-        else
+
+        public static T Load<T>(string key) where T : new()
         {
-            return new T();
+            if (PlayerPrefs.HasKey(key))
+            {
+                var loadedString = PlayerPrefs.GetString(key);
+                return JsonUtility.FromJson<T>(loadedString);
+            }
+            else
+            {
+                return new T();
+            }
         }
     }
 }

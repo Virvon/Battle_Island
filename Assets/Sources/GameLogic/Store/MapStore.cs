@@ -1,26 +1,31 @@
-public class MapStore : Store
+using BattleIsland.Infrustructure.Model;
+
+namespace BattleIsland.GameLogic.Store
 {
-    public static SceneId SelectMap { get; private set; }
-
-    private void OnDisable()
+    public class MapStore : Store
     {
-        if (_selectItem != null)
-            SelectMap = ((MapItem)_selectItem).Name;
-    }
+        public static SceneId SelectMap { get; private set; }
 
-    protected override Item LoadStaticItem()
-    {
-        foreach (var item in Items)
+        private void OnDisable()
         {
-            if (((MapItem)item).Name == SelectMap)
-                return item;
+            if (_selectItem != null)
+                SelectMap = ((MapItem)_selectItem).Name;
         }
 
-        return null;
-    }
+        protected override Item LoadStaticItem()
+        {
+            foreach (var item in Items)
+            {
+                if (((MapItem)item).Name == SelectMap)
+                    return item;
+            }
 
-    protected override void SetSelectItem(Item item)
-    {
-        SelectMap = ((MapItem)item).Name;
+            return null;
+        }
+
+        protected override void SetSelectItem(Item item)
+        {
+            SelectMap = ((MapItem)item).Name;
+        }
     }
 }

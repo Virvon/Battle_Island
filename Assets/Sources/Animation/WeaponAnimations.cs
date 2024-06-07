@@ -1,15 +1,19 @@
 using UnityEngine;
 
-public class WeaponAnimations : MonoBehaviour
+namespace BattleIsland.Animation
 {
-    private Animator _animator;
+    public class WeaponAnimations : MonoBehaviour
+    {
+        private Animator _animator;
 
-    private void Awake() =>
-        _animator = GetComponent<Animator>();
+        private void Awake() =>
+            _animator = GetComponent<Animator>();
 
-    public void Shoot() => 
-        _animator.SetBool("IsIdle", false);
+        public void Shoot() =>
+            _animator.SetBool("IsIdle", false);
 
-    public void ComeBack() => 
-        _animator.SetBool("IsIdle", true);
+        public void ComeBack() =>
+            _animator.SetBool("IsIdle", true);
+    }
+
 }

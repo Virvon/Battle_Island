@@ -1,22 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class AdButton : MonoBehaviour
+namespace BattleIsland.Advertisement
 {
-    private Button _button;
-
-    private void Start()
+    [RequireComponent(typeof(Button))]
+    public class AdButton : MonoBehaviour
     {
-        _button = GetComponent<Button>();
+        private Button _button;
 
-        _button.interactable = true;
-    }
+        private void Start()
+        {
+            _button = GetComponent<Button>();
 
-    public void ShowAd()
-    {
-        Advertisement.ShowVideoAd();
+            _button.interactable = true;
+        }
 
-        _button.interactable = false;
+        public void ShowAd()
+        {
+            Advertisement.ShowVideoAd();
+
+            _button.interactable = false;
+        }
     }
 }

@@ -2,25 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoresOpener : MonoBehaviour
+namespace BattleIsland.GameLogic.Store
 {
-    [SerializeField] private Store[] _stores;
-    [SerializeField] private Store _openOnStart;
-
-    private Store _currentStore;
-
-    private void Start() => Open(_openOnStart);
-
-    public void Open(Store targetStore)
+    public class StoresOpener : MonoBehaviour
     {
-        if (targetStore == _currentStore)
-            return;
+        [SerializeField] private Store[] _stores;
+        [SerializeField] private Store _openOnStart;
 
-        if(_currentStore != null)
-            _currentStore.Close();
+        private Store _currentStore;
 
-        _currentStore = targetStore;
+        private void Start() => Open(_openOnStart);
 
-        _currentStore.Open();
+        public void Open(Store targetStore)
+        {
+            if (targetStore == _currentStore)
+                return;
+
+            if (_currentStore != null)
+                _currentStore.Close();
+
+            _currentStore = targetStore;
+
+            _currentStore.Open();
+        }
     }
 }

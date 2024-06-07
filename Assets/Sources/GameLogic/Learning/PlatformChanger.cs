@@ -1,15 +1,19 @@
+using BattleIsland.Infrastructure;
 using UnityEngine;
 
-public class PlatformChanger : MonoBehaviour
+namespace BattleIsland.GameLogic.Learning
 {
-    [SerializeField] private GameObject _mobileLerning;
-    [SerializeField] private GameObject _DesktopLerning;
-
-    private void Awake()
+    public class PlatformChanger : MonoBehaviour
     {
-        if (GameInit.Platform == Platform.Desktop)
-            Destroy(_mobileLerning);
-        else
-            Destroy(_DesktopLerning);
+        [SerializeField] private GameObject _mobileLerning;
+        [SerializeField] private GameObject _DesktopLerning;
+
+        private void Awake()
+        {
+            if (GameInit.Platform == Platform.Desktop)
+                Destroy(_mobileLerning);
+            else
+                Destroy(_DesktopLerning);
+        }
     }
 }

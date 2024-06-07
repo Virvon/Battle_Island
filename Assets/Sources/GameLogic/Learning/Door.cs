@@ -3,34 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+namespace BattleIsland.GameLogic.Learning
 {
-    [SerializeField] private Vector3 _openPosition;
-    [SerializeField] private float _animationSpeed;
-
-    public event Action Opened;
-
-    public void Open()
+    public class Door : MonoBehaviour
     {
-        Opened?.Invoke();
+        [SerializeField] private Vector3 _openPosition;
+        [SerializeField] private float _animationSpeed;
 
-        StartCoroutine(Animator(_animationSpeed));
-    }
+        public event Action Opened;
 
-    private IEnumerator Animator(float speed)
-    {
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = transform.position + _openPosition;
-
-        float time = 0;
-
-        while(transform.position != targetPosition)
+        public void Open()
         {
-            time += Time.deltaTime;
+            Opened?.Invoke();
 
-            transform.position = Vector3.Lerp(startPosition, targetPosition, time / speed);
+            StartCoroutine(Animator(_animationSpeed));
+        }
 
-            yield return null;
+        private IEnumerator Animator(float speed)
+        {
+            Vector3 startPosition = transform.position;
+            Vector3 targetPosition = transform.position + _openPosition;
+
+            float time = 0;
+
+            while (transform.position != targetPosition)
+            {
+                time += Time.deltaTime;
+
+                transform.position = Vector3.Lerp(startPosition, targetPosition, time / speed);
+
+                yield return null;
+            }
         }
     }
 }

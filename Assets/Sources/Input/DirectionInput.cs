@@ -1,17 +1,21 @@
+using BattleIsland.Infrastructure.View;
 using System;
 using UnityEngine;
 
-public abstract class DirectionInput : MonoBehaviour
+namespace BattleIsland.Input
 {
-    public Vector2 Direction { get; protected set; }
-
-    protected MovementObject Player;
-
-    public abstract event Action Activated;
-    public abstract event Action Deactivated;
-
-    public void Init(MovementObject player)
+    public abstract class DirectionInput : MonoBehaviour
     {
-        Player = player;
+        public Vector2 Direction { get; protected set; }
+
+        protected MovementObject Player;
+
+        public abstract event Action Activated;
+        public abstract event Action Deactivated;
+
+        public void Init(MovementObject player)
+        {
+            Player = player;
+        }
     }
 }

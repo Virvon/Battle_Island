@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class WeaponAudio : MonoBehaviour
+namespace BattleIsland.Audio
 {
-    [SerializeField] private AudioSource _shootAudio;
-    [SerializeField] private AudioSource _hitAudio;
-
-    public void PlayShootAudio()
+    public class WeaponAudio : MonoBehaviour
     {
-        _shootAudio.Play();
-    }
+        [SerializeField] private AudioSource _shootAudio;
+        [SerializeField] private AudioSource _hitAudio;
 
-    public void PlayHitAudio()
-    {
-        _hitAudio.Play();
+        public void PlayShootAudio()
+        {
+            _shootAudio.Play();
+        }
+
+        public void PlayHitAudio()
+        {
+            _hitAudio.Play();
+        }
     }
 }

@@ -1,36 +1,40 @@
-﻿using BattleIsland.Model;
+﻿using BattleIsland.Infrustructure.Model;
+using BattleIsland.UI;
 using UnityEngine;
 
-public class GameMenuPresenter : MenuPresenter
+namespace BattleIsland.Infrastructure.Presenter
 {
-    private readonly GameMenu _gameMenu;
-    private readonly GameObject _resultPanel;
-    private readonly InBackgroundRunner _inBackgroundRunner;
-
-    public GameMenuPresenter(GameMenu gameMenu, GameObject resultPanel, InBackgroundRunner inBackgroundRunner) : base(gameMenu)
+    public class GameMenuPresenter : MenuPresenter
     {
-        _gameMenu = gameMenu;
-        _resultPanel = resultPanel;
-        _inBackgroundRunner = inBackgroundRunner;
+        private readonly GameMenu _gameMenu;
+        private readonly GameObject _resultPanel;
+        private readonly InBackgroundRunner _inBackgroundRunner;
 
-        _inBackgroundRunner.enabled = true;
+        public GameMenuPresenter(GameMenu gameMenu, GameObject resultPanel, InBackgroundRunner inBackgroundRunner) : base(gameMenu)
+        {
+            _gameMenu = gameMenu;
+            _resultPanel = resultPanel;
+            _inBackgroundRunner = inBackgroundRunner;
 
-        _gameMenu.ResultPanelOpened += OnResultPanelOpened;
-    }
+            _inBackgroundRunner.enabled = true;
 
-    ~GameMenuPresenter()
-    {
-        _gameMenu.ResultPanelOpened -= OnResultPanelOpened;
-    }
+            _gameMenu.ResultPanelOpened += OnResultPanelOpened;
+        }
 
-    public void OpenResultPanel() =>
-        _gameMenu.OpenResultPanel();
+        ~GameMenuPresenter()
+        {
+            _gameMenu.ResultPanelOpened -= OnResultPanelOpened;
+        }
 
-    private void OnResultPanelOpened()
-    {
-        _resultPanel.SetActive(true);
+        public void OpenResultPanel() =>
+            _gameMenu.OpenResultPanel();
 
-        Time.timeScale = 0;
-        _inBackgroundRunner.enabled = false;
+        private void OnResultPanelOpened()
+        {
+            _resultPanel.SetActive(true);
+
+            Time.timeScale = 0;
+            _inBackgroundRunner.enabled = false;
+        }
     }
 }

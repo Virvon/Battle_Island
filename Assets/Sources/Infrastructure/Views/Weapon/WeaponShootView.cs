@@ -1,137 +1,143 @@
+using BattleIsland.Animation;
+using BattleIsland.Audio;
+using BattleIsland.GameLogic;
+using BattleIsland.Infrustructure.Model;
 using System;
 using System.Collections;
 using UnityEngine;
-using BattleIsland.Model;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(WeaponView), typeof(NavMeshAgent), typeof(WeaponAudio))]
-public class WeaponShootView : MonoBehaviour
+namespace BattleIsland.Infrastructure.View
 {
-    private const float ShootForce = 1350;
-
-    private Coroutine _coroutine;
-    private NavMeshAgent _agent;
-    private WeaponView _weaponView;
-
-    private WeaponAnimations _animationsController;
-    private Particle _particle;
-    private WeaponAudio _weaponAudio;
-
-    public event Action Shotted;
-    public event Action Comebacked;
-    public event Action<State> StateChanged;
-    public event Action<Vector3, Vector3> CollisionEntered;
-
-    private void OnEnable()
+    [RequireComponent(typeof(WeaponView), typeof(NavMeshAgent), typeof(WeaponAudio))]
+    public class WeaponShootView : MonoBehaviour
     {
-        _weaponView = GetComponent<WeaponView>();
-        _agent = GetComponent<NavMeshAgent>();
+        private const float ShootForce = 1350;
 
-        _particle = GetComponentInChildren<Particle>();
-        _animationsController = GetComponentInChildren<WeaponAnimations>();
-        _weaponAudio = GetComponent<WeaponAudio>();
+        private Coroutine _coroutine;
+        private NavMeshAgent _agent;
+        private WeaponView _weaponView;
 
-        _weaponView.Inited += OnInited;
-    }
+        private WeaponAnimations _animationsController;
+        private Particle _particle;
+        private WeaponAudio _weaponAudio;
 
-    private void Start()
-    {
-        _weaponView.Deactivate();
-        _agent.enabled = false; 
-    }
+        public event Action Shotted;
+        public event Action Comebacked;
+        public event Action<State> StateChanged;
+        public event Action<Vector3, Vector3> CollisionEntered;
 
-    private void OnDisable()
-    {
-        _weaponView.Inited -= OnInited;
-        _weaponView.Parent.Stopped -= TryShoot;
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.TryGetComponent(out Let let) || collision.collider.TryGetComponent(out WeaponView weapon))
-            CollisionEntered?.Invoke(transform.rotation * Vector3.forward, collision.contacts[0].normal);
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out IDamageable iDamageble))
+        private void OnEnable()
         {
-            if ((object)iDamageble != _weaponView.Parent)
-            {
-                iDamageble.TakeDamage();
-                _weaponView.Parent.TakeMurder();
+            _weaponView = GetComponent<WeaponView>();
+            _agent = GetComponent<NavMeshAgent>();
 
-                _weaponAudio.PlayHitAudio();
+            _particle = GetComponentInChildren<Particle>();
+            _animationsController = GetComponentInChildren<WeaponAnimations>();
+            _weaponAudio = GetComponent<WeaponAudio>();
+
+            _weaponView.Inited += OnInited;
+        }
+
+        private void Start()
+        {
+            _weaponView.Deactivate();
+            _agent.enabled = false;
+        }
+
+        private void OnDisable()
+        {
+            _weaponView.Inited -= OnInited;
+            _weaponView.Parent.Stopped -= TryShoot;
+        }
+
+        public void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.TryGetComponent(out Let let) || collision.collider.TryGetComponent(out WeaponView weapon))
+                CollisionEntered?.Invoke(transform.rotation * Vector3.forward, collision.contacts[0].normal);
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out IDamageable iDamageble))
+            {
+                if ((object)iDamageble != _weaponView.Parent)
+                {
+                    iDamageble.TakeDamage();
+                    _weaponView.Parent.TakeMurder();
+
+                    _weaponAudio.PlayHitAudio();
+                }
             }
         }
-    }
 
-    public void Shoot()
-    {
-        _agent.enabled = false;
-        _weaponView.Activate();
-        StateChanged?.Invoke(new AttackState());
-
-        _animationsController.Shoot();
-        _particle.Activate();
-        _weaponAudio.PlayShootAudio();
-
-        _weaponView.Rigidbody.AddForce(transform.forward * ShootForce);
-        
-
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(ComebackTimer());
-    }
-
-    public void Comeback()
-    {
-        _agent.enabled = true;
-        _weaponView.Deactivate();
-
-        if(_coroutine!= null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(ChangeStateTimer(new IdleState()));
-    }
-
-    public void ChangeTrajectory(Vector3 direction) => 
-        _weaponView.Rigidbody.AddForce(direction * (ShootForce / 2));
-
-    private void TryShoot() => 
-        Shotted?.Invoke();
-
-    private void TryComeback() => 
-        Comebacked?.Invoke();
-
-    private void OnInited() => 
-        _weaponView.Parent.Stopped += TryShoot;
-
-    private IEnumerator ComebackTimer()
-    {
-        do
+        public void Shoot()
         {
-            yield return new WaitForSeconds(0.1f);
-        } while (_weaponView.Rigidbody.velocity.magnitude > 3.8f);
+            _agent.enabled = false;
+            _weaponView.Activate();
+            StateChanged?.Invoke(new AttackState());
 
-        TryComeback();
-    }
+            _animationsController.Shoot();
+            _particle.Activate();
+            _weaponAudio.PlayShootAudio();
 
-    private IEnumerator ChangeStateTimer(State state) 
-    {
-        while ((transform.position - _weaponView.IdlePosition.position).magnitude > 0.5f)
-        {
-            _agent.destination = _weaponView.IdlePosition.position;
+            _weaponView.Rigidbody.AddForce(transform.forward * ShootForce);
 
-            yield return null;
+
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _coroutine = StartCoroutine(ComebackTimer());
         }
 
-        StateChanged?.Invoke(state);
+        public void Comeback()
+        {
+            _agent.enabled = true;
+            _weaponView.Deactivate();
 
-        _animationsController.ComeBack();
-        _particle.Deactivate();
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-        _agent.enabled = false;
+            _coroutine = StartCoroutine(ChangeStateTimer(new IdleState()));
+        }
+
+        public void ChangeTrajectory(Vector3 direction) =>
+            _weaponView.Rigidbody.AddForce(direction * (ShootForce / 2));
+
+        private void TryShoot() =>
+            Shotted?.Invoke();
+
+        private void TryComeback() =>
+            Comebacked?.Invoke();
+
+        private void OnInited() =>
+            _weaponView.Parent.Stopped += TryShoot;
+
+        private IEnumerator ComebackTimer()
+        {
+            do
+            {
+                yield return new WaitForSeconds(0.1f);
+            } while (_weaponView.Rigidbody.velocity.magnitude > 3.8f);
+
+            TryComeback();
+        }
+
+        private IEnumerator ChangeStateTimer(State state)
+        {
+            while ((transform.position - _weaponView.IdlePosition.position).magnitude > 0.5f)
+            {
+                _agent.destination = _weaponView.IdlePosition.position;
+
+                yield return null;
+            }
+
+            StateChanged?.Invoke(state);
+
+            _animationsController.ComeBack();
+            _particle.Deactivate();
+
+            _agent.enabled = false;
+        }
     }
 }

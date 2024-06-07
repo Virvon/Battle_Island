@@ -1,37 +1,41 @@
+using BattleIsland.GameLogic.Store;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemAudio : MonoBehaviour
+namespace BattleIsland.Audio
 {
-    [SerializeField] private AudioSource _sellAudio;
-    [SerializeField] private Store[] _stores;
-
-    private List<Item> _items;
-
-    private void OnEnable()
+    public class ItemAudio : MonoBehaviour
     {
-        _items = new List<Item>();
+        [SerializeField] private AudioSource _sellAudio;
+        [SerializeField] private Store[] _stores;
 
-        foreach(var store in _stores)
+        private List<Item> _items;
+
+        private void OnEnable()
         {
-            var items = store.GetComponentsInChildren<Item>();
-            
-            foreach(var item in items)
-                _items.Add(item);
+            _items = new List<Item>();
+
+            foreach (var store in _stores)
+            {
+                var items = store.GetComponentsInChildren<Item>();
+
+                foreach (var item in items)
+                    _items.Add(item);
+            }
+
+            foreach (var item in _items)
+                item.Selled += PlayAudio;
         }
 
-        foreach (var item in _items)
-            item.Selled += PlayAudio;
-    }
+        private void OnDisable()
+        {
+            foreach (var item in _items)
+                item.Selled -= PlayAudio;
+        }
 
-    private void OnDisable()
-    {
-        foreach(var item in _items)
-            item.Selled -= PlayAudio;
-    }
-
-    private void PlayAudio()
-    {
-        _sellAudio.Play();
+        private void PlayAudio()
+        {
+            _sellAudio.Play();
+        }
     }
 }

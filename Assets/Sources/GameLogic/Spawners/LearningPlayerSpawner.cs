@@ -1,31 +1,38 @@
+using BattleIsland.GameLogic.Store;
+using BattleIsland.Infrastructure;
+using BattleIsland.Infrastructure.View;
+using BattleIsland.Input;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LearningPlayerSpawner : MonoBehaviour
+namespace BattleIsland.GameLogic
 {
-    [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private PlayerView _playerPrefab;
-    [SerializeField] private WeaponsSpawner _weaponSpawner;
-    [SerializeField] private JoystickHandler _joystickHandler;
-    [SerializeField] private DesktopInput _desktopInput;
-    [SerializeField] private CameraView _camera;
-
-    private void Start()
+    public class LearningPlayerSpawner : MonoBehaviour
     {
-        PlayerView player = Instantiate(_playerPrefab, _spawnPoint.position, Quaternion.identity, transform);
-        Instantiate(SkinStore.SelectSkin, player.transform.position + new Vector3(0, -1, 0), player.transform.rotation, player.transform);
-        InitPlayer(player);
-        _camera.Init(player);
-        _weaponSpawner.CreateWeapon(player);
-    }
+        [SerializeField] private Transform _spawnPoint;
+        [SerializeField] private PlayerView _playerPrefab;
+        [SerializeField] private WeaponsSpawner _weaponSpawner;
+        [SerializeField] private JoystickHandler _joystickHandler;
+        [SerializeField] private DesktopInput _desktopInput;
+        [SerializeField] private CameraView _camera;
 
-    private void InitPlayer(PlayerView player)
-    {
-        DirectionInput directionInput = GameInit.Platform == Platform.Mobile ? _joystickHandler : _desktopInput;
+        private void Start()
+        {
+            PlayerView player = Instantiate(_playerPrefab, _spawnPoint.position, Quaternion.identity, transform);
+            Instantiate(SkinStore.SelectSkin, player.transform.position + new Vector3(0, -1, 0), player.transform.rotation, player.transform);
+            InitPlayer(player);
+            _camera.Init(player);
+            _weaponSpawner.CreateWeapon(player);
+        }
 
-        directionInput.gameObject.SetActive(true);
-        directionInput.Init(player);
-        player.Init(directionInput);
+        private void InitPlayer(PlayerView player)
+        {
+            DirectionInput directionInput = GameInit.Platform == Platform.Mobile ? _joystickHandler : _desktopInput;
+
+            directionInput.gameObject.SetActive(true);
+            directionInput.Init(player);
+            player.Init(directionInput);
+        }
     }
 }

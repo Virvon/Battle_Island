@@ -1,24 +1,28 @@
+using BattleIsland.Infrastructure.View;
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(Collider))]
-public class LearningEnemy : MonoBehaviour, IDamageable
+namespace BattleIsland.GameLogic.Learning
 {
-    private Animator _animator;
-    private Collider _collider;
-
-    public event Action Destroyed;
-
-    private void Start()
+    [RequireComponent(typeof(Animator), typeof(Collider))]
+    public class LearningEnemy : MonoBehaviour, IDamageable
     {
-        _animator = GetComponent<Animator>();
-        _collider = GetComponent<Collider>();
-    }
+        private Animator _animator;
+        private Collider _collider;
 
-    public void TakeDamage()
-    {
-        _collider.enabled = false;
-        _animator.SetTrigger("Died");
-        Destroyed?.Invoke();
+        public event Action Destroyed;
+
+        private void Start()
+        {
+            _animator = GetComponent<Animator>();
+            _collider = GetComponent<Collider>();
+        }
+
+        public void TakeDamage()
+        {
+            _collider.enabled = false;
+            _animator.SetTrigger("Died");
+            Destroyed?.Invoke();
+        }
     }
 }

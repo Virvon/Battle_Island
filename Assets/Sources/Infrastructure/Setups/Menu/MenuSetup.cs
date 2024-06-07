@@ -1,14 +1,19 @@
-﻿using UnityEngine;
-using BattleIsland.Model;
+﻿using BattleIsland.Infrastructure.Presenter;
+using BattleIsland.Infrastructure.View;
+using BattleIsland.Infrustructure.Model;
+using UnityEngine;
 
-public class MenuSetup : MonoBehaviour
+namespace BattleIsland.Infrastructure
 {
-    [SerializeField] private MenuView _menuView;
-
-    private void Awake()
+    public class MenuSetup : MonoBehaviour
     {
-        Menu menu = new Menu();
-        MenuPresenter menuPresenter = new(menu);
-        _menuView.Init(menuPresenter);
+        [SerializeField] private MenuView _menuView;
+
+        private void Awake()
+        {
+            Menu menu = new Menu();
+            MenuPresenter menuPresenter = new(menu);
+            _menuView.Init(menuPresenter);
+        }
     }
 }

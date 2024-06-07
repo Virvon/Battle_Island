@@ -1,33 +1,37 @@
+using BattleIsland.Infrastructure.View;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TextMeshPro))]
-public class NamePanel : MonoBehaviour
+namespace BattleIsland.GameLogic
 {
-    [SerializeField] private Vector3 _offset;
-    [SerializeField] private Vector3 _rotation;
-
-    private MovementObject _parent;
-
-    public void Init(MovementObject parent)
+    [RequireComponent(typeof(TextMeshPro))]
+    public class NamePanel : MonoBehaviour
     {
-        _parent = parent;
+        [SerializeField] private Vector3 _offset;
+        [SerializeField] private Vector3 _rotation;
 
-        transform.rotation = Quaternion.Euler(_rotation);
-        OnPositionChanged();
+        private MovementObject _parent;
 
-        GetComponent<TextMeshPro>().text = _parent.Name;
+        public void Init(MovementObject parent)
+        {
+            _parent = parent;
 
-        _parent.PositionChanged += OnPositionChanged;
-    }
+            transform.rotation = Quaternion.Euler(_rotation);
+            OnPositionChanged();
 
-    private void OnDisable()
-    {
-        _parent.PositionChanged -= OnPositionChanged;
-    }
+            GetComponent<TextMeshPro>().text = _parent.Name;
 
-    private void OnPositionChanged()
-    {
-        transform.position = _parent.transform.position + _offset;
+            _parent.PositionChanged += OnPositionChanged;
+        }
+
+        private void OnDisable()
+        {
+            _parent.PositionChanged -= OnPositionChanged;
+        }
+
+        private void OnPositionChanged()
+        {
+            transform.position = _parent.transform.position + _offset;
+        }
     }
 }

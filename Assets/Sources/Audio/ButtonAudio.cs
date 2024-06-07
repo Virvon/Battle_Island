@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class ButtonAudio : MonoBehaviour
+namespace BattleIsland.Audio
 {
-    [SerializeField] private AudioSource _clickAudio;
-
-    public void PlayeClickAudio()
+    public class ButtonAudio : MonoBehaviour
     {
-        _clickAudio.Play();
+        [SerializeField] private AudioSource _clickAudio;
+
+        public void PlayeClickAudio()
+        {
+            _clickAudio.Play();
+        }
     }
 }

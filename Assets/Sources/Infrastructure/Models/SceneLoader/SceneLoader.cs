@@ -1,7 +1,10 @@
 using UnityEngine.SceneManagement;
 
-public class SceneLoader
+namespace BattleIsland.Infrustructure.Model
 {
-    public void Load(SceneId scene) => 
-        SceneManager.LoadScene((int)scene);
+    public class SceneLoader
+    {
+        public void Load(SceneId scene) =>
+            SceneManager.LoadScene((int)scene);
+    }
 }

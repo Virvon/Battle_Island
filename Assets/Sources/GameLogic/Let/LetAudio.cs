@@ -2,35 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Let))]
-public class LetAudio : MonoBehaviour
+namespace BattleIsland.GameLogic
 {
-    [SerializeField] private AudioSource _hitAudio;
-    [SerializeField] private AudioSource _dieAudio;
-
-    private Let _let;
-
-    private void OnEnable()
+    [RequireComponent(typeof(Let))]
+    public class LetAudio : MonoBehaviour
     {
-        _let = GetComponent<Let>();
+        [SerializeField] private AudioSource _hitAudio;
+        [SerializeField] private AudioSource _dieAudio;
 
-        _let.Hited += StartHitAudio;
-        _let.Broked += StartDieAudio;
-    }
+        private Let _let;
 
-    private void OnDisable()
-    {
-        _let.Hited -= StartHitAudio;
-        _let.Broked -= StartDieAudio;
-    }
+        private void OnEnable()
+        {
+            _let = GetComponent<Let>();
 
-    private void StartHitAudio()
-    {
-        _hitAudio.Play();
-    }
+            _let.Hited += StartHitAudio;
+            _let.Broked += StartDieAudio;
+        }
 
-    private void StartDieAudio()
-    {
-        _dieAudio.Play();
+        private void OnDisable()
+        {
+            _let.Hited -= StartHitAudio;
+            _let.Broked -= StartDieAudio;
+        }
+
+        private void StartHitAudio()
+        {
+            _hitAudio.Play();
+        }
+
+        private void StartDieAudio()
+        {
+            _dieAudio.Play();
+        }
     }
 }

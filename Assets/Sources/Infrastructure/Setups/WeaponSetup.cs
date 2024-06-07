@@ -1,34 +1,39 @@
+using BattleIsland.Infrastructure.Presenter;
+using BattleIsland.Infrastructure.View;
+using BattleIsland.Infrustructure.Model;
 using UnityEngine;
-using BattleIsland.Model;
 
-[RequireComponent(typeof(WeaponShootView), typeof(WeaponFollowParentView))]
-public class WeaponSetup : MonoBehaviour
+namespace BattleIsland.Infrastructure
 {
-    private WeaponShootView _shootView;
-    private WeaponFollowParentView _followParentView;
-    private Weapon _model;
-    private WeaponShootPresenter _shootPresenter;
-    private WeaponFollowParentPresenter _followParentPresenter;
-
-    private void Awake()
+    [RequireComponent(typeof(WeaponShootView), typeof(WeaponFollowParentView))]
+    public class WeaponSetup : MonoBehaviour
     {
-        _shootView = GetComponent<WeaponShootView>();
-        _followParentView = GetComponent<WeaponFollowParentView>();
+        private WeaponShootView _shootView;
+        private WeaponFollowParentView _followParentView;
+        private Weapon _model;
+        private WeaponShootPresenter _shootPresenter;
+        private WeaponFollowParentPresenter _followParentPresenter;
 
-        _model = new Weapon();
-        _shootPresenter = new WeaponShootPresenter(_model, _shootView);
-        _followParentPresenter = new WeaponFollowParentPresenter(_model, _followParentView);
-    }
+        private void Awake()
+        {
+            _shootView = GetComponent<WeaponShootView>();
+            _followParentView = GetComponent<WeaponFollowParentView>();
 
-    private void OnEnable()
-    {
-        _shootPresenter.Enable();
-        _followParentPresenter.Enable();
-    }
+            _model = new Weapon();
+            _shootPresenter = new WeaponShootPresenter(_model, _shootView);
+            _followParentPresenter = new WeaponFollowParentPresenter(_model, _followParentView);
+        }
 
-    private void OnDisable()
-    {
-        _shootPresenter.Disable();
-        _followParentPresenter.Disable();
+        private void OnEnable()
+        {
+            _shootPresenter.Enable();
+            _followParentPresenter.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _shootPresenter.Disable();
+            _followParentPresenter.Disable();
+        }
     }
 }

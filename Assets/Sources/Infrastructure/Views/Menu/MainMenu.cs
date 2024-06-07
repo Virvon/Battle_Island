@@ -1,29 +1,35 @@
-using BattleIsland.SaveData;
+using BattleIsland.GameLogic.Store;
+using BattleIsland.Infrustructure.Model;
+using BattleIsland.SaveLoad;
+using BattleIsland.SaveLoad.Data;
 using UnityEngine;
 
-public class MainMenu : MenuView
+namespace BattleIsland.Infrastructure.View
 {
-    [SerializeField] private GameObject _settingsPanel;
-    [SerializeField] private SceneId _learningScene;
-    [SerializeField] private string _learningSaveKey;
-
-    public void OnEnable() => 
-        Time.timeScale = 1;
-
-    public void OpenSettingsPanel() =>
-        _settingsPanel.SetActive(true);
-
-    public void CloseSettingsPanel() => 
-        _settingsPanel.SetActive(false);
-
-    public override SceneId GetScene()
+    public class MainMenu : MenuView
     {
-        if (LoadLearningResult())
-            return MapStore.SelectMap;
-        else
-            return _learningScene;
-    }
+        [SerializeField] private GameObject _settingsPanel;
+        [SerializeField] private SceneId _learningScene;
+        [SerializeField] private string _learningSaveKey;
 
-    private bool LoadLearningResult() =>
-        SaveLoadService.Load<LearningProfile>(_learningSaveKey).IsFinish;
+        public void OnEnable() =>
+            Time.timeScale = 1;
+
+        public void OpenSettingsPanel() =>
+            _settingsPanel.SetActive(true);
+
+        public void CloseSettingsPanel() =>
+            _settingsPanel.SetActive(false);
+
+        public override SceneId GetScene()
+        {
+            if (LoadLearningResult())
+                return MapStore.SelectMap;
+            else
+                return _learningScene;
+        }
+
+        private bool LoadLearningResult() =>
+            SaveLoadService.Load<LearningProfile>(_learningSaveKey).IsFinish;
+    }
 }

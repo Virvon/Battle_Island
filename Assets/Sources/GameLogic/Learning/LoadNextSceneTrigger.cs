@@ -1,27 +1,31 @@
-﻿using UnityEngine;
+﻿using BattleIsland.Infrastructure.View;
+using UnityEngine;
 
-public class LoadNextSceneTrigger : MonoBehaviour
+namespace BattleIsland.GameLogic.Learning
 {
-    [SerializeField] private MonoBehaviour _triggerBehavior;
-    [SerializeField] private MenuView _menuView;
-
-    private ITriggerable _trigger;
-
-    private void Awake()
+    public class LoadNextSceneTrigger : MonoBehaviour
     {
-        _trigger = (ITriggerable)_triggerBehavior;
-        _trigger.Triggered += _menuView.LoadNextScene;
-    }
+        [SerializeField] private MonoBehaviour _triggerBehavior;
+        [SerializeField] private MenuView _menuView;
 
-    public void OnDisable() =>
-        _trigger.Triggered -= _menuView.LoadNextScene;
+        private ITriggerable _trigger;
 
-    private void OnValidate()
-    {
-        if (_triggerBehavior && !(_triggerBehavior is ITriggerable))
+        private void Awake()
         {
-            Debug.LogError(nameof(_triggerBehavior) + " needs to implement " + nameof(ITriggerable));
-            _triggerBehavior = null;
+            _trigger = (ITriggerable)_triggerBehavior;
+            _trigger.Triggered += _menuView.LoadNextScene;
+        }
+
+        public void OnDisable() =>
+            _trigger.Triggered -= _menuView.LoadNextScene;
+
+        private void OnValidate()
+        {
+            if (_triggerBehavior && !(_triggerBehavior is ITriggerable))
+            {
+                Debug.LogError(nameof(_triggerBehavior) + " needs to implement " + nameof(ITriggerable));
+                _triggerBehavior = null;
+            }
         }
     }
 }

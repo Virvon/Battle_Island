@@ -1,9 +1,9 @@
 using System;
 
-namespace BattleIsland.SaveData
-{
-    
-    [Serializable] public class LocalizationProfile
+namespace BattleIsland.SaveLoad.Data
+{ 
+    [Serializable] 
+    public class LocalizationProfile
     {
         public string CurrentLenguage;
     }

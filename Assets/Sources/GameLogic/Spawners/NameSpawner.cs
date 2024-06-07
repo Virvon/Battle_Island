@@ -1,13 +1,17 @@
+using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
-public class NameSpawner : MonoBehaviour
+namespace BattleIsland.GameLogic
 {
-    [SerializeField] private NamePanel _namePrefab;
-
-    public void CreateName(MovementObject parent)
+    public class NameSpawner : MonoBehaviour
     {
-        var name = Instantiate(_namePrefab, parent.transform.position, Quaternion.identity, transform);
+        [SerializeField] private NamePanel _namePrefab;
 
-        name.Init(parent);
+        public void CreateName(MovementObject parent)
+        {
+            var name = Instantiate(_namePrefab, parent.transform.position, Quaternion.identity, transform);
+
+            name.Init(parent);
+        }
     }
 }

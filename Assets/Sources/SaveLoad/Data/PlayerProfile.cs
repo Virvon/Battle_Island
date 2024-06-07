@@ -1,8 +1,9 @@
 using System;
 
-namespace BattleIsland.SaveData
+namespace BattleIsland.SaveLoad.Data
 {
-    [Serializable] public class PlayerProfile
+    [Serializable] 
+    public class PlayerProfile
     {
         public int Money;
     }

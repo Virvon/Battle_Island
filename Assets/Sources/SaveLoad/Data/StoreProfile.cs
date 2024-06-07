@@ -1,6 +1,11 @@
+using BattleIsland.GameLogic.Store;
 using System;
 
-[Serializable] public class StoreProfile
+namespace BattleIsland.SaveLoad.Data
 {
-    public Item SelectItem;   
+    [Serializable]
+    public class StoreProfile
+    {
+        public Item SelectItem;
+    }
 }

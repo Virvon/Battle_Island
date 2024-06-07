@@ -1,19 +1,24 @@
+using BattleIsland.Infrastructure.Presenter;
+using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
-public abstract class MenuView : MonoBehaviour
-{ 
-    [SerializeField] private GameObject _loadPanel;
-
-    protected MenuPresenter Presenter { get; private set; }
-
-    public void Init(MenuPresenter presenter) => 
-        Presenter = presenter;
-
-    public virtual void LoadNextScene()
+namespace BattleIsland.Infrastructure.View
+{
+    public abstract class MenuView : MonoBehaviour
     {
-        _loadPanel.SetActive(true);
-        Presenter.LoadScene(GetScene());
-    }
+        [SerializeField] private GameObject _loadPanel;
 
-    public abstract SceneId GetScene();
+        protected MenuPresenter Presenter { get; private set; }
+
+        public void Init(MenuPresenter presenter) =>
+            Presenter = presenter;
+
+        public virtual void LoadNextScene()
+        {
+            _loadPanel.SetActive(true);
+            Presenter.LoadScene(GetScene());
+        }
+
+        public abstract SceneId GetScene();
+    }
 }

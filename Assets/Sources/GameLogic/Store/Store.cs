@@ -1,138 +1,144 @@
+using BattleIsland.SaveLoad;
+using BattleIsland.SaveLoad.Data;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class Store : MonoBehaviour
+namespace BattleIsland.GameLogic.Store
 {
-    [SerializeField] private StoreView _view;
-    [SerializeField] private Item _defaultItem;
-    [SerializeField] private string SaveKey;
-
-    private Item _currentItem;
-
-    protected List<Item> Items;
-    protected Item _selectItem;
-
-    private void OnEnable()
+    public abstract class Store : MonoBehaviour
     {
-        Items = GetComponentsInChildren<Item>().ToList();
+        [SerializeField] private StoreView _view;
+        [SerializeField] private Item _defaultItem;
+        [SerializeField] private string SaveKey;
 
-        SetSelectItem(LoadItem());
-    }
+        private Item _currentItem;
 
-    private void OnDisable()
-    {
-        Close();
-    }
+        protected List<Item> Items;
+        protected Item _selectItem;
 
-    public void Open()
-    {
-        _view.NextItemSetted += OnNextItemSetted;
-        _view.PreviousItemSetted += OnPreviousItemSetted;
-        _view.ItemSelected += OnItemSelected;
-
-        _selectItem = LoadItem();
-
-        _currentItem = _selectItem;
-
-        SetItem(_currentItem);
-        SetSelectItem(_selectItem);
-    }
-
-    public void Close()
-    {
-        _view.NextItemSetted -= OnNextItemSetted;
-        _view.PreviousItemSetted -= OnPreviousItemSetted;
-        _view.ItemSelected -= OnItemSelected;
-
-        _view.TryDeactivateItem();
-
-        Save(SaveKey);
-    }
-
-    private void OnNextItemSetted()
-    {
-        var currentItemIndex = Items.IndexOf(_currentItem);
-
-        _currentItem = currentItemIndex + 1 < Items.Count ? Items[currentItemIndex + 1] : Items.First();
-
-        SetItem(_currentItem);
-    }
-
-    private void OnPreviousItemSetted()
-    {
-        var currentItemIndex = Items.IndexOf(_currentItem);
-
-        _currentItem = currentItemIndex - 1 >= 0 ? Items[currentItemIndex - 1] : Items.Last();
-
-        SetItem(_currentItem);
-    }
-
-    private void OnItemSelected()
-    {
-        if (_currentItem.TrySecelct(_view.Player))
+        private void OnEnable()
         {
-            _selectItem = _currentItem;
-            _view.SetButton(_currentItem == _selectItem);
-            _view.SetPrice(_currentItem);
+            Items = GetComponentsInChildren<Item>().ToList();
 
-            Save(SaveKey);
+            SetSelectItem(LoadItem());
+        }
+
+        private void OnDisable()
+        {
+            Close();
+        }
+
+        public void Open()
+        {
+            _view.NextItemSetted += OnNextItemSetted;
+            _view.PreviousItemSetted += OnPreviousItemSetted;
+            _view.ItemSelected += OnItemSelected;
+
+            _selectItem = LoadItem();
+
+            _currentItem = _selectItem;
+
+            SetItem(_currentItem);
             SetSelectItem(_selectItem);
         }
-    }
 
-    private void SetItem(Item item)
-    {
-        _view.SetItem(item);
-        _view.SetButton(_currentItem == _selectItem);
-        _view.SetPrice(item);
-    }
-
-    private Item LoadItem()
-    {
-        Item item = null;
-
-        if (Items != null)
-            item = LoadStaticItem();
-
-        if (item == null)
-            item = Load(SaveKey);
-
-        if (item == null)
+        public void Close()
         {
-            foreach (var element in Items)
+            _view.NextItemSetted -= OnNextItemSetted;
+            _view.PreviousItemSetted -= OnPreviousItemSetted;
+            _view.ItemSelected -= OnItemSelected;
+
+            _view.TryDeactivateItem();
+
+            Save(SaveKey);
+        }
+
+        private void OnNextItemSetted()
+        {
+            var currentItemIndex = Items.IndexOf(_currentItem);
+
+            _currentItem = currentItemIndex + 1 < Items.Count ? Items[currentItemIndex + 1] : Items.First();
+
+            SetItem(_currentItem);
+        }
+
+        private void OnPreviousItemSetted()
+        {
+            var currentItemIndex = Items.IndexOf(_currentItem);
+
+            _currentItem = currentItemIndex - 1 >= 0 ? Items[currentItemIndex - 1] : Items.Last();
+
+            SetItem(_currentItem);
+        }
+
+        private void OnItemSelected()
+        {
+            if (_currentItem.TrySecelct(_view.Player))
             {
-                if (element.IsBuyed)
-                    return element;
+                _selectItem = _currentItem;
+                _view.SetButton(_currentItem == _selectItem);
+                _view.SetPrice(_currentItem);
+
+                Save(SaveKey);
+                SetSelectItem(_selectItem);
             }
         }
 
-        if (item == null)
-            item = _defaultItem;
-
-        return item;
-    }
-
-    private void Save(string key) => SaveLoadService.Save(key, CreateSavesnapshot());
-
-    private Item Load(string key)
-    {
-        StoreProfile data = SaveLoadService.Load<StoreProfile>(key);
-
-        return data.SelectItem;
-    }
-
-    private StoreProfile CreateSavesnapshot()
-    {
-        StoreProfile data = new()
+        private void SetItem(Item item)
         {
-            SelectItem = _selectItem
-        };
+            _view.SetItem(item);
+            _view.SetButton(_currentItem == _selectItem);
+            _view.SetPrice(item);
+        }
 
-        return data;
+        private Item LoadItem()
+        {
+            Item item = null;
+
+            if (Items != null)
+                item = LoadStaticItem();
+
+            if (item == null)
+                item = Load(SaveKey);
+
+            if (item == null)
+            {
+                foreach (var element in Items)
+                {
+                    if (element.IsBuyed)
+                        return element;
+                }
+            }
+
+            if (item == null)
+                item = _defaultItem;
+
+            return item;
+        }
+
+        private void Save(string key) =>
+            SaveLoadService.Save(key, CreateSavesnapshot());
+
+        private Item Load(string key)
+        {
+            StoreProfile data = SaveLoadService.Load<StoreProfile>(key);
+
+            return data.SelectItem;
+        }
+
+        private StoreProfile CreateSavesnapshot()
+        {
+            StoreProfile data = new()
+            {
+                SelectItem = _selectItem
+            };
+
+            return data;
+        }
+
+        protected abstract Item LoadStaticItem();
+
+        protected abstract void SetSelectItem(Item item);
     }
-
-    protected abstract Item LoadStaticItem();
-
-    protected abstract void SetSelectItem(Item item);
 }

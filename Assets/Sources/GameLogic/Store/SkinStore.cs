@@ -1,28 +1,31 @@
 using UnityEngine;
 
-public class SkinStore : Store
+namespace BattleIsland.GameLogic.Store
 {
-    public static GameObject SelectSkin { get; private set; }
-
-    private void OnDisable()
+    public class SkinStore : Store
     {
-        if(_selectItem != null)
-            SelectSkin = ((SkinItem)_selectItem).Skin;
-    }
+        public static GameObject SelectSkin { get; private set; }
 
-    protected override Item LoadStaticItem()
-    {
-        foreach (var item in Items)
+        private void OnDisable()
         {
-            if (((SkinItem)item).Skin == SelectSkin)
-                return item;
+            if (_selectItem != null)
+                SelectSkin = ((SkinItem)_selectItem).Skin;
         }
 
-        return null;
-    }
+        protected override Item LoadStaticItem()
+        {
+            foreach (var item in Items)
+            {
+                if (((SkinItem)item).Skin == SelectSkin)
+                    return item;
+            }
 
-    protected override void SetSelectItem(Item item)
-    {
-        SelectSkin = ((SkinItem)item).Skin;
+            return null;
+        }
+
+        protected override void SetSelectItem(Item item)
+        {
+            SelectSkin = ((SkinItem)item).Skin;
+        }
     }
 }

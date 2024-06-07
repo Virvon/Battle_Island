@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ITriggerable
+namespace BattleIsland.GameLogic.Learning
 {
-    public event Action Triggered;
+    public interface ITriggerable
+    {
+        public event Action Triggered;
+    }
 }

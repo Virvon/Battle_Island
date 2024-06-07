@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartTrigger : MonoBehaviour, ITriggerable
+namespace BattleIsland.GameLogic.Learning
 {
-    public event Action Triggered;
+    public class StartTrigger : MonoBehaviour, ITriggerable
+    {
+        public event Action Triggered;
 
-    private void Start() => Triggered?.Invoke();
+        private void Start() => Triggered?.Invoke();
+    }
 }

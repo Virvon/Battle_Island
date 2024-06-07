@@ -1,4 +1,4 @@
-﻿namespace BattleIsland.Model
+﻿namespace BattleIsland.Infrustructure.Model
 {
     public class Menu
     {

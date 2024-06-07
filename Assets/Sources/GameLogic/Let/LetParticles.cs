@@ -1,26 +1,29 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Let))]
-public class LetParticles : MonoBehaviour
+namespace BattleIsland.GameLogic
 {
-    [SerializeField] private GameObject _particles;
-
-    private Let _let;
-
-    private void OnEnable()
+    [RequireComponent(typeof(Let))]
+    public class LetParticles : MonoBehaviour
     {
-        _let = GetComponent<Let>();
+        [SerializeField] private GameObject _particles;
 
-        _let.Broked += OnBroked;
-    }
+        private Let _let;
 
-    private void OnDisable()
-    {
-        _let.Broked -= OnBroked;
-    }
+        private void OnEnable()
+        {
+            _let = GetComponent<Let>();
 
-    private void OnBroked()
-    {
-        Instantiate(_particles, transform.position, Quaternion.identity);
+            _let.Broked += OnBroked;
+        }
+
+        private void OnDisable()
+        {
+            _let.Broked -= OnBroked;
+        }
+
+        private void OnBroked()
+        {
+            Instantiate(_particles, transform.position, Quaternion.identity);
+        }
     }
 }

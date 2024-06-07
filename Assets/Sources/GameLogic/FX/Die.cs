@@ -1,26 +1,30 @@
+using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
-[RequireComponent(typeof(MovementObject))]
-public class Die : MonoBehaviour
+namespace BattleIsland.GameLogic
 {
-    [SerializeField] private GameObject _dieFX;
-    
-    private MovementObject _movementObject;
-
-    private void OnEnable()
+    [RequireComponent(typeof(MovementObject))]
+    public class Die : MonoBehaviour
     {
-        _movementObject = GetComponent<MovementObject>();
+        [SerializeField] private GameObject _dieFX;
 
-        _movementObject.Died += SpawnDieFX;
-    }
+        private MovementObject _movementObject;
 
-    private void OnDisable()
-    {
-        _movementObject.Died -= SpawnDieFX;
-    }
+        private void OnEnable()
+        {
+            _movementObject = GetComponent<MovementObject>();
 
-    private void SpawnDieFX()
-    {
-        Instantiate(_dieFX, transform.position, Quaternion.identity);
+            _movementObject.Died += SpawnDieFX;
+        }
+
+        private void OnDisable()
+        {
+            _movementObject.Died -= SpawnDieFX;
+        }
+
+        private void SpawnDieFX()
+        {
+            Instantiate(_dieFX, transform.position, Quaternion.identity);
+        }
     }
 }

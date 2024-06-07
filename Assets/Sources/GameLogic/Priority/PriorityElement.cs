@@ -1,28 +1,32 @@
+using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
-public class PriorityElement
+namespace BattleIsland.GameLogic
 {
-    public MovementObject Target { get; private set; }
-
-    public float PriorityValue { get; private set; }
-
-    public PriorityElement(MovementObject target)
+    public class PriorityElement
     {
-        Target = target;
-    }
+        public MovementObject Target { get; private set; }
 
-    public float CalculatePriorityValue(MovementObject parent)
-    {
-        var priorityValue = 150 / (Target.transform.position - parent.transform.position).magnitude;
-        priorityValue += Target.MurdersCount * 1.3f;
+        public float PriorityValue { get; private set; }
 
-        if (Target is PlayerView)
-            priorityValue *= 1.5f;
+        public PriorityElement(MovementObject target)
+        {
+            Target = target;
+        }
 
-        priorityValue += Random.Range(-(priorityValue / 1.5f), (priorityValue / 1.5f));
+        public float CalculatePriorityValue(MovementObject parent)
+        {
+            var priorityValue = 150 / (Target.transform.position - parent.transform.position).magnitude;
+            priorityValue += Target.MurdersCount * 1.3f;
 
-        PriorityValue = priorityValue;
+            if (Target is PlayerView)
+                priorityValue *= 1.5f;
 
-        return priorityValue;
+            priorityValue += Random.Range(-(priorityValue / 1.5f), (priorityValue / 1.5f));
+
+            PriorityValue = priorityValue;
+
+            return priorityValue;
+        }
     }
 }

@@ -1,33 +1,36 @@
 using System;
 using UnityEngine;
 
-public class EnemiesDestroyedTrigger : MonoBehaviour, ITriggerable
+namespace BattleIsland.GameLogic.Learning
 {
-    [SerializeField] private LearningEnemy[] _enemies;
-
-    private float _letsCount;
-
-    public event Action Triggered;
-
-    private void OnEnable()
+    public class EnemiesDestroyedTrigger : MonoBehaviour, ITriggerable
     {
-        _letsCount = _enemies.Length;
+        [SerializeField] private LearningEnemy[] _enemies;
 
-        foreach(var enemy in _enemies)
-            enemy.Destroyed += OnBroked;
-    }
+        private float _letsCount;
 
-    private void OnDisable()
-    {
-        foreach (var enemy in _enemies)
-            enemy.Destroyed -= OnBroked;
-    }
+        public event Action Triggered;
 
-    private void OnBroked()
-    {
-        _letsCount--;
+        private void OnEnable()
+        {
+            _letsCount = _enemies.Length;
 
-        if(_letsCount <= 0)
-            Triggered();
+            foreach (var enemy in _enemies)
+                enemy.Destroyed += OnBroked;
+        }
+
+        private void OnDisable()
+        {
+            foreach (var enemy in _enemies)
+                enemy.Destroyed -= OnBroked;
+        }
+
+        private void OnBroked()
+        {
+            _letsCount--;
+
+            if (_letsCount <= 0)
+                Triggered();
+        }
     }
 }

@@ -1,14 +1,18 @@
+using BattleIsland.Infrastructure.View;
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Collider))]
-public class SpatialTrigger : MonoBehaviour
+namespace BattleIsland.GameLogic.Learning
 {
-    public event Action PlayerEntered;
-
-    private void OnTriggerEnter(Collider other)
+    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
+    public class SpatialTrigger : MonoBehaviour
     {
-        if (other.TryGetComponent(out PlayerView player))
-            PlayerEntered?.Invoke();
+        public event Action PlayerEntered;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out PlayerView player))
+                PlayerEntered?.Invoke();
+        }
     }
 }

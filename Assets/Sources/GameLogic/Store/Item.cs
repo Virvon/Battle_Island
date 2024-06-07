@@ -1,67 +1,71 @@
 using UnityEngine;
-using BattleIsland.Menu;
-using BattleIsland.SaveData;
 using System;
+using BattleIsland.SaveLoad;
+using BattleIsland.UI;
+using BattleIsland.SaveLoad.Data;
 
-public abstract class Item : MonoBehaviour
+namespace BattleIsland.GameLogic.Store
 {
-    [SerializeField] private int _price;
-    [SerializeField] private string _saveKey;
-
-    public int Price => _price;
-    public bool IsBuyed { get; private set; }
-
-    public event Action Selled;
-
-    private void Awake()
+    public abstract class Item : MonoBehaviour
     {
-        Load(_saveKey);
+        [SerializeField] private int _price;
+        [SerializeField] private string _saveKey;
 
-        if (_price == 0)
-            IsBuyed = true;
+        public int Price => _price;
+        public bool IsBuyed { get; private set; }
 
-    }
+        public event Action Selled;
 
-    public abstract void Activate(Vector3 position);
-
-    public abstract void Deactivate();
-
-    public bool TrySecelct(Player player)
-    {
-        if (IsBuyed == false)
-            TryBuy(player);
-
-        return IsBuyed;
-    }
-
-    private void TryBuy(Player player)
-    {
-        if (player.TryGetMoney(Price))
+        private void Awake()
         {
-            IsBuyed = true;
-            Selled?.Invoke();
-            Save(_saveKey);
+            Load(_saveKey);
+
+            if (_price == 0)
+                IsBuyed = true;
+
         }
-    }
 
-    private void Save(string key)
-    {
-        SaveLoadService.Save(key, CreateSaveSnapshot());
-    }
+        public abstract void Activate(Vector3 position);
 
-    private void Load(string key)
-    {
-        ItemPofile profile = SaveLoadService.Load<ItemPofile>(key);
+        public abstract void Deactivate();
 
-        IsBuyed = profile.IsBuyed;
-    }
+        public bool TrySecelct(Player player)
+        {
+            if (IsBuyed == false)
+                TryBuy(player);
 
-    private ItemPofile CreateSaveSnapshot()
-    {
-        ItemPofile data = new ItemPofile();
+            return IsBuyed;
+        }
 
-        data.IsBuyed = IsBuyed;
+        private void TryBuy(Player player)
+        {
+            if (player.TryGetMoney(Price))
+            {
+                IsBuyed = true;
+                Selled?.Invoke();
+                Save(_saveKey);
+            }
+        }
 
-        return data;
+        private void Save(string key)
+        {
+            SaveLoadService.Save(key, CreateSaveSnapshot());
+        }
+
+        private void Load(string key)
+        {
+            ItemPofile profile = SaveLoadService.Load<ItemPofile>(key);
+
+            IsBuyed = profile.IsBuyed;
+        }
+
+        private ItemPofile CreateSaveSnapshot()
+        {
+            ItemPofile data = new ItemPofile();
+
+            data.IsBuyed = IsBuyed;
+
+            return data;
+        }
     }
 }

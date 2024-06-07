@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class Skin : MonoBehaviour
+namespace BattleIsland.GameLogic.Store
 {
-    
+    public class Skin : MonoBehaviour
+    {
+
+    }
 }

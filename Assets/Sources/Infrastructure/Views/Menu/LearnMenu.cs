@@ -1,38 +1,43 @@
-using BattleIsland.SaveData;
+using BattleIsland.Infrustructure.Model;
+using BattleIsland.SaveLoad;
+using BattleIsland.SaveLoad.Data;
 using System.Collections;
 using UnityEngine;
 
-public class LearnMenu : MenuView
+namespace BattleIsland.Infrastructure.View
 {
-    [SerializeField] private SceneId _nextScene;
-    [SerializeField] private float _delay;
-    [SerializeField] private string _saveKey;
-
-    public override void LoadNextScene() =>
-        StartCoroutine(Waiter(_delay));
-
-    public override SceneId GetScene() => 
-        _nextScene;
-
-    private IEnumerator Waiter(float dalay)
+    public class LearnMenu : MenuView
     {
-        Save();
+        [SerializeField] private SceneId _nextScene;
+        [SerializeField] private float _delay;
+        [SerializeField] private string _saveKey;
 
-        yield return new WaitForSeconds(dalay);
+        public override void LoadNextScene() =>
+            StartCoroutine(Waiter(_delay));
 
-        base.LoadNextScene();
-    }
+        public override SceneId GetScene() =>
+            _nextScene;
 
-    private void Save() => 
-        SaveLoadService.Save(_saveKey, CreateSaveSnapshot());
-
-    private LearningProfile CreateSaveSnapshot()
-    {
-        LearningProfile data = new LearningProfile()
+        private IEnumerator Waiter(float dalay)
         {
-            IsFinish = true
-        };
+            Save();
 
-        return data;
+            yield return new WaitForSeconds(dalay);
+
+            base.LoadNextScene();
+        }
+
+        private void Save() =>
+            SaveLoadService.Save(_saveKey, CreateSaveSnapshot());
+
+        private LearningProfile CreateSaveSnapshot()
+        {
+            LearningProfile data = new LearningProfile()
+            {
+                IsFinish = true
+            };
+
+            return data;
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿public interface IDamageable
+﻿namespace BattleIsland.Infrastructure.View
 {
-    public abstract void TakeDamage();
+    public interface IDamageable
+    {
+        public abstract void TakeDamage();
+    }
 }

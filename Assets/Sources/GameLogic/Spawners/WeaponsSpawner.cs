@@ -1,13 +1,17 @@
+using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
-public class WeaponsSpawner : MonoBehaviour
+namespace BattleIsland.GameLogic
 {
-    [SerializeField] private WeaponView _weaponPrefab;
-
-    public void CreateWeapon(MovementObject parent)
+    public class WeaponsSpawner : MonoBehaviour
     {
-        WeaponView weapon = Instantiate(_weaponPrefab, parent.transform.position, Quaternion.identity, transform);
+        [SerializeField] private WeaponView _weaponPrefab;
 
-        weapon.Init(parent, parent.ShootPoint);
+        public void CreateWeapon(MovementObject parent)
+        {
+            WeaponView weapon = Instantiate(_weaponPrefab, parent.transform.position, Quaternion.identity, transform);
+
+            weapon.Init(parent, parent.ShootPoint);
+        }
     }
 }

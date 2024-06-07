@@ -1,15 +1,15 @@
-﻿using BattleIsland.Model;
-using System;
+﻿using BattleIsland.Infrustructure.Model;
 
-public class MenuPresenter
+namespace BattleIsland.Infrastructure.Presenter
 {
-    private readonly Menu _menu;
-
-    public MenuPresenter(Menu menu)
+    public class MenuPresenter
     {
-        _menu = menu;
-    }
+        private readonly Menu _menu;
 
-    public void LoadScene(SceneId sceneName) =>
-        _menu.LoadScene(sceneName);
+        public MenuPresenter(Menu menu) => 
+            _menu = menu;
+
+        public void LoadScene(SceneId sceneName) =>
+            _menu.LoadScene(sceneName);
+    }
 }

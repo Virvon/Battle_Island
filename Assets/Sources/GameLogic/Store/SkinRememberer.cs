@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public static class SkinRememberer
+namespace BattleIsland.GameLogic.Store
 {
-    public static GameObject Skin;
-    public static int Number;
+    public static class SkinRememberer
+    {
+        public static GameObject Skin;
+        public static int Number;
+    }
 }

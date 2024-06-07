@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BattleIsland.Model
+namespace BattleIsland.Infrustructure.Model
 {
     public class GameMenu : Menu
     {

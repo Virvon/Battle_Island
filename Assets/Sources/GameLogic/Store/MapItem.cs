@@ -1,20 +1,24 @@
+using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MapItem : Item
+namespace BattleIsland.GameLogic.Store
 {
-    [SerializeField] private SceneId _name;
-    [SerializeField] private Image _image;
-
-    public SceneId Name => _name;
-
-    private void OnEnable() => Deactivate();
-
-    public override void Activate(Vector3 position)
+    public class MapItem : Item
     {
-        _image.GetComponent<RectTransform>().anchoredPosition = position;
-        _image.enabled = true;
-    }
+        [SerializeField] private SceneId _name;
+        [SerializeField] private Image _image;
 
-    public override void Deactivate() => _image.enabled = false;
+        public SceneId Name => _name;
+
+        private void OnEnable() => Deactivate();
+
+        public override void Activate(Vector3 position)
+        {
+            _image.GetComponent<RectTransform>().anchoredPosition = position;
+            _image.enabled = true;
+        }
+
+        public override void Deactivate() => _image.enabled = false;
+    }
 }

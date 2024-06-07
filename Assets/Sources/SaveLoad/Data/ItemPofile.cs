@@ -1,8 +1,9 @@
 using System;
 
-namespace BattleIsland.SaveData
+namespace BattleIsland.SaveLoad.Data
 {
-    [Serializable] public class ItemPofile
+    [Serializable]
+    public class ItemPofile
     {
         public bool IsBuyed;
     }

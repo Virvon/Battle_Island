@@ -1,8 +1,9 @@
 using UnityEngine;
-using BattleIsland.SaveData;
 using System;
+using BattleIsland.SaveLoad;
+using BattleIsland.SaveLoad.Data;
 
-namespace BattleIsland.Menu
+namespace BattleIsland.UI
 {
     public class Player : MonoBehaviour
     {
@@ -22,7 +23,7 @@ namespace BattleIsland.Menu
 
         public bool TryGetMoney(int count)
         {
-            if(count > Money)
+            if (count > Money)
                 return false;
 
             Money -= count;

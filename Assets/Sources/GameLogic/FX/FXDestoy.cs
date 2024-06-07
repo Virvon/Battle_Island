@@ -1,19 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-public class FXDestoy : MonoBehaviour
+namespace BattleIsland.GameLogic
 {
-    [SerializeField] private float _delay = 3f;
-
-    private void Start()
+    public class FXDestoy : MonoBehaviour
     {
-        StartCoroutine(Destroyer());
-    }
+        [SerializeField] private float _delay = 3f;
 
-    private IEnumerator Destroyer()
-    {
-        yield return new WaitForSeconds(_delay);
+        private void Start() =>
+            StartCoroutine(Destroyer());
 
-        Destroy(gameObject);
+        private IEnumerator Destroyer()
+        {
+            yield return new WaitForSeconds(_delay);
+
+            Destroy(gameObject);
+        }
     }
 }

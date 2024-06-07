@@ -1,57 +1,61 @@
+using BattleIsland.Infrastructure.View;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(MovementObject))]
-public class UnitAnimaions : MonoBehaviour
+namespace BattleIsland.Animation
 {
-    private Animator _animator;
-    private MovementObject _unit;
-    private bool _isDead;
-
-    private void Start()
+    [RequireComponent(typeof(MovementObject))]
+    public class UnitAnimaions : MonoBehaviour
     {
-        _isDead = false;
+        private Animator _animator;
+        private MovementObject _unit;
+        private bool _isDead;
 
-        _animator = GetComponentInChildren<Animator>();
-        _unit = GetComponent<MovementObject>();
+        private void Start()
+        {
+            _isDead = false;
 
-        _unit.PositionChanged += OnPositionChanged;
-        _unit.Stopped += OnStopped;
-        _unit.Died += OnDied;
-    }
+            _animator = GetComponentInChildren<Animator>();
+            _unit = GetComponent<MovementObject>();
 
-    private void OnDisable()
-    {
-        _unit.PositionChanged -= OnPositionChanged;
-        _unit.Stopped -= OnStopped;
-        _unit.Died -= OnDied;
-    }
+            _unit.PositionChanged += OnPositionChanged;
+            _unit.Stopped += OnStopped;
+            _unit.Died += OnDied;
+        }
 
-    private void OnPositionChanged()
-    {
-        if(_isDead == false)
-            _animator.SetBool("IsRun", true);
-    }
+        private void OnDisable()
+        {
+            _unit.PositionChanged -= OnPositionChanged;
+            _unit.Stopped -= OnStopped;
+            _unit.Died -= OnDied;
+        }
 
-    private void OnStopped()
-    {
-        _animator.SetTrigger("Attack");
-        _animator.SetBool("IsRun", false);
-    }
+        private void OnPositionChanged()
+        {
+            if (_isDead == false)
+                _animator.SetBool("IsRun", true);
+        }
 
-    private void OnDied()
-    {
-        _animator.SetBool("IsRun", false);
+        private void OnStopped()
+        {
+            _animator.SetTrigger("Attack");
+            _animator.SetBool("IsRun", false);
+        }
 
-        StartCoroutine(DeadController());
-    }
+        private void OnDied()
+        {
+            _animator.SetBool("IsRun", false);
 
-    private IEnumerator DeadController()
-    {
-        _isDead = true;
+            StartCoroutine(DeadController());
+        }
 
-        yield return new WaitForSeconds(0.1f);
+        private IEnumerator DeadController()
+        {
+            _isDead = true;
 
-        _isDead = false;
+            yield return new WaitForSeconds(0.1f);
+
+            _isDead = false;
+        }
     }
 }

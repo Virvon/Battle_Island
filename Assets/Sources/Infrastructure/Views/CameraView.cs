@@ -1,25 +1,28 @@
 using UnityEngine;
 
-public class CameraView : MonoBehaviour
+namespace BattleIsland.Infrastructure.View
 {
-    [SerializeField] private Vector3 _offset;
-
-    private MovementObject _target;
-
-    private void OnDisable()
+    public class CameraView : MonoBehaviour
     {
-        _target.PositionChanged -= OnTargetPositionChanget;
-    }
+        [SerializeField] private Vector3 _offset;
 
-    public void Init(MovementObject target)
-    {
-        _target = target;
-        _target.PositionChanged += OnTargetPositionChanget;
-        OnTargetPositionChanget();
-    }
+        private MovementObject _target;
 
-    private void OnTargetPositionChanget()
-    {
-        transform.position = _target.transform.position + _offset;
+        private void OnDisable()
+        {
+            _target.PositionChanged -= OnTargetPositionChanget;
+        }
+
+        public void Init(MovementObject target)
+        {
+            _target = target;
+            _target.PositionChanged += OnTargetPositionChanget;
+            OnTargetPositionChanget();
+        }
+
+        private void OnTargetPositionChanget()
+        {
+            transform.position = _target.transform.position + _offset;
+        }
     }
 }

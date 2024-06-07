@@ -1,89 +1,94 @@
+using BattleIsland.GameLogic;
+using BattleIsland.Input;
 using Lean.Localization;
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Shield))]
-public class PlayerView : MovementObject, IDamageable
+namespace BattleIsland.Infrastructure.View
 {
-    private DirectionInput _input;
-    private Rigidbody _rigidbody;
-    private Vector3 _spawnPoint;
-    private Shield _shield;
-
-    public event Action<Vector2> InputedRotation;
-    public event Action<Vector2> Shooted;
-
-    public override event Action PositionChanged;
-    public override event Action Stopped;
-    public override event Action Died;
-
-    private void OnDisable()
+    [RequireComponent(typeof(Rigidbody), typeof(Shield))]
+    public class PlayerView : MovementObject, IDamageable
     {
-        _input.Activated -= OnJoystickActivated;
-        _input.Deactivated += OnJoystickDeactivated;
-    }
-    public void Init(DirectionInput directionInput)
-    {
-        switch (LeanLocalization.GetFirstCurrentLanguage())
+        private DirectionInput _input;
+        private Rigidbody _rigidbody;
+        private Vector3 _spawnPoint;
+        private Shield _shield;
+
+        public event Action<Vector2> InputedRotation;
+        public event Action<Vector2> Shooted;
+
+        public override event Action PositionChanged;
+        public override event Action Stopped;
+        public override event Action Died;
+
+        private void OnDisable()
         {
-            case "Russian":
-                Name = "Ты";
-                break;
-            case "English":
-                Name = "You";
-                break;
-            case "Turkiye":
-                Name = "Sen";
-                break;
+            _input.Activated -= OnJoystickActivated;
+            _input.Deactivated += OnJoystickDeactivated;
+        }
+        public void Init(DirectionInput directionInput)
+        {
+            switch (LeanLocalization.GetFirstCurrentLanguage())
+            {
+                case "Russian":
+                    Name = "Ты";
+                    break;
+                case "English":
+                    Name = "You";
+                    break;
+                case "Turkiye":
+                    Name = "Sen";
+                    break;
+            }
+
+            _input = directionInput;
+            _spawnPoint = transform.position;
+
+            _rigidbody = GetComponent<Rigidbody>();
+            _shield = GetComponent<Shield>();
+
+            _input.Activated += OnJoystickActivated;
+            _input.Deactivated += OnJoystickDeactivated;
         }
 
-        _input = directionInput;
-        _spawnPoint = transform.position;
+        public void Rotate(Quaternion rotation)
+        {
+            transform.rotation = rotation;
+        }
 
-        _rigidbody = GetComponent<Rigidbody>();
-        _shield = GetComponent<Shield>();
+        public void Move(Vector3 velocity)
+        {
+            _rigidbody.velocity = velocity;
 
-        _input.Activated += OnJoystickActivated;
-        _input.Deactivated += OnJoystickDeactivated;
-    }
+            PositionChanged?.Invoke();
+        }
 
-    public void Rotate(Quaternion rotation)
-    {
-        transform.rotation = rotation;
-    }
+        public void Respawn()
+        {
+            Died?.Invoke();
 
-    public void Move(Vector3 velocity)
-    {
-        _rigidbody.velocity = velocity;
+            transform.position = _spawnPoint;
 
-        PositionChanged?.Invoke();
-    }
+            PositionChanged?.Invoke();
 
-    public void Respawn()
-    {
-        Died?.Invoke();
+            _shield.Activate();
+        }
 
-        transform.position = _spawnPoint;
+        public void TakeDamage()
+        {
+            if (_shield.IsActive == false)
+                Respawn();
+        }
 
-        PositionChanged?.Invoke();
+        private void OnJoystickActivated()
+        {
+            InputedRotation?.Invoke(_input.Direction);
+        }
 
-        _shield.Activate();
-    }
-
-    public void TakeDamage()
-    {
-        if(_shield.IsActive == false)
-            Respawn();
-    }
-
-    private void OnJoystickActivated()
-    {
-        InputedRotation?.Invoke(_input.Direction);
-    }
-
-    private void OnJoystickDeactivated()
-    {
-        Shooted?.Invoke(transform.rotation * Vector3.forward);
-        Stopped?.Invoke();
+        private void OnJoystickDeactivated()
+        {
+            Shooted?.Invoke(transform.rotation * Vector3.forward);
+            Stopped?.Invoke();
+        }
     }
 }

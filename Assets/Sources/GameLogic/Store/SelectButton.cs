@@ -1,26 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
-public class SelectButton : MonoBehaviour
+namespace BattleIsland.GameLogic.Store
 {
-    [SerializeField] private Image _activeButton;
-    [SerializeField] private Image _deactiveButton;
-
-    private Image _image;
-
-    private void Awake()
+    [RequireComponent(typeof(Image))]
+    public class SelectButton : MonoBehaviour
     {
-        _image = GetComponent<Image>();
-    }
+        [SerializeField] private Image _activeButton;
+        [SerializeField] private Image _deactiveButton;
 
-    public void Activate()
-    {
-        _image.sprite = _activeButton.sprite;
-    }
+        private Image _image;
 
-    public void Deactivate()
-    {
-        _image.sprite = _deactiveButton.sprite;
+        private void Awake()
+        {
+            _image = GetComponent<Image>();
+        }
+
+        public void Activate()
+        {
+            _image.sprite = _activeButton.sprite;
+        }
+
+        public void Deactivate()
+        {
+            _image.sprite = _deactiveButton.sprite;
+        }
     }
 }

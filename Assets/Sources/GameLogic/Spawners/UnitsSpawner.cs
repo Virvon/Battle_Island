@@ -2,88 +2,95 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using BattleIsland.Infrastructure.View;
+using BattleIsland.Input;
+using BattleIsland.Infrastructure;
+using BattleIsland.GameLogic.Store;
 
-public class UnitsSpawner : MonoBehaviour
+namespace BattleIsland.GameLogic
 {
-    [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private Enemy _enemyPrefab;
-    [SerializeField] private PlayerView _playerPrefab;
-    [SerializeField] private WeaponsSpawner _weaponSpawner;
-    [SerializeField] private NameSpawner _nameSpawner;
-    [SerializeField] private JoystickHandler _joystickHandler;
-    [SerializeField] private DesktopInput _desktopInput;
-    [SerializeField] private CameraView _camera;
-    [SerializeField] private GameObject[] _skins;
-
-    private List<MovementObject> _targets;
-
-    public List<MovementObject> Targets => _targets;
-
-    public event Action<MovementObject[]> CreationEnded;
-
-    private void Start()
+    public class UnitsSpawner : MonoBehaviour
     {
-        _targets = new List<MovementObject>();
-        CreateEnemys(_spawnPoints); 
-    }
+        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] private Enemy _enemyPrefab;
+        [SerializeField] private PlayerView _playerPrefab;
+        [SerializeField] private WeaponsSpawner _weaponSpawner;
+        [SerializeField] private NameSpawner _nameSpawner;
+        [SerializeField] private JoystickHandler _joystickHandler;
+        [SerializeField] private DesktopInput _desktopInput;
+        [SerializeField] private CameraView _camera;
+        [SerializeField] private GameObject[] _skins;
 
-    public void DisableEnemies()
-    {
-        foreach (var target in _targets)
-            target.gameObject.SetActive(false);
-    }
+        private List<MovementObject> _targets;
 
-    private void CreateEnemys(Transform[] spawnPoints)
-    {
-        List<Enemy> enemies = new List<Enemy>();
-        int playerSpawnPoint = UnityEngine.Random.Range(0, spawnPoints.Length);
+        public List<MovementObject> Targets => _targets;
 
-        for (var i = 0; i < spawnPoints.Length; i++)
+        public event Action<MovementObject[]> CreationEnded;
+
+        private void Start()
         {
-            MovementObject character;
-
-            if (i != playerSpawnPoint)
-            {
-                Enemy enemy = Instantiate(_enemyPrefab, spawnPoints[i].position, Quaternion.identity, transform);
-                enemies.Add(enemy);
-                character = enemy;
-
-                _nameSpawner.CreateName(character);
-            }
-            else
-            {
-                PlayerView player = Instantiate(_playerPrefab, spawnPoints[i].position, Quaternion.identity, transform);
-
-                Instantiate(SkinStore.SelectSkin, player.transform.position + new Vector3(0, -1, 0), player.transform.rotation, player.transform);
-                InitPlayer(player);
-                character = player;
-                _camera.Init(player);
-            }
-
-            _weaponSpawner.CreateWeapon(character);
-            _targets.Add(character);
+            _targets = new List<MovementObject>();
+            CreateEnemys(_spawnPoints);
         }
 
-        InitEnemys(enemies);
-        CreationEnded?.Invoke(_targets.ToArray());
-    }
-
-    private void InitEnemys(List<Enemy> enemies)
-    {
-        for(var i = 0; i < enemies.Count; i++)
+        public void DisableEnemies()
         {
-            MovementObject[] targets = _targets.Where(target => target != enemies[i]).ToArray();
-
-            enemies[i].Init(targets, _skins[UnityEngine.Random.Range(0, _skins.Length)], 10);
+            foreach (var target in _targets)
+                target.gameObject.SetActive(false);
         }
-    }
 
-    private void InitPlayer(PlayerView player)
-    {
-        DirectionInput directionInput = GameInit.Platform == Platform.Mobile ? _joystickHandler : _desktopInput;
+        private void CreateEnemys(Transform[] spawnPoints)
+        {
+            List<Enemy> enemies = new List<Enemy>();
+            int playerSpawnPoint = UnityEngine.Random.Range(0, spawnPoints.Length);
 
-        directionInput.gameObject.SetActive(true);
-        directionInput.Init(player);
-        player.Init(directionInput);
+            for (var i = 0; i < spawnPoints.Length; i++)
+            {
+                MovementObject character;
+
+                if (i != playerSpawnPoint)
+                {
+                    Enemy enemy = Instantiate(_enemyPrefab, spawnPoints[i].position, Quaternion.identity, transform);
+                    enemies.Add(enemy);
+                    character = enemy;
+
+                    _nameSpawner.CreateName(character);
+                }
+                else
+                {
+                    PlayerView player = Instantiate(_playerPrefab, spawnPoints[i].position, Quaternion.identity, transform);
+
+                    Instantiate(SkinStore.SelectSkin, player.transform.position + new Vector3(0, -1, 0), player.transform.rotation, player.transform);
+                    InitPlayer(player);
+                    character = player;
+                    _camera.Init(player);
+                }
+
+                _weaponSpawner.CreateWeapon(character);
+                _targets.Add(character);
+            }
+
+            InitEnemys(enemies);
+            CreationEnded?.Invoke(_targets.ToArray());
+        }
+
+        private void InitEnemys(List<Enemy> enemies)
+        {
+            for (var i = 0; i < enemies.Count; i++)
+            {
+                MovementObject[] targets = _targets.Where(target => target != enemies[i]).ToArray();
+
+                enemies[i].Init(targets, _skins[UnityEngine.Random.Range(0, _skins.Length)], 10);
+            }
+        }
+
+        private void InitPlayer(PlayerView player)
+        {
+            DirectionInput directionInput = GameInit.Platform == Platform.Mobile ? _joystickHandler : _desktopInput;
+
+            directionInput.gameObject.SetActive(true);
+            directionInput.Init(player);
+            player.Init(directionInput);
+        }
     }
 }

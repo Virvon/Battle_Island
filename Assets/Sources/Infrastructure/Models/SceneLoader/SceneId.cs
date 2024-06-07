@@ -1,9 +1,12 @@
-public enum SceneId
+namespace BattleIsland.Infrustructure.Model
 {
-    InitScene,
-    Menu,
-    LearningScene,
-    EnemyScene,
-    EnemyScene1,
-    EnemyScene2
+    public enum SceneId
+    {
+        InitScene,
+        Menu,
+        LearningScene,
+        EnemyScene,
+        EnemyScene1,
+        EnemyScene2
+    }
 }

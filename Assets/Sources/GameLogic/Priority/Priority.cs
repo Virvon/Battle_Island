@@ -1,34 +1,38 @@
+using BattleIsland.Infrastructure.View;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Priority
+namespace BattleIsland.GameLogic
 {
-    private List<PriorityElement> priorities;
-
-    private MovementObject _parent;
-
-    public Priority(List<MovementObject> targets, MovementObject parent)
+    public class Priority
     {
-        priorities = new List<PriorityElement>();
+        private List<PriorityElement> priorities;
 
-        _parent = parent;
+        private MovementObject _parent;
 
-        foreach(var target in targets)
-            priorities.Add(new PriorityElement(target));
-    }
+        public Priority(List<MovementObject> targets, MovementObject parent)
+        {
+            priorities = new List<PriorityElement>();
 
-    public MovementObject Choose()
-    {
-        var elements = priorities.OrderByDescending(element => element.CalculatePriorityValue(_parent)).ToArray();
+            _parent = parent;
 
-        return elements.First().Target;
+            foreach (var target in targets)
+                priorities.Add(new PriorityElement(target));
+        }
 
-    }
+        public MovementObject Choose()
+        {
+            var elements = priorities.OrderByDescending(element => element.CalculatePriorityValue(_parent)).ToArray();
 
-    public MovementObject ChooseLessPriority()
-    {
-        var elements = priorities.OrderByDescending(element => element.CalculatePriorityValue(_parent)).ToArray();
+            return elements.First().Target;
 
-        return elements.Last().Target;
+        }
+
+        public MovementObject ChooseLessPriority()
+        {
+            var elements = priorities.OrderByDescending(element => element.CalculatePriorityValue(_parent)).ToArray();
+
+            return elements.Last().Target;
+        }
     }
 }

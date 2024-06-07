@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class AttackLearning : Learning
+namespace BattleIsland.GameLogic.Learning
 {
-    [SerializeField] private Door _door;
-
-    protected override void OnEndTriggered()
+    public class AttackLearning : Learning
     {
-        _door.Open();
-        base.OnEndTriggered();
+        [SerializeField] private Door _door;
+
+        protected override void OnEndTriggered()
+        {
+            _door.Open();
+            base.OnEndTriggered();
+        }
     }
 }
