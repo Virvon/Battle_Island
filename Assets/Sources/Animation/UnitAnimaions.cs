@@ -33,18 +33,18 @@ namespace BattleIsland.Animation
         private void OnPositionChanged()
         {
             if (_isDead == false)
-                _animator.SetBool("IsRun", true);
+                _animator.SetBool(AnimationPath.Unit.IsRun, true);
         }
 
         private void OnStopped()
         {
-            _animator.SetTrigger("Attack");
-            _animator.SetBool("IsRun", false);
+            _animator.SetTrigger(AnimationPath.Unit.Attack);
+            _animator.SetBool(AnimationPath.Unit.IsRun, false);
         }
 
         private void OnDied()
         {
-            _animator.SetBool("IsRun", false);
+            _animator.SetBool(AnimationPath.Unit.IsRun, false);
 
             StartCoroutine(DeadController());
         }

@@ -10,10 +10,9 @@ namespace BattleIsland.Animation
             _animator = GetComponent<Animator>();
 
         public void Shoot() =>
-            _animator.SetBool("IsIdle", false);
+            _animator.SetBool(AnimationPath.Weapon.IsIdle, false);
 
         public void ComeBack() =>
-            _animator.SetBool("IsIdle", true);
+            _animator.SetBool(AnimationPath.Weapon.IsIdle, true);
     }
-
 }
