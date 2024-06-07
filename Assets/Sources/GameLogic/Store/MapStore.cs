@@ -1,6 +1,6 @@
 public class MapStore : Store
 {
-    public static SceneNames SelectMap { get; private set; }
+    public static SceneId SelectMap { get; private set; }
 
     private void OnDisable()
     {

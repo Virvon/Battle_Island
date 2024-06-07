@@ -1,12 +1,11 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Agava.YandexGames;
 
 public class GameInit : MonoBehaviour
 {
-    [SerializeField] private SceneNames _startScene;
+    [SerializeField] private SceneId _startScene;
 
     private SceneLoader _sceneLoader;
 
@@ -14,14 +13,14 @@ public class GameInit : MonoBehaviour
 
     private void Awake()
     {
-        _sceneLoader = new SceneLoader(_startScene);
+        _sceneLoader = new SceneLoader();
     }
 
     private IEnumerator Start()
     {
 #if !UNITY_WEBGL || UNITY_EDITOR
         SetPlatform();
-        _sceneLoader.Load();
+        _sceneLoader.Load(_startScene);
         yield break;
 #else
         yield return YandexGamesSdk.Initialize();
@@ -32,7 +31,7 @@ public class GameInit : MonoBehaviour
         YandexGamesSdk.CallbackLogging = true;
 
         SetPlatform();
-        _sceneLoader.Load();
+        _sceneLoader.Load(_startScene);
 #endif
     }
 

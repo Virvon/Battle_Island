@@ -1360,7 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: English
+  currentLanguage: Russian
   detectLanguage: 1
   defaultLanguage: English
   saveLoad: 1
@@ -12667,6 +12667,7 @@ GameObject:
   - component: {fileID: 789499144}
   - component: {fileID: 789499147}
   - component: {fileID: 789499148}
+  - component: {fileID: 789499149}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -12773,7 +12774,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadPanel: {fileID: 847540987}
   _nextScene: 1
-  _triggerBehavior: {fileID: 905276126}
   _delay: 2.5
   _saveKey: Learning2
 --- !u!114 &789499148
@@ -12788,6 +12788,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf830d5ad8ca4ad44b1dd441e28a2948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &789499149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789499142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744bce4cf88bd27489ef12e917ef3c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuView: {fileID: 789499147}
 --- !u!1001 &797978111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15325,6 +15338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1002028489}
+  - component: {fileID: 1002028490}
   m_Layer: 0
   m_Name: Triggers
   m_TagString: Untagged
@@ -15356,6 +15370,20 @@ Transform:
   m_Father: {fileID: 465321629}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002028490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002028488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f40378539500e4288a9bbabd0f17ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerBehavior: {fileID: 905276126}
+  _menuView: {fileID: 789499147}
 --- !u!1001 &1016545196
 PrefabInstance:
   m_ObjectHideFlags: 0

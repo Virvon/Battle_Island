@@ -16,13 +16,9 @@ public class PlayerSetup : MonoBehaviour
         _presenter = new PlayerPresenter(_model, _view);
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() =>
         _presenter.Enable();
-    }
 
-    private void OnDisable()
-    {
+    private void OnDisable() => 
         _presenter.Disable();
-    }
 }

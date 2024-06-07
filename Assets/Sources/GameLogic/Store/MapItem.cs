@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class MapItem : Item
 {
-    [SerializeField] private SceneNames _name;
+    [SerializeField] private SceneId _name;
     [SerializeField] private Image _image;
 
-    public SceneNames Name => _name;
+    public SceneId Name => _name;
 
     private void OnEnable() => Deactivate();
 

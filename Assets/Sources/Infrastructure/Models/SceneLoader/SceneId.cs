@@ -1,4 +1,4 @@
-public enum SceneNames
+public enum SceneId
 {
     InitScene,
     Menu,

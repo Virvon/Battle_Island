@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using System;
 
-public class TimerView : MonoBehaviour
+public class TimerWindow : MonoBehaviour
 {
     private const int RoundDigits = 1;
 
