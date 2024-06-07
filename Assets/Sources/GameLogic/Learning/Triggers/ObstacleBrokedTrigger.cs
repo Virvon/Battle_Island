@@ -1,13 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic.Learning
 {
-    public class LetBrokedTrigger : MonoBehaviour, ITriggerable
+    public class ObstacleBrokedTrigger : MonoBehaviour, ITriggerable
     {
-        [SerializeField] private Let _let;
+        [SerializeField] private Obstacle _let;
 
         public event Action Triggered;
 

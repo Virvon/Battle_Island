@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace BattleIsland.GameLogic
 {
-    [RequireComponent(typeof(Let))]
-    public class LetAnimation : MonoBehaviour
+    [RequireComponent(typeof(Obstacle))]
+    public class ObstacleAnimation : MonoBehaviour
     {
         private const float Delta = 0.1f;
 
@@ -16,11 +16,11 @@ namespace BattleIsland.GameLogic
 
         private Vector3 _startPosition;
         private Coroutine _coroutine;
-        private Let _let;
+        private Obstacle _let;
 
         private void OnEnable()
         {
-            _let = GetComponent<Let>();
+            _let = GetComponent<Obstacle>();
             _startPosition = transform.position;
 
             _let.Hited += OnHited;

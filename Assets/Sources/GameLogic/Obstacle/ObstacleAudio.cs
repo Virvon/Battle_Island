@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic
 {
-    [RequireComponent(typeof(Let))]
-    public class LetAudio : MonoBehaviour
+    [RequireComponent(typeof(Obstacle))]
+    public class ObstacleAudio : MonoBehaviour
     {
         [SerializeField] private AudioSource _hitAudio;
         [SerializeField] private AudioSource _dieAudio;
 
-        private Let _let;
+        private Obstacle _let;
 
         private void OnEnable()
         {
-            _let = GetComponent<Let>();
+            _let = GetComponent<Obstacle>();
 
             _let.Hited += StartHitAudio;
             _let.Broked += StartDieAudio;

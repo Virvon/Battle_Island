@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BattleIsland.GameLogic
 {
-    public class Let : MonoBehaviour
+    public class Obstacle : MonoBehaviour
     {
         [SerializeField] private bool _isDamagable;
         [SerializeField] private int _health;

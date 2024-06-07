@@ -53,7 +53,7 @@ namespace BattleIsland.Infrastructure.View
 
         public void OnCollisionEnter(Collision collision)
         {
-            if (collision.collider.TryGetComponent(out Let let) || collision.collider.TryGetComponent(out WeaponView weapon))
+            if (collision.collider.TryGetComponent(out Obstacle let) || collision.collider.TryGetComponent(out WeaponView weapon))
                 CollisionEntered?.Invoke(transform.rotation * Vector3.forward, collision.contacts[0].normal);
         }
 

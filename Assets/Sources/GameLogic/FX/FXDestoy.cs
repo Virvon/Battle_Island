@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic
@@ -8,13 +7,6 @@ namespace BattleIsland.GameLogic
         [SerializeField] private float _delay = 3f;
 
         private void Start() =>
-            StartCoroutine(Destroyer());
-
-        private IEnumerator Destroyer()
-        {
-            yield return new WaitForSeconds(_delay);
-
-            Destroy(gameObject);
-        }
+            Destroy(gameObject, _delay);
     }
 }

@@ -2,16 +2,16 @@ using UnityEngine;
 
 namespace BattleIsland.GameLogic
 {
-    [RequireComponent(typeof(Let))]
-    public class LetParticles : MonoBehaviour
+    [RequireComponent(typeof(Obstacle))]
+    public class ObstacleParticles : MonoBehaviour
     {
         [SerializeField] private GameObject _particles;
 
-        private Let _let;
+        private Obstacle _let;
 
         private void OnEnable()
         {
-            _let = GetComponent<Let>();
+            _let = GetComponent<Obstacle>();
 
             _let.Broked += OnBroked;
         }

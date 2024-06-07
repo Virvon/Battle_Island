@@ -5,6 +5,8 @@ namespace BattleIsland.Audio
 {
     public class AudioVolumeToggler : MonoBehaviour
     {
+        private const string AudioMixerName = "MusicVolume";
+
         private const int IncludedSoundVolume = 0;
         private const int SwitchedOffSoundVolume = -80;
 
@@ -13,9 +15,9 @@ namespace BattleIsland.Audio
         public void ToggleSound(bool isEnebled)
         {
             if (isEnebled)
-                _mixerGroup.audioMixer.SetFloat("MusicVolume", IncludedSoundVolume);
+                _mixerGroup.audioMixer.SetFloat(AudioMixerName, IncludedSoundVolume);
             else
-                _mixerGroup.audioMixer.SetFloat("MusicVolume", SwitchedOffSoundVolume);
+                _mixerGroup.audioMixer.SetFloat(AudioMixerName, SwitchedOffSoundVolume);
         }
     }
 }
