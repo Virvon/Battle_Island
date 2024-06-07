@@ -12,7 +12,7 @@ namespace BattleIsland.Infrastructure
 
         private SceneLoader _sceneLoader;
 
-        public static Platform Platform { get; private set; }
+        public static Platform Platform;
 
         private void Awake() => 
             _sceneLoader = new SceneLoader();

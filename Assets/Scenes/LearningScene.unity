@@ -9728,8 +9728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8767c81fdd723fd4a87821975e3e8b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mobileLerning: {fileID: 304155777}
-  _DesktopLerning: {fileID: 1859093919}
+  _mobileLearning: {fileID: 304155777}
+  _DesktopLearning: {fileID: 1859093919}
 --- !u!1001 &465501754
 PrefabInstance:
   m_ObjectHideFlags: 0
