@@ -8,26 +8,25 @@ namespace BattleIsland.GameLogic.Store
 {
     public abstract class Store : MonoBehaviour
     {
-        [SerializeField] private StoreView _view;
+        [SerializeField] private StoreWindow _view;
         [SerializeField] private Item _defaultItem;
         [SerializeField] private string SaveKey;
 
+        private List<Item> _items;
         private Item _currentItem;
 
-        protected List<Item> Items;
-        protected Item _selectItem;
+        protected Item _selectItem { get; private set; }
+        protected IReadOnlyList<Item> Items => _items;
 
         private void OnEnable()
         {
-            Items = GetComponentsInChildren<Item>().ToList();
+            _items = GetComponentsInChildren<Item>().ToList();
 
             SetSelectItem(LoadItem());
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             Close();
-        }
 
         public void Open()
         {
@@ -56,18 +55,18 @@ namespace BattleIsland.GameLogic.Store
 
         private void OnNextItemSetted()
         {
-            var currentItemIndex = Items.IndexOf(_currentItem);
+            var currentItemIndex = _items.IndexOf(_currentItem);
 
-            _currentItem = currentItemIndex + 1 < Items.Count ? Items[currentItemIndex + 1] : Items.First();
+            _currentItem = currentItemIndex + 1 < _items.Count ? _items[currentItemIndex + 1] : _items.First();
 
             SetItem(_currentItem);
         }
 
         private void OnPreviousItemSetted()
         {
-            var currentItemIndex = Items.IndexOf(_currentItem);
+            var currentItemIndex = _items.IndexOf(_currentItem);
 
-            _currentItem = currentItemIndex - 1 >= 0 ? Items[currentItemIndex - 1] : Items.Last();
+            _currentItem = currentItemIndex - 1 >= 0 ? _items[currentItemIndex - 1] : _items.Last();
 
             SetItem(_currentItem);
         }
@@ -96,7 +95,7 @@ namespace BattleIsland.GameLogic.Store
         {
             Item item = null;
 
-            if (Items != null)
+            if (_items != null)
                 item = LoadStaticItem();
 
             if (item == null)
@@ -104,7 +103,7 @@ namespace BattleIsland.GameLogic.Store
 
             if (item == null)
             {
-                foreach (var element in Items)
+                foreach (var element in _items)
                 {
                     if (element.IsBuyed)
                         return element;

@@ -24,14 +24,10 @@ namespace BattleIsland.GameLogic
             _parent.PositionChanged += OnPositionChanged;
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() => 
             _parent.PositionChanged -= OnPositionChanged;
-        }
 
-        private void OnPositionChanged()
-        {
+        private void OnPositionChanged() =>
             transform.position = _parent.transform.position + _offset;
-        }
     }
 }

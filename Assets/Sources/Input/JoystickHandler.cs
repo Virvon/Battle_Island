@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using PlayerInput = BattleIsland.Input.PlayerInput;
 
 namespace BattleIsland.Input
 {
@@ -41,8 +40,8 @@ namespace BattleIsland.Input
         {
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_handleSlideArea, eventData.position, null, out Vector2 joystickPosition))
             {
-                joystickPosition.x *= (2 / _handleSlideArea.sizeDelta.x);
-                joystickPosition.y *= (2 / _handleSlideArea.sizeDelta.y);
+                joystickPosition.x *= 2 / _handleSlideArea.sizeDelta.x;
+                joystickPosition.y *= 2 / _handleSlideArea.sizeDelta.y;
 
                 Direction = joystickPosition;
 

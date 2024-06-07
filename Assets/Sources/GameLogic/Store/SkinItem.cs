@@ -5,7 +5,7 @@ namespace BattleIsland.GameLogic.Store
     public class SkinItem : Item
     {
         [SerializeField] private GameObject _skinPrefab;
-        [SerializeField] Skin _skin;
+        [SerializeField] private Skin _skin;
 
         public GameObject Skin => _skinPrefab;
 
@@ -17,9 +17,7 @@ namespace BattleIsland.GameLogic.Store
             _skin.transform.position = position;
         }
 
-        public override void Deactivate()
-        {
+        public override void Deactivate() =>
             _skin.gameObject.SetActive(false);
-        }
     }
 }

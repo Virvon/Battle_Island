@@ -13,6 +13,8 @@ namespace BattleIsland.Infrastructure.View
     public class WeaponShootView : MonoBehaviour
     {
         private const float ShootForce = 1350;
+        private const float Delay = 0.1f;
+        private const float MinDistance = 3.8f;
 
         private Coroutine _coroutine;
         private NavMeshAgent _agent;
@@ -51,13 +53,13 @@ namespace BattleIsland.Infrastructure.View
             _weaponView.Parent.Stopped -= TryShoot;
         }
 
-        public void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.TryGetComponent(out Obstacle let) || collision.collider.TryGetComponent(out WeaponView weapon))
                 CollisionEntered?.Invoke(transform.rotation * Vector3.forward, collision.contacts[0].normal);
         }
 
-        public void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out IDamageable iDamageble))
             {
@@ -82,7 +84,6 @@ namespace BattleIsland.Infrastructure.View
             _weaponAudio.PlayShootAudio();
 
             _weaponView.Rigidbody.AddForce(transform.forward * ShootForce);
-
 
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
@@ -115,10 +116,13 @@ namespace BattleIsland.Infrastructure.View
 
         private IEnumerator ComebackTimer()
         {
+            WaitForSeconds delay = new WaitForSeconds(Delay);
+
             do
             {
-                yield return new WaitForSeconds(0.1f);
-            } while (_weaponView.Rigidbody.velocity.magnitude > 3.8f);
+                yield return delay;
+            } 
+            while (_weaponView.Rigidbody.velocity.magnitude > MinDistance);
 
             TryComeback();
         }

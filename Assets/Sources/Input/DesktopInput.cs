@@ -1,7 +1,6 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
-using PlayerInput = BattleIsland.Input.PlayerInput;
 
 namespace BattleIsland.Input
 {
@@ -49,7 +48,6 @@ namespace BattleIsland.Input
 
         private void OnDownTouch()
         {
-
             if (Direction != Vector2.zero)
                 Activated?.Invoke();
         }

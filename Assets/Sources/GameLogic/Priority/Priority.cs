@@ -25,7 +25,6 @@ namespace BattleIsland.GameLogic
             var elements = priorities.OrderByDescending(element => element.CalculatePriorityValue(_parent)).ToArray();
 
             return elements.First().Target;
-
         }
 
         public MovementObject ChooseLessPriority()

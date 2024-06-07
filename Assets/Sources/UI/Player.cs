@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 using BattleIsland.SaveLoad;
 using BattleIsland.SaveLoad.Data;
 
@@ -7,11 +7,11 @@ namespace BattleIsland.UI
 {
     public class Player : MonoBehaviour
     {
-        public int Money { get; private set; }
-
         private const string SaveKey = "PlayerSaveKey";
 
         public event Action MoneyCountChanged;
+
+        public int Money { get; private set; }
 
         private void Start()
         {

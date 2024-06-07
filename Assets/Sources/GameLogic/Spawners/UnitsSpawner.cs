@@ -1,7 +1,7 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using System;
 using BattleIsland.Infrastructure.View;
 using BattleIsland.Input;
 using BattleIsland.Infrastructure;
@@ -23,9 +23,9 @@ namespace BattleIsland.GameLogic
 
         private List<MovementObject> _targets;
 
-        public List<MovementObject> Targets => _targets;
-
         public event Action<MovementObject[]> CreationEnded;
+
+        public IReadOnlyList<MovementObject> Targets => _targets;
 
         private void Start()
         {

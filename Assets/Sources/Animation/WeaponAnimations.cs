@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace BattleIsland.Animation
 {
+    [RequireComponent(typeof(Animator))]
     public class WeaponAnimations : MonoBehaviour
     {
         private Animator _animator;

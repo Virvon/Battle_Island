@@ -6,15 +6,15 @@ namespace BattleIsland.Infrastructure.View
     [RequireComponent(typeof(Collider), typeof(Rigidbody))]
     public class WeaponView : MonoBehaviour
     {
-        public MovementObject Parent => _parent;
-        public Transform IdlePosition => _idlePosition;
-        public Rigidbody Rigidbody { get; private set; }
-
         private MovementObject _parent;
         private Transform _idlePosition;
         private Collider _collider;
 
         public event Action Inited;
+
+        public MovementObject Parent => _parent;
+        public Transform IdlePosition => _idlePosition;
+        public Rigidbody Rigidbody { get; private set; }
 
         private void Awake()
         {
@@ -41,5 +41,4 @@ namespace BattleIsland.Infrastructure.View
             Rigidbody.isKinematic = true;
         }
     }
-
 }

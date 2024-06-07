@@ -21,6 +21,9 @@ namespace BattleIsland.Animation
             _unit.PositionChanged += OnPositionChanged;
             _unit.Stopped += OnStopped;
             _unit.Died += OnDied;
+
+            if (_animator == null)
+                Debug.LogError($"{nameof(_animator)} is null on start");
         }
 
         private void OnDisable()

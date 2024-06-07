@@ -33,9 +33,7 @@ namespace BattleIsland.Audio
                 item.Selled -= PlayAudio;
         }
 
-        private void PlayAudio()
-        {
+        private void PlayAudio() => 
             _sellAudio.Play();
-        }
     }
 }

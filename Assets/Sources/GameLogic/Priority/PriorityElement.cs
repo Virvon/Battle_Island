@@ -5,14 +5,12 @@ namespace BattleIsland.GameLogic
 {
     public class PriorityElement
     {
+        public PriorityElement(MovementObject target) => 
+            Target = target;
+
         public MovementObject Target { get; private set; }
 
         public float PriorityValue { get; private set; }
-
-        public PriorityElement(MovementObject target)
-        {
-            Target = target;
-        }
 
         public float CalculatePriorityValue(MovementObject parent)
         {
@@ -22,7 +20,7 @@ namespace BattleIsland.GameLogic
             if (Target is PlayerView)
                 priorityValue *= 1.5f;
 
-            priorityValue += Random.Range(-(priorityValue / 1.5f), (priorityValue / 1.5f));
+            priorityValue += Random.Range(-(priorityValue / 1.5f), priorityValue / 1.5f);
 
             PriorityValue = priorityValue;
 

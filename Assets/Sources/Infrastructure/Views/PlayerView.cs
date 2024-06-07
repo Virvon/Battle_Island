@@ -1,7 +1,7 @@
+using System;
 using BattleIsland.GameLogic;
 using BattleIsland.Input;
 using Lean.Localization;
-using System;
 using UnityEngine;
 
 namespace BattleIsland.Infrastructure.View
@@ -26,6 +26,7 @@ namespace BattleIsland.Infrastructure.View
             _input.Activated -= OnJoystickActivated;
             _input.Deactivated += OnJoystickDeactivated;
         }
+
         public void Init(DirectionInput directionInput)
         {
             switch (LeanLocalization.GetFirstCurrentLanguage())

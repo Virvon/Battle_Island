@@ -6,14 +6,12 @@ using BattleIsland.UI;
 
 namespace BattleIsland.GameLogic.Store
 {
-    public class StoreView : MonoBehaviour
+    public class StoreWindow : MonoBehaviour
     {
         [SerializeField] private Player _player;
         [SerializeField] private Transform _itemPosition;
         [SerializeField] private SelectButton _selectButton;
         [SerializeField] private TMP_Text _price;
-
-        public Player Player => _player;
 
         private Item _currentSkinItem;
 
@@ -21,20 +19,16 @@ namespace BattleIsland.GameLogic.Store
         public event Action PreviousItemSetted;
         public event Action ItemSelected;
 
-        public void SetNextItem()
-        {
+        public Player Player => _player;
+
+        public void SetNextItem() => 
             NextItemSetted?.Invoke();
-        }
 
-        public void SetPreviousItem()
-        {
+        public void SetPreviousItem() => 
             PreviousItemSetted?.Invoke();
-        }
 
-        public void SelectItem()
-        {
+        public void SelectItem() => 
             ItemSelected?.Invoke();
-        }
 
         public void SetItem(Item item)
         {

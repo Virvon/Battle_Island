@@ -11,7 +11,8 @@ namespace BattleIsland.GameLogic.Store
 
         public SceneId Name => _name;
 
-        private void OnEnable() => Deactivate();
+        private void OnEnable() =>
+            Deactivate();
 
         public override void Activate(Vector3 position)
         {
@@ -19,6 +20,7 @@ namespace BattleIsland.GameLogic.Store
             _image.enabled = true;
         }
 
-        public override void Deactivate() => _image.enabled = false;
+        public override void Deactivate() =>
+            _image.enabled = false;
     }
 }

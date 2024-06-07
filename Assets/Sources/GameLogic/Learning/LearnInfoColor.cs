@@ -6,12 +6,12 @@ namespace BattleIsland.GameLogic.Learning
     [RequireComponent(typeof(LearnPanel))]
     public class LearnInfoColor : MonoBehaviour
     {
+        [SerializeField] private TextMeshProUGUI _text;
+
         private LearnPanel _learnPanel;
-        private TextMeshProUGUI _text;
 
         private void OnEnable()
         {
-            _text = GetComponentInChildren<TextMeshProUGUI>();
             _learnPanel = GetComponent<LearnPanel>();
 
             _learnPanel.ColorChanged += OnColorChanged;

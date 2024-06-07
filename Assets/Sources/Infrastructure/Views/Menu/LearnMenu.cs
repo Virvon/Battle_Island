@@ -1,7 +1,7 @@
+using System.Collections;
 using BattleIsland.Infrustructure.Model;
 using BattleIsland.SaveLoad;
 using BattleIsland.SaveLoad.Data;
-using System.Collections;
 using UnityEngine;
 
 namespace BattleIsland.Infrastructure.View

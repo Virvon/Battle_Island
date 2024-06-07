@@ -12,12 +12,10 @@ namespace BattleIsland.Infrastructure
 
         private SceneLoader _sceneLoader;
 
-        public static Platform Platform;
+        public static Platform Platform { get; private set; }
 
-        private void Awake()
-        {
+        private void Awake() => 
             _sceneLoader = new SceneLoader();
-        }
 
         private IEnumerator Start()
         {
@@ -38,9 +36,7 @@ namespace BattleIsland.Infrastructure
 #endif
         }
 
-        private void SetPlatform()
-        {
+        private void SetPlatform() => 
             Platform = Application.isMobilePlatform ? Platform.Mobile : Platform.Desktop;
-        }
     }
 }

@@ -1,6 +1,6 @@
+using System;
 using TMPro;
 using UnityEngine;
-using System;
 
 namespace BattleIsland.UI
 {

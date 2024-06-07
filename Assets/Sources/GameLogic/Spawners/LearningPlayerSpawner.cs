@@ -2,8 +2,6 @@ using BattleIsland.GameLogic.Store;
 using BattleIsland.Infrastructure;
 using BattleIsland.Infrastructure.View;
 using BattleIsland.Input;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic

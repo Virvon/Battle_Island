@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 using BattleIsland.SaveLoad;
 using BattleIsland.UI;
 using BattleIsland.SaveLoad.Data;
@@ -11,10 +11,10 @@ namespace BattleIsland.GameLogic.Store
         [SerializeField] private int _price;
         [SerializeField] private string _saveKey;
 
+        public event Action Selled;
+
         public int Price => _price;
         public bool IsBuyed { get; private set; }
-
-        public event Action Selled;
 
         private void Awake()
         {
@@ -22,7 +22,6 @@ namespace BattleIsland.GameLogic.Store
 
             if (_price == 0)
                 IsBuyed = true;
-
         }
 
         public abstract void Activate(Vector3 position);
@@ -47,10 +46,8 @@ namespace BattleIsland.GameLogic.Store
             }
         }
 
-        private void Save(string key)
-        {
+        private void Save(string key) =>
             SaveLoadService.Save(key, CreateSaveSnapshot());
-        }
 
         private void Load(string key)
         {

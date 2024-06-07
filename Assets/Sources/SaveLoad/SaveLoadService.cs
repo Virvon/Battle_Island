@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BattleIsland.SaveLoad
 {
-    static class SaveLoadService
+    public static class SaveLoadService
     {
         public static void Save<T>(string key, T saveData)
         {
@@ -10,17 +10,7 @@ namespace BattleIsland.SaveLoad
             PlayerPrefs.SetString(key, jsonData);
         }
 
-        public static T Load<T>(string key) where T : new()
-        {
-            if (PlayerPrefs.HasKey(key))
-            {
-                var loadedString = PlayerPrefs.GetString(key);
-                return JsonUtility.FromJson<T>(loadedString);
-            }
-            else
-            {
-                return new T();
-            }
-        }
+        public static T Load<T>(string key) where T : new() =>
+            PlayerPrefs.HasKey(key) ? JsonUtility.FromJson<T>(PlayerPrefs.GetString(key)) : new T();
     }
 }

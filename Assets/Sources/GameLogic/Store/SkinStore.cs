@@ -23,9 +23,7 @@ namespace BattleIsland.GameLogic.Store
             return null;
         }
 
-        protected override void SetSelectItem(Item item)
-        {
+        protected override void SetSelectItem(Item item) => 
             SelectSkin = ((SkinItem)item).Skin;
-        }
     }
 }

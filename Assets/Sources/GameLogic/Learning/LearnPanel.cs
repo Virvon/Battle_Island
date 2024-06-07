@@ -8,7 +8,7 @@ namespace BattleIsland.GameLogic.Learning
     [RequireComponent(typeof(Image))]
     public class LearnPanel : MonoBehaviour
     {
-        [SerializeField] float _animationSpeed;
+        [SerializeField] private float _animationSpeed;
 
         private Color _color;
         private Image _image;
