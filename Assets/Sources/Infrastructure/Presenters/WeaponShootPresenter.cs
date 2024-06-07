@@ -36,38 +36,24 @@ public class WeaponShootPresenter
         _view.CollisionEntered -= ChangeTrajectory;
     }
 
-    private void ChangeTrajectory(Vector3 forward, Vector3 normal)
-    {
+    private void ChangeTrajectory(Vector3 forward, Vector3 normal) => 
         _model.ChangeTrajectory(forward, normal);
-    }
 
-    private void ChangeTrajectory(Vector3 resultDirection)
-    {
+    private void ChangeTrajectory(Vector3 resultDirection) => 
         _view.ChangeTrajectory(resultDirection);
-    }
 
-    private void TryShoot()
-    {
+    private void TryShoot() => 
         _model.TryShoot();
-    }
 
-    private void TryComeback ()
-    {
+    private void TryComeback() => 
         _model.TryComeback();
-    }
 
-    private void OnShotted()
-    {
+    private void OnShotted() => 
         _view.Shoot();
-    }
 
-    private void OnComeback()
-    {
+    private void OnComeback() => 
         _view.Comeback();
-    }
 
-    private void OnStateChanged(State state)
-    {
+    private void OnStateChanged(State state) =>
         _model.SetState(state);
-    }
 }

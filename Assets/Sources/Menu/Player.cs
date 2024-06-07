@@ -34,12 +34,12 @@ namespace BattleIsland.Menu
 
         private void SaveMoney(string key)
         {
-            SaveManager.Save(key, CreateSaveSnapshot());
+            SaveLoadService.Save(key, CreateSaveSnapshot());
         }
 
         private int LoadMoney(string key)
         {
-            PlayerProfile data = SaveManager.Load<PlayerProfile>(key);
+            PlayerProfile data = SaveLoadService.Load<PlayerProfile>(key);
 
             return data.Money;
         }

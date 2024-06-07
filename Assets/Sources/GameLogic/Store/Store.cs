@@ -113,11 +113,11 @@ public abstract class Store : MonoBehaviour
         return item;
     }
 
-    private void Save(string key) => SaveManager.Save(key, CreateSavesnapshot());
+    private void Save(string key) => SaveLoadService.Save(key, CreateSavesnapshot());
 
     private Item Load(string key)
     {
-        StoreProfile data = SaveManager.Load<StoreProfile>(key);
+        StoreProfile data = SaveLoadService.Load<StoreProfile>(key);
 
         return data.SelectItem;
     }

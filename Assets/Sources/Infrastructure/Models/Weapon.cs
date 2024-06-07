@@ -7,10 +7,8 @@ namespace BattleIsland.Model
     {
         private State _state;
 
-        public Weapon()
-        {
+        public Weapon() => 
             _state = new IdleState();
-        }
 
         public event Action Shotted;
 
@@ -32,10 +30,8 @@ namespace BattleIsland.Model
                 Comeback?.Invoke();
         }
 
-        public void SetState(State state)
-        {
+        public void SetState(State state) =>
             _state = state;
-        }
 
         public void TryChangePosition()
         {

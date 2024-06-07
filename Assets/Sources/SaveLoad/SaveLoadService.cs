@@ -1,6 +1,6 @@
 using UnityEngine;
 
-static class SaveManager
+static class SaveLoadService
 {
     public static void Save<T>(string key, T saveData)
     {

@@ -46,12 +46,12 @@ public abstract class Item : MonoBehaviour
 
     private void Save(string key)
     {
-        SaveManager.Save(key, CreateSaveSnapshot());
+        SaveLoadService.Save(key, CreateSaveSnapshot());
     }
 
     private void Load(string key)
     {
-        ItemPofile profile = SaveManager.Load<ItemPofile>(key);
+        ItemPofile profile = SaveLoadService.Load<ItemPofile>(key);
 
         IsBuyed = profile.IsBuyed;
     }

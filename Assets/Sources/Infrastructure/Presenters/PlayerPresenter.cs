@@ -28,18 +28,12 @@ public class PlayerPresenter
         _view.InputedRotation -= OnTryRotate;
     }
 
-    private void OnTryRotate(Vector2 direction)
-    {
+    private void OnTryRotate(Vector2 direction) =>
         _model.Rotate(direction, Time.deltaTime);
-    }
 
-    private void OnRotated()
-    {
+    private void OnRotated() => 
         _view.Rotate(_model.Rotation);
-    }
 
-    private void OnMoved()
-    {
+    private void OnMoved() =>
         _view.Move(_model.Velocity);
-    }
 }

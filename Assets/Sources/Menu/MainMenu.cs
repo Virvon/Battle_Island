@@ -26,6 +26,6 @@ public class MainMenu : Menu
 
     private bool LoadLearningResult()
     {
-        return SaveManager.Load<LearningProfile>(_learningSaveKey).IsFinish;
+        return SaveLoadService.Load<LearningProfile>(_learningSaveKey).IsFinish;
     }
 }

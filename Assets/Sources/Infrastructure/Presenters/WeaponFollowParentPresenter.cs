@@ -25,13 +25,9 @@ public class WeaponFollowParentPresenter
         _view.ParentPositionChanged -= TryChangePosition;
     }
 
-    private void OnPositionChanged()
-    {
+    private void OnPositionChanged() => 
         _view.ChangePosition();
-    }
 
-    private void TryChangePosition()
-    {
+    private void TryChangePosition() => 
         _model.TryChangePosition();
-    }
 }

@@ -27,12 +27,12 @@ public class Loacalization : MonoBehaviour
 
     private void Save(string currentLanguage)
     {
-        SaveManager.Save(_saveKey, GetSaveProfile(currentLanguage));
+        SaveLoadService.Save(_saveKey, GetSaveProfile(currentLanguage));
     }
 
     private string Load()
     {
-        return SaveManager.Load<LocalizationProfile>(_saveKey).CurrentLenguage;
+        return SaveLoadService.Load<LocalizationProfile>(_saveKey).CurrentLenguage;
     }
 
     private LocalizationProfile GetSaveProfile(string currentLanguage)

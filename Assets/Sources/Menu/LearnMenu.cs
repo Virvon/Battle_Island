@@ -47,7 +47,7 @@ public class LearnMenu : Menu
 
     private void Save()
     {
-        SaveManager.Save(_saveKey, CreateSaveSnapshot());
+        SaveLoadService.Save(_saveKey, CreateSaveSnapshot());
     }
 
     private LearningProfile CreateSaveSnapshot()
