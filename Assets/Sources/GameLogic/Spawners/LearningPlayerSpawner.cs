@@ -15,22 +15,39 @@ namespace BattleIsland.GameLogic.Spawner
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private CameraView _camera;
 
+        private DirectionInput DirectionInput => GameInit.Platform == Platform.Mobile ? _joystickHandler : _desktopInput;
+
         private void Start()
         {
-            PlayerView player = Instantiate(_playerPrefab, _spawnPoint.position, Quaternion.identity, transform);
-            Instantiate(SkinStore.SelectSkin, player.transform.position + new Vector3(0, -1, 0), player.transform.rotation, player.transform);
+            PlayerView player = InstantiatePlayer();
+            InsantiateSkin(player);
             InitPlayer(player);
             _camera.Init(player);
             _weaponSpawner.CreateWeapon(player);
         }
 
+        private PlayerView InstantiatePlayer()
+        {
+            return Instantiate(
+                _playerPrefab,
+                _spawnPoint.position, 
+                Quaternion.identity,
+                transform);
+        }
+
+        private static void InsantiateSkin(PlayerView player)
+        {
+            Instantiate(
+                SkinStore.SelectSkin,          
+                player.transform.position + new Vector3(0, -1, 0),   
+                player.transform.rotation, player.transform);
+        }
+
         private void InitPlayer(PlayerView player)
         {
-            DirectionInput directionInput = GameInit.Platform == Platform.Mobile ? _joystickHandler : _desktopInput;
-
-            directionInput.gameObject.SetActive(true);
-            directionInput.Init(player);
-            player.Init(directionInput);
+            DirectionInput.gameObject.SetActive(true);
+            DirectionInput.Init(player);
+            player.Init(DirectionInput);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace BattleIsland.GameLogic.Learning
             _trigger.Triggered += _menuView.LoadNextScene;
         }
 
-        public void OnDisable() =>
+        private void OnDisable() =>
             _trigger.Triggered -= _menuView.LoadNextScene;
 
         private void OnValidate()

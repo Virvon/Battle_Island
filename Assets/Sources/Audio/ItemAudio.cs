@@ -1,5 +1,5 @@
-using BattleIsland.GameLogic.Store;
 using System.Collections.Generic;
+using BattleIsland.GameLogic.Store;
 using UnityEngine;
 
 namespace BattleIsland.Audio
@@ -13,13 +13,16 @@ namespace BattleIsland.Audio
 
         private void OnEnable()
         {
-            _items = new List<Item>();
+            _items = new();
 
             foreach (var store in _stores)
             {
-                var items = store.GetComponentsInChildren<Item>();
+                Item[] items = store.GetComponentsInChildren<Item>();
 
-                foreach (var item in items)
+                if (items == null)
+                    break;
+
+                foreach (Item item in items)
                     _items.Add(item);
             }
 
@@ -33,7 +36,7 @@ namespace BattleIsland.Audio
                 item.Selled -= PlayAudio;
         }
 
-        private void PlayAudio() => 
+        private void PlayAudio() =>
             _sellAudio.Play();
     }
 }

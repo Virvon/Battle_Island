@@ -16,11 +16,13 @@ namespace BattleIsland.GameLogic.Learning
 
         public event Action<Color> ColorChanged;
 
+        private Color TransparentColor => new Color(_image.color.a, _image.color.g, _image.color.b, 0);
+
         private void Start()
         {
             _image = GetComponent<Image>();
             _color = _image.color;
-            _image.color = new Color(_image.color.a, _image.color.g, _image.color.b, 0);
+            _image.color = TransparentColor;
             ColorChanged?.Invoke(_image.color);
         }
 
@@ -37,7 +39,7 @@ namespace BattleIsland.GameLogic.Learning
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(ChangeCollor(new Color(_image.color.a, _image.color.g, _image.color.b, 0), _animationSpeed));
+            _coroutine = StartCoroutine(ChangeCollor(TransparentColor, _animationSpeed));
         }
 
         private IEnumerator ChangeCollor(Color targeColor, float speed)

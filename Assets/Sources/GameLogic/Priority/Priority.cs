@@ -1,6 +1,6 @@
-using BattleIsland.Infrastructure.View;
 using System.Collections.Generic;
 using System.Linq;
+using BattleIsland.Infrastructure.View;
 
 namespace BattleIsland.GameLogic.Priority
 {
@@ -22,14 +22,18 @@ namespace BattleIsland.GameLogic.Priority
 
         public MovementObject Choose()
         {
-            var elements = priorities.OrderByDescending(element => element.CalculatePriorityValue(_parent)).ToArray();
+            PriorityElement[] elements = priorities.OrderByDescending(
+                element => element.CalculatePriorityValue(_parent))
+                .ToArray();
 
             return elements.First().Target;
         }
 
         public MovementObject ChooseLessPriority()
         {
-            var elements = priorities.OrderByDescending(element => element.CalculatePriorityValue(_parent)).ToArray();
+            PriorityElement[] elements = priorities.OrderByDescending(
+                element => element.CalculatePriorityValue(_parent))
+                .ToArray();
 
             return elements.Last().Target;
         }

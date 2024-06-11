@@ -34,7 +34,7 @@ namespace BattleIsland.Infrastructure.View
         {
             LearningProfile data = new LearningProfile()
             {
-                IsFinish = true
+                IsFinish = true,
             };
 
             return data;

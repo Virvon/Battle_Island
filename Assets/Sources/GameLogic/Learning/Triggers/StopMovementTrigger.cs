@@ -1,5 +1,5 @@
-using BattleIsland.Input;
 using System;
+using BattleIsland.Input;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic.Learning

@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
-using UnityEngine;
 using Agava.YandexGames;
 using BattleIsland.Infrustructure.Model;
+using UnityEngine;
 
 namespace BattleIsland.Infrastructure.Bootstrap
 {
@@ -10,11 +10,11 @@ namespace BattleIsland.Infrastructure.Bootstrap
     {
         [SerializeField] private SceneId _startScene;
 
-        private SceneLoader _sceneLoader;
-
         public static Platform Platform;
 
-        private void Awake() => 
+        private SceneLoader _sceneLoader;
+
+        private void Awake() =>
             _sceneLoader = new SceneLoader();
 
         private IEnumerator Start()
@@ -36,7 +36,7 @@ namespace BattleIsland.Infrastructure.Bootstrap
 #endif
         }
 
-        private void SetPlatform() => 
+        private void SetPlatform() =>
             Platform = Application.isMobilePlatform ? Platform.Mobile : Platform.Desktop;
     }
 }

@@ -12,5 +12,10 @@
         {
             public const string IsIdle = nameof(IsIdle);
         }
+
+        public static class LearningEnemy
+        {
+            public const string Died = nameof(Died);
+        }
     }
 }

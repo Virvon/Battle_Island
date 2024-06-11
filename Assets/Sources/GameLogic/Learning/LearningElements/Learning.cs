@@ -29,13 +29,13 @@ namespace BattleIsland.GameLogic.Learning
 
         private void OnValidate()
         {
-            if (_startTriggerBehavior && !(_startTriggerBehavior is ITriggerable))
+            if (_startTriggerBehavior && _startTriggerBehavior is not ITriggerable)
             {
                 Debug.LogError(nameof(_startTriggerBehavior) + " needs to implement " + nameof(ITriggerable));
                 _startTriggerBehavior = null;
             }
 
-            if (_endTriggerBehavior && !(_endTriggerBehavior is ITriggerable))
+            if (_endTriggerBehavior && _endTriggerBehavior is not ITriggerable)
             {
                 Debug.LogError(nameof(_endTriggerBehavior) + " needs to implement " + nameof(ITriggerable));
                 _endTriggerBehavior = null;
@@ -54,16 +54,16 @@ namespace BattleIsland.GameLogic.Learning
             _endTrigger.Triggered -= EndDelay;
         }
 
-        protected virtual void OnStartTriggered() => 
+        protected virtual void OnStartTriggered() =>
             _learnPanel.Open();
 
-        protected virtual void OnEndTriggered() => 
+        protected virtual void OnEndTriggered() =>
             _learnPanel.Close();
 
         private void StartDelay() =>
             StartCoroutine(StartWaiter());
 
-        private void EndDelay() => 
+        private void EndDelay() =>
             StartCoroutine(EndWaiter());
 
         private IEnumerator StartWaiter()

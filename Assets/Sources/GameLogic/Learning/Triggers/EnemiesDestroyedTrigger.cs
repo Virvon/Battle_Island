@@ -30,7 +30,7 @@ namespace BattleIsland.GameLogic.Learning
             _letsCount--;
 
             if (_letsCount <= 0)
-                Triggered();
+                Triggered?.Invoke();
         }
     }
 }

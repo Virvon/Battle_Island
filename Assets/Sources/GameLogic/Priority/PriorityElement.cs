@@ -5,7 +5,7 @@ namespace BattleIsland.GameLogic.Priority
 {
     public class PriorityElement
     {
-        public PriorityElement(MovementObject target) => 
+        public PriorityElement(MovementObject target) =>
             Target = target;
 
         public MovementObject Target { get; private set; }

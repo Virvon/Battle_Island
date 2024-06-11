@@ -8,8 +8,8 @@ namespace BattleIsland.GameLogic.Store
 
         private void OnDisable()
         {
-            if (_selectItem != null)
-                SelectSkin = ((SkinItem)_selectItem).Skin;
+            if (SelectedItem != null)
+                SelectSkin = ((SkinItem)SelectedItem).Skin;
         }
 
         protected override Item LoadStaticItem()
@@ -23,7 +23,7 @@ namespace BattleIsland.GameLogic.Store
             return null;
         }
 
-        protected override void SetSelectItem(Item item) => 
+        protected override void SetSelectItem(Item item) =>
             SelectSkin = ((SkinItem)item).Skin;
     }
 }

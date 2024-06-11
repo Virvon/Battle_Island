@@ -1,5 +1,5 @@
-using BattleIsland.Input;
 using System;
+using BattleIsland.Input;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic.Learning
@@ -10,12 +10,13 @@ namespace BattleIsland.GameLogic.Learning
 
         public event Action Triggered;
 
-        private void OnEnable() => 
+        private void OnEnable() =>
             _directionInput.Activated += OnActivated;
 
-        private void OnDisable() => 
+        private void OnDisable() =>
             _directionInput.Activated -= OnActivated;
 
-        private void OnActivated() => Triggered?.Invoke();
+        private void OnActivated() =>
+            Triggered?.Invoke();
     }
 }

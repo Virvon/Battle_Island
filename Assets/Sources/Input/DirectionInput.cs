@@ -1,12 +1,11 @@
-using BattleIsland.Infrastructure.View;
 using System;
+using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
 namespace BattleIsland.Input
 {
     public abstract class DirectionInput : MonoBehaviour
     {
-
         public abstract event Action Activated;
         public abstract event Action Deactivated;
 

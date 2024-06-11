@@ -1,11 +1,11 @@
-using UnityEngine;
-using Lean.Localization;
 using BattleIsland.SaveLoad;
 using BattleIsland.SaveLoad.Data;
+using Lean.Localization;
+using UnityEngine;
 
 namespace BattleIsland.Localization
 {
-    public class Loacalization : MonoBehaviour
+    public class Localization : MonoBehaviour
     {
         [SerializeField] private string _defaultLanguage;
         [SerializeField] private string _saveKey;
@@ -42,7 +42,7 @@ namespace BattleIsland.Localization
         {
             var data = new LocalizationProfile()
             {
-                CurrentLenguage = currentLanguage
+                CurrentLenguage = currentLanguage,
             };
 
             return data;

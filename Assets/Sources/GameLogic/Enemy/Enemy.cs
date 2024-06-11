@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
+using System.Linq;
 using BattleIsland.GameLogic.FX;
 using BattleIsland.GameLogic.Spawner;
 using BattleIsland.Infrastructure.View;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +14,7 @@ namespace BattleIsland.GameLogic.Enemy
     {
         private const int StoppedDistance = 6;
         private const int MinChooseDistance = 15;
+        private const int SkinPositionOffsetY = -1;
 
         private Vector3 _startPoint;
         private Priority.Priority _priority;
@@ -84,7 +85,7 @@ namespace BattleIsland.GameLogic.Enemy
         }
 
         private Vector3 GetSkinPosition() =>
-            new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+            new Vector3(transform.position.x, transform.position.y + SkinPositionOffsetY, transform.position.z);
 
         private bool CanCasted(Vector3 target) =>
             NavMesh.Raycast(_currentTarget.transform.position, target, out _, NavMesh.AllAreas);

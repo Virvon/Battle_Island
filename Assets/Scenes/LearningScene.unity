@@ -9729,7 +9729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mobileLearning: {fileID: 304155777}
-  _DesktopLearning: {fileID: 1859093919}
+  _desktopLearning: {fileID: 1859093919}
 --- !u!1001 &465501754
 PrefabInstance:
   m_ObjectHideFlags: 0

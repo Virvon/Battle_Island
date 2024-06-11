@@ -12,7 +12,7 @@ namespace BattleIsland.UI
         public event Action<float> TimeChanged;
         public event Action TimeOvered;
 
-        private void Start() => 
+        private void Start() =>
             StartCoroutine(Timer(GameDuration, TimerStep));
 
         private IEnumerator Timer(float delay, float step)

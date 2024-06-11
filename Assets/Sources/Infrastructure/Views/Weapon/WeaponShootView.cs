@@ -16,7 +16,7 @@ namespace BattleIsland.Infrastructure.View
         private const float ShootForce = 1350;
         private const float Delay = 0.1f;
         private const float MinDistance = 3.8f;
-
+        private const float MaxDistance = 0.5f;
         private Coroutine _coroutine;
         private NavMeshAgent _agent;
         private WeaponView _weaponView;
@@ -29,6 +29,8 @@ namespace BattleIsland.Infrastructure.View
         public event Action Comebacked;
         public event Action<State> StateChanged;
         public event Action<Vector3, Vector3> CollisionEntered;
+
+        private float HalfShootForse => ShootForce / 2;
 
         private void OnEnable()
         {
@@ -64,7 +66,7 @@ namespace BattleIsland.Infrastructure.View
         {
             if (other.TryGetComponent(out IDamageable iDamageble))
             {
-                if ((object)iDamageble != _weaponView.Parent)
+                if ((MonoBehaviour)iDamageble != _weaponView.Parent)
                 {
                     iDamageble.TakeDamage();
                     _weaponView.Parent.TakeMurder();
@@ -104,7 +106,7 @@ namespace BattleIsland.Infrastructure.View
         }
 
         public void ChangeTrajectory(Vector3 direction) =>
-            _weaponView.Rigidbody.AddForce(direction * (ShootForce / 2));
+            _weaponView.Rigidbody.AddForce(direction * HalfShootForse);
 
         private void TryShoot() =>
             Shotted?.Invoke();
@@ -130,7 +132,7 @@ namespace BattleIsland.Infrastructure.View
 
         private IEnumerator ChangeStateTimer(State state)
         {
-            while ((transform.position - _weaponView.IdlePosition.position).magnitude > 0.5f)
+            while ((transform.position - _weaponView.IdlePosition.position).magnitude > MaxDistance)
             {
                 _agent.destination = _weaponView.IdlePosition.position;
 

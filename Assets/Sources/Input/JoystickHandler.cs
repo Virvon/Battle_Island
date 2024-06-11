@@ -38,7 +38,11 @@ namespace BattleIsland.Input
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(_handleSlideArea, eventData.position, null, out Vector2 joystickPosition))
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                _handleSlideArea, 
+                eventData.position, 
+                null, 
+                out Vector2 joystickPosition))
             {
                 joystickPosition.x *= 2 / _handleSlideArea.sizeDelta.x;
                 joystickPosition.y *= 2 / _handleSlideArea.sizeDelta.y;

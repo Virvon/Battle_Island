@@ -4,10 +4,10 @@
     {
         private readonly SceneLoader _sceneLoader;
 
-        public Menu() => 
+        public Menu() =>
             _sceneLoader = new();
 
-        public void LoadScene(SceneId scene) => 
+        public void LoadScene(SceneId scene) =>
             _sceneLoader.Load(scene);
     }
 }

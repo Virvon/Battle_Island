@@ -1,7 +1,7 @@
 using System;
-using UnityEngine;
 using BattleIsland.SaveLoad;
 using BattleIsland.SaveLoad.Data;
+using UnityEngine;
 
 namespace BattleIsland.UI
 {
@@ -33,10 +33,8 @@ namespace BattleIsland.UI
             return true;
         }
 
-        private void SaveMoney(string key)
-        {
+        private void SaveMoney(string key) => 
             SaveLoadService.Save(key, CreateSaveSnapshot());
-        }
 
         private int LoadMoney(string key)
         {
@@ -49,7 +47,7 @@ namespace BattleIsland.UI
         {
             PlayerProfile data = new PlayerProfile()
             {
-                Money = Money
+                Money = Money,
             };
 
             return data;

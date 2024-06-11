@@ -14,10 +14,9 @@ namespace BattleIsland.Audio
 
         public void ToggleSound(bool isEnebled)
         {
-            if (isEnebled)
-                _mixerGroup.audioMixer.SetFloat(AudioMixerName, IncludedSoundVolume);
-            else
-                _mixerGroup.audioMixer.SetFloat(AudioMixerName, SwitchedOffSoundVolume);
+            float volume = isEnebled ? IncludedSoundVolume : SwitchedOffSoundVolume;
+
+            _mixerGroup.audioMixer.SetFloat(AudioMixerName, volume);
         }
     }
 }

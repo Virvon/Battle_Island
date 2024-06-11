@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using UnityEngine;
 using BattleIsland.Infrastructure.View;
 using BattleIsland.Input;
 using BattleIsland.GameLogic.Store;
 using BattleIsland.Infrastructure.Bootstrap;
+using UnityEngine;
 
 namespace BattleIsland.GameLogic.Spawner
 {

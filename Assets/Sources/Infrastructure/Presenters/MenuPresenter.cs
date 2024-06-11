@@ -6,7 +6,7 @@ namespace BattleIsland.Infrastructure.Presenter
     {
         private readonly Menu _menu;
 
-        public MenuPresenter(Menu menu) => 
+        public MenuPresenter(Menu menu) =>
             _menu = menu;
 
         public void LoadScene(SceneId sceneName) =>

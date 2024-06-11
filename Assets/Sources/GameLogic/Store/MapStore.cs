@@ -8,8 +8,8 @@ namespace BattleIsland.GameLogic.Store
 
         private void OnDisable()
         {
-            if (_selectItem != null)
-                SelectMap = ((MapItem)_selectItem).Name;
+            if (SelectedItem != null)
+                SelectMap = ((MapItem)SelectedItem).Name;
         }
 
         protected override Item LoadStaticItem()
@@ -23,7 +23,7 @@ namespace BattleIsland.GameLogic.Store
             return null;
         }
 
-        protected override void SetSelectItem(Item item) => 
+        protected override void SetSelectItem(Item item) =>
             SelectMap = ((MapItem)item).Name;
     }
 }

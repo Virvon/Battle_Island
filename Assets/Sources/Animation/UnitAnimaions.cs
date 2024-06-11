@@ -1,5 +1,5 @@
-using BattleIsland.Infrastructure.View;
 using System.Collections;
+using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
 namespace BattleIsland.Animation
@@ -7,13 +7,17 @@ namespace BattleIsland.Animation
     [RequireComponent(typeof(MovementObject))]
     public class UnitAnimaions : MonoBehaviour
     {
+        private const float Delay = 0.1f;
+
         private Animator _animator;
         private MovementObject _unit;
         private bool _isDead;
+        private WaitForSeconds _waitForSeconds;
 
         private void Start()
         {
             _isDead = false;
+            _waitForSeconds = new WaitForSeconds(Delay);
 
             _animator = GetComponentInChildren<Animator>();
             _unit = GetComponent<MovementObject>();
@@ -56,7 +60,7 @@ namespace BattleIsland.Animation
         {
             _isDead = true;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return _waitForSeconds;
 
             _isDead = false;
         }

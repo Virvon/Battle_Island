@@ -1,5 +1,5 @@
-using BattleIsland.Infrastructure.View;
 using System;
+using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic.Obstacle

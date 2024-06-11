@@ -7,6 +7,6 @@ namespace BattleIsland.Infrustructure.Model
         LearningScene,
         EnemyScene,
         EnemyScene1,
-        EnemyScene2
+        EnemyScene2,
     }
 }

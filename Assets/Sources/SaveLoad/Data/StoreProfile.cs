@@ -1,5 +1,5 @@
-using BattleIsland.GameLogic.Store;
 using System;
+using BattleIsland.GameLogic.Store;
 
 namespace BattleIsland.SaveLoad.Data
 {

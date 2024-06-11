@@ -1,7 +1,7 @@
-using BattleIsland.SaveLoad;
-using BattleIsland.SaveLoad.Data;
 using System.Collections.Generic;
 using System.Linq;
+using BattleIsland.SaveLoad;
+using BattleIsland.SaveLoad.Data;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic.Store
@@ -15,7 +15,7 @@ namespace BattleIsland.GameLogic.Store
         private List<Item> _items;
         private Item _currentItem;
 
-        protected Item _selectItem { get; private set; }
+        protected Item SelectedItem { get; private set; }
         protected IReadOnlyList<Item> Items => _items;
 
         private void OnEnable()
@@ -34,12 +34,12 @@ namespace BattleIsland.GameLogic.Store
             _view.PreviousItemSetted += OnPreviousItemSetted;
             _view.ItemSelected += OnItemSelected;
 
-            _selectItem = LoadItem();
+            SelectedItem = LoadItem();
 
-            _currentItem = _selectItem;
+            _currentItem = SelectedItem;
 
             SetItem(_currentItem);
-            SetSelectItem(_selectItem);
+            SetSelectItem(SelectedItem);
         }
 
         public void Close()
@@ -52,6 +52,10 @@ namespace BattleIsland.GameLogic.Store
 
             Save(SaveKey);
         }
+
+        protected abstract Item LoadStaticItem();
+
+        protected abstract void SetSelectItem(Item item);
 
         private void OnNextItemSetted()
         {
@@ -75,19 +79,19 @@ namespace BattleIsland.GameLogic.Store
         {
             if (_currentItem.TrySecelct(_view.Player))
             {
-                _selectItem = _currentItem;
-                _view.SetButton(_currentItem == _selectItem);
+                SelectedItem = _currentItem;
+                _view.SetButton(_currentItem == SelectedItem);
                 _view.SetPrice(_currentItem);
 
                 Save(SaveKey);
-                SetSelectItem(_selectItem);
+                SetSelectItem(SelectedItem);
             }
         }
 
         private void SetItem(Item item)
         {
             _view.SetItem(item);
-            _view.SetButton(_currentItem == _selectItem);
+            _view.SetButton(_currentItem == SelectedItem);
             _view.SetPrice(item);
         }
 
@@ -130,14 +134,10 @@ namespace BattleIsland.GameLogic.Store
         {
             StoreProfile data = new()
             {
-                SelectItem = _selectItem
+                SelectItem = SelectedItem,
             };
 
             return data;
         }
-
-        protected abstract Item LoadStaticItem();
-
-        protected abstract void SetSelectItem(Item item);
     }
 }

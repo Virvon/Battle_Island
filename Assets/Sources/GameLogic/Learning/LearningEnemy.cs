@@ -1,5 +1,6 @@
-using BattleIsland.Infrastructure.View;
 using System;
+using BattleIsland.Animation;
+using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic.Learning
@@ -21,7 +22,7 @@ namespace BattleIsland.GameLogic.Learning
         public void TakeDamage()
         {
             _collider.enabled = false;
-            _animator.SetTrigger("Died");
+            _animator.SetTrigger(AnimationPath.LearningEnemy.Died);
             Destroyed?.Invoke();
         }
     }
