@@ -1,11 +1,13 @@
-using BattleIsland.Infrastructure.View;
 using System;
 using System.Collections;
+using BattleIsland.GameLogic.FX;
+using BattleIsland.GameLogic.Spawner;
+using BattleIsland.Infrastructure.View;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.Enemy
 {
     [RequireComponent(typeof(NavMeshAgent), typeof(Shield))]
     public class Enemy : MovementObject, IDamageable
@@ -14,7 +16,7 @@ namespace BattleIsland.GameLogic
         private const int MinChooseDistance = 15;
 
         private Vector3 _startPoint;
-        private Priority _priority;
+        private Priority.Priority _priority;
         private MovementObject _currentTarget;
         private NavMeshAgent _agent;
         private float _targetRadius;
@@ -44,7 +46,7 @@ namespace BattleIsland.GameLogic
 
         public void Init(MovementObject[] targets, GameObject skin, float pointRadius)
         {
-            _priority = new Priority(targets.ToList(), this);
+            _priority = new Priority.Priority(targets.ToList(), this);
             _agent = GetComponent<NavMeshAgent>();
             _targetRadius = pointRadius;
             _shield = GetComponent<Shield>();

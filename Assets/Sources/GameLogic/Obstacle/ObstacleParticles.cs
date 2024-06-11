@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.Obstacle
 {
     [RequireComponent(typeof(Obstacle))]
     public class ObstacleParticles : MonoBehaviour

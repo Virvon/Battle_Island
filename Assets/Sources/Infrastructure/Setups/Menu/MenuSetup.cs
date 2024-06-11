@@ -3,7 +3,7 @@ using BattleIsland.Infrastructure.View;
 using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure
+namespace BattleIsland.Infrastructure.Setup
 {
     public class MenuSetup : MonoBehaviour
     {

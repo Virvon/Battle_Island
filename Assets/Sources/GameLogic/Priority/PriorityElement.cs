@@ -1,7 +1,7 @@
 using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.Priority
 {
     public class PriorityElement
     {

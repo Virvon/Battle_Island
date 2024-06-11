@@ -4,7 +4,7 @@ using BattleIsland.Infrustructure.Model;
 using BattleIsland.UI;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure
+namespace BattleIsland.Infrastructure.Setup
 {
     public class GameMenuSetup : MonoBehaviour
     {

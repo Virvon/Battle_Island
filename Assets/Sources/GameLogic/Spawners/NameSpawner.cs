@@ -1,7 +1,8 @@
+using BattleIsland.GameLogic.Enemy;
 using BattleIsland.Infrastructure.View;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.Spawner
 {
     public class NameSpawner : MonoBehaviour
     {

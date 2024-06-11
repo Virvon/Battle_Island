@@ -1,10 +1,10 @@
 using BattleIsland.GameLogic.Store;
-using BattleIsland.Infrastructure;
+using BattleIsland.Infrastructure.Bootstrap;
 using BattleIsland.Infrastructure.View;
 using BattleIsland.Input;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.Spawner
 {
     public class LearningPlayerSpawner : MonoBehaviour
     {

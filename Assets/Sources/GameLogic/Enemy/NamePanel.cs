@@ -2,7 +2,7 @@ using BattleIsland.Infrastructure.View;
 using TMPro;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.Enemy
 {
     [RequireComponent(typeof(TextMeshPro))]
     public class NamePanel : MonoBehaviour

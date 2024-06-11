@@ -1,4 +1,4 @@
-namespace BattleIsland.Infrastructure
+namespace BattleIsland.Infrastructure.Bootstrap
 {
     public enum Platform
     {

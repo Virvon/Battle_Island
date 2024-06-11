@@ -1,4 +1,4 @@
-using BattleIsland.GameLogic;
+using BattleIsland.GameLogic.Spawner;
 using BattleIsland.Infrastructure.Presenter;
 using BattleIsland.Infrustructure.Model;
 using BattleIsland.UI;

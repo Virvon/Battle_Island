@@ -1,9 +1,10 @@
-using BattleIsland.Animation;
-using BattleIsland.Audio;
-using BattleIsland.GameLogic;
-using BattleIsland.Infrustructure.Model;
 using System;
 using System.Collections;
+using BattleIsland.Animation;
+using BattleIsland.Audio;
+using BattleIsland.GameLogic.FX;
+using BattleIsland.GameLogic.Obstacle;
+using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 using UnityEngine.AI;
 

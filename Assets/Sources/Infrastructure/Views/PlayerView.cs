@@ -1,5 +1,5 @@
 using System;
-using BattleIsland.GameLogic;
+using BattleIsland.GameLogic.FX;
 using BattleIsland.Input;
 using Lean.Localization;
 using UnityEngine;

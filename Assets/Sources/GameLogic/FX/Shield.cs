@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.FX
 {
     public class Shield : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using BattleIsland.Infrastructure.View;
 using System;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.Obstacle
 {
     public class Obstacle : MonoBehaviour
     {

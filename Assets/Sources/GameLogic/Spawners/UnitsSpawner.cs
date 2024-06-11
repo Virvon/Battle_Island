@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using BattleIsland.Infrastructure.View;
 using BattleIsland.Input;
-using BattleIsland.Infrastructure;
 using BattleIsland.GameLogic.Store;
+using BattleIsland.Infrastructure.Bootstrap;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.Spawner
 {
     public class UnitsSpawner : MonoBehaviour
     {
         [SerializeField] private Transform[] _spawnPoints;
-        [SerializeField] private Enemy _enemyPrefab;
+        [SerializeField] private Enemy.Enemy _enemyPrefab;
         [SerializeField] private PlayerView _playerPrefab;
         [SerializeField] private WeaponsSpawner _weaponSpawner;
         [SerializeField] private NameSpawner _nameSpawner;
@@ -41,7 +41,7 @@ namespace BattleIsland.GameLogic
 
         private void CreateEnemys(Transform[] spawnPoints)
         {
-            List<Enemy> enemies = new List<Enemy>();
+            List<Enemy.Enemy> enemies = new List<Enemy.Enemy>();
             int playerSpawnPoint = UnityEngine.Random.Range(0, spawnPoints.Length);
 
             for (var i = 0; i < spawnPoints.Length; i++)
@@ -50,7 +50,7 @@ namespace BattleIsland.GameLogic
 
                 if (i != playerSpawnPoint)
                 {
-                    Enemy enemy = Instantiate(_enemyPrefab, spawnPoints[i].position, Quaternion.identity, transform);
+                    Enemy.Enemy enemy = Instantiate(_enemyPrefab, spawnPoints[i].position, Quaternion.identity, transform);
                     enemies.Add(enemy);
                     character = enemy;
 
@@ -74,7 +74,7 @@ namespace BattleIsland.GameLogic
             CreationEnded?.Invoke(_targets.ToArray());
         }
 
-        private void InitEnemys(List<Enemy> enemies)
+        private void InitEnemys(List<Enemy.Enemy> enemies)
         {
             for (var i = 0; i < enemies.Count; i++)
             {

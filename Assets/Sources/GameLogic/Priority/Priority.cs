@@ -2,7 +2,7 @@ using BattleIsland.Infrastructure.View;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BattleIsland.GameLogic
+namespace BattleIsland.GameLogic.Priority
 {
     public class Priority
     {
