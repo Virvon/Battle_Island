@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using PlayerInput = BattleIsland.Input.PlayerInput;
 
-namespace BattleIsland.Input
+namespace Assets.Sources.Input
 {
     public class DesktopInput : DirectionInput
     {
@@ -42,7 +43,7 @@ namespace BattleIsland.Input
             Vector2 playerScreenPosition = _camera.WorldToScreenPoint(Player.transform.position);
             Vector2 mousePosition = currentEvent.mousePosition;
 
-            Direction = ((mousePosition - playerScreenPosition) + _offset).normalized;
+            Direction = (mousePosition - playerScreenPosition + _offset).normalized;
             Direction = new Vector2(Direction.x, Direction.y * -1);
         }
 

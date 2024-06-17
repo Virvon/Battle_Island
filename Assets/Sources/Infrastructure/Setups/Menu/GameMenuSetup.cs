@@ -1,10 +1,10 @@
-﻿using BattleIsland.Infrastructure.Presenter;
-using BattleIsland.Infrastructure.View.Menu;
+﻿using Assets.Sources.Infrastructure.Presenters;
+using Assets.Sources.Infrastructure.Views.Menu;
+using Assets.Sources.UI;
 using BattleIsland.Infrustructure.Model;
-using BattleIsland.UI;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.Setup.Menu
+namespace Assets.Sources.Infrastructure.Setups.Menu
 {
     public class GameMenuSetup : MonoBehaviour
     {

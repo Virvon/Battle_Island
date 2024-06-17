@@ -1,9 +1,9 @@
 using System;
-using BattleIsland.Animation;
-using BattleIsland.Infrastructure.View;
+using Assets.Sources.Animation;
+using Assets.Sources.Infrastructure.Views;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning
+namespace Assets.Sources.GameLogic.Learning
 {
     [RequireComponent(typeof(Animator), typeof(Collider))]
     public class LearningEnemy : MonoBehaviour, IDamageable

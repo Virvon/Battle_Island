@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Store
+namespace Assets.Sources.GameLogic.Store
 {
     public class SkinItem : Item
     {

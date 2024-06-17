@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace BattleIsland.UI
+namespace Assets.Sources.UI
 {
     public class TimerWindow : MonoBehaviour
     {

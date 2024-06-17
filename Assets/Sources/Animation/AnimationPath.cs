@@ -1,4 +1,4 @@
-﻿namespace BattleIsland.Animation
+﻿namespace Assets.Sources.Animation
 {
     public static class AnimationPath
     {

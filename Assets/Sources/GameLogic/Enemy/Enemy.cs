@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Linq;
-using BattleIsland.GameLogic.FX;
-using BattleIsland.GameLogic.Spawner;
-using BattleIsland.Infrastructure.View;
+using Assets.Sources.GameLogic.FX;
+using Assets.Sources.GameLogic.Spawners;
+using Assets.Sources.Infrastructure.Views;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace BattleIsland.GameLogic.Enemy
+namespace Assets.Sources.GameLogic.Enemy
 {
     [RequireComponent(typeof(NavMeshAgent), typeof(Shield))]
     public class Enemy : MovementObject, IDamageable

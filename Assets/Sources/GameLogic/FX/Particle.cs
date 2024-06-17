@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.FX
+namespace Assets.Sources.GameLogic.FX
 {
     public class Particle : MonoBehaviour
     {

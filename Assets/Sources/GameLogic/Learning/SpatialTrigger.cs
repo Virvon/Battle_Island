@@ -1,8 +1,8 @@
-using BattleIsland.Infrastructure.View;
 using System;
+using Assets.Sources.Infrastructure.Views;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning
+namespace Assets.Sources.GameLogic.Learning
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class SpatialTrigger : MonoBehaviour

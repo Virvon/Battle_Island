@@ -1,8 +1,8 @@
-using BattleIsland.Infrastructure.View;
-using BattleIsland.Infrastructure.View.Weapon;
+using Assets.Sources.Infrastructure.Views;
+using Assets.Sources.Infrastructure.Views.Weapon;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Spawner
+namespace Assets.Sources.GameLogic.Spawners
 {
     public class WeaponsSpawner : MonoBehaviour
     {

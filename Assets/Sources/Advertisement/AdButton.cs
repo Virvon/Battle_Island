@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BattleIsland.Advertisement
+namespace Assets.Sources.Advertisement
 {
     [RequireComponent(typeof(Button))]
     public class AdButton : MonoBehaviour

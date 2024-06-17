@@ -1,8 +1,8 @@
-using BattleIsland.Infrastructure.Presenter;
+using Assets.Sources.Infrastructure.Presenters;
 using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View.Menu
+namespace Assets.Sources.Infrastructure.Views.Menu
 {
     public abstract class MenuView : MonoBehaviour
     {

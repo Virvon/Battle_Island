@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning.Triggers
+namespace Assets.Sources.GameLogic.Learning.Triggers
 {
     public class StartTrigger : MonoBehaviour, ITriggerable
     {

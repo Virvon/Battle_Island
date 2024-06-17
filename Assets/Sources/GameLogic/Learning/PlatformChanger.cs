@@ -1,7 +1,7 @@
-using BattleIsland.Infrastructure.Bootstrap;
+using Assets.Sources.Infrastructure.Bootstrap;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning
+namespace Assets.Sources.GameLogic.Learning
 {
     public class PlatformChanger : MonoBehaviour
     {

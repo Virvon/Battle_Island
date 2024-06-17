@@ -1,6 +1,6 @@
 ﻿using BattleIsland.Infrustructure.Model;
 
-namespace BattleIsland.Infrastructure.Presenter
+namespace Assets.Sources.Infrastructure.Presenters
 {
     public class MenuPresenter
     {

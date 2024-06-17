@@ -2,7 +2,7 @@ using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BattleIsland.GameLogic.Store
+namespace Assets.Sources.GameLogic.Store
 {
     public class MapItem : Item
     {

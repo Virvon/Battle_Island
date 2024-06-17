@@ -1,8 +1,8 @@
-﻿using BattleIsland.Infrustructure.Model;
-using BattleIsland.UI;
+﻿using Assets.Sources.UI;
+using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.Presenter
+namespace Assets.Sources.Infrastructure.Presenters
 {
     public class GameMenuPresenter : MenuPresenter
     {

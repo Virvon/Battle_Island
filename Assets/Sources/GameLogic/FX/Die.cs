@@ -1,7 +1,7 @@
-using BattleIsland.Infrastructure.View;
+using Assets.Sources.Infrastructure.Views;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.FX
+namespace Assets.Sources.GameLogic.FX
 {
     [RequireComponent(typeof(MovementObject))]
     public class Die : MonoBehaviour

@@ -1,8 +1,8 @@
 using System;
-using BattleIsland.Infrastructure.View;
+using Assets.Sources.Infrastructure.Views;
 using UnityEngine;
 
-namespace BattleIsland.Input
+namespace Assets.Sources.Input
 {
     public abstract class DirectionInput : MonoBehaviour
     {

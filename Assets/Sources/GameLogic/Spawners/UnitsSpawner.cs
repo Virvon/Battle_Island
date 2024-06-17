@@ -1,13 +1,13 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using BattleIsland.Infrastructure.View;
-using BattleIsland.Input;
 using BattleIsland.GameLogic.Store;
-using BattleIsland.Infrastructure.Bootstrap;
 using UnityEngine;
+using Assets.Sources.Infrastructure.Bootstrap;
+using Assets.Sources.Infrastructure.Views;
+using Assets.Sources.Input;
 
-namespace BattleIsland.GameLogic.Spawner
+namespace Assets.Sources.GameLogic.Spawners
 {
     public class UnitsSpawner : MonoBehaviour
     {

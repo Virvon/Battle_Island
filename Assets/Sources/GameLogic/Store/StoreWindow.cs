@@ -1,10 +1,10 @@
 using System;
-using BattleIsland.UI;
 using TMPro;
 using Lean.Localization;
 using UnityEngine;
+using Assets.Sources.UI;
 
-namespace BattleIsland.GameLogic.Store
+namespace Assets.Sources.GameLogic.Store
 {
     public class StoreWindow : MonoBehaviour
     {

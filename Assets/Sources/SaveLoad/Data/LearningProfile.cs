@@ -1,6 +1,6 @@
 using System;
 
-namespace BattleIsland.SaveLoad.Data
+namespace Assets.Sources.SaveLoad.Data
 {
     [Serializable]
     public class LearningProfile

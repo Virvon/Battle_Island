@@ -1,9 +1,9 @@
-using BattleIsland.Infrastructure.Presenter;
-using BattleIsland.Infrastructure.View.Weapon;
+using Assets.Sources.Infrastructure.Presenters;
+using Assets.Sources.Infrastructure.Views.Weapon;
 using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.Setup
+namespace Assets.Sources.Infrastructure.Setups
 {
     [RequireComponent(typeof(WeaponShootView), typeof(WeaponFollowParentView))]
     public class WeaponSetup : MonoBehaviour

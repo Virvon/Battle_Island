@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using BattleIsland.Infrastructure.View;
+using Assets.Sources.Infrastructure.Views;
 
-namespace BattleIsland.GameLogic.Priority
+namespace Assets.Sources.GameLogic.Priority
 {
     public class Priority
     {

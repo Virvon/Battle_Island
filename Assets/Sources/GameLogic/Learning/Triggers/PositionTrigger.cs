@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning.Triggers
+namespace Assets.Sources.GameLogic.Learning.Triggers
 {
     public class PositionTrigger : MonoBehaviour, ITriggerable
     {

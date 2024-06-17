@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Store
+namespace Assets.Sources.GameLogic.Store
 {
     public class StoresOpener : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BattleIsland.SaveLoad
+namespace Assets.Sources.SaveLoad
 {
     public static class SaveLoadService
     {

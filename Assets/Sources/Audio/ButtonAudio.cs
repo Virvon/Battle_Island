@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BattleIsland.Audio
+namespace Assets.Sources.Audio
 {
     public class ButtonAudio : MonoBehaviour
     {

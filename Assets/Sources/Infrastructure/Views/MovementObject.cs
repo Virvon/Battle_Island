@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View
+namespace Assets.Sources.Infrastructure.Views
 {
     public abstract class MovementObject : MonoBehaviour
     {

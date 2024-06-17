@@ -1,8 +1,8 @@
-﻿using BattleIsland.Infrastructure.View.Menu;
+﻿using Assets.Sources.Infrastructure.Views.Menu;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace BattleIsland.Advertisement
+namespace Assets.Sources.Advertisement
 {
     public class GameAdvertisement : MonoBehaviour
     {

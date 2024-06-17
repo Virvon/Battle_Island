@@ -1,10 +1,10 @@
-using BattleIsland.GameLogic.Spawner;
-using BattleIsland.Infrastructure.Presenter;
+using Assets.Sources.GameLogic.Spawners;
+using Assets.Sources.Infrastructure.Presenters;
+using Assets.Sources.UI;
 using BattleIsland.Infrustructure.Model;
-using BattleIsland.UI;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View.Menu
+namespace Assets.Sources.Infrastructure.Views.Menu
 {
     public class GameMenuView : MenuView
     {

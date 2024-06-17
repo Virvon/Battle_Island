@@ -1,8 +1,8 @@
-using BattleIsland.Infrastructure.View;
+using Assets.Sources.Infrastructure.Views;
 using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.Presenter
+namespace Assets.Sources.Infrastructure.Presenters
 {
     public class PlayerPresenter
     {

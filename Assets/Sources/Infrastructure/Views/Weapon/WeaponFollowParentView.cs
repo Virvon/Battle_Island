@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View.Weapon
+namespace Assets.Sources.Infrastructure.Views.Weapon
 {
     [RequireComponent(typeof(WeaponView))]
     public class WeaponFollowParentView : MonoBehaviour

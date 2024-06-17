@@ -1,9 +1,9 @@
 using System;
-using BattleIsland.SaveLoad;
-using BattleIsland.SaveLoad.Data;
+using Assets.Sources.SaveLoad;
+using Assets.Sources.SaveLoad.Data;
 using UnityEngine;
 
-namespace BattleIsland.UI
+namespace Assets.Sources.UI
 {
     public class Player : MonoBehaviour
     {

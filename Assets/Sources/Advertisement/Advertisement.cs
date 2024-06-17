@@ -1,7 +1,7 @@
 using System;
 using Agava.YandexGames;
 
-namespace BattleIsland.Advertisement
+namespace Assets.Sources.Advertisement
 {
     public static class Advertisement
     {

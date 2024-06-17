@@ -1,7 +1,7 @@
 using Agava.WebUtility;
 using UnityEngine;
 
-namespace BattleIsland.UI
+namespace Assets.Sources.UI
 {
     public class InBackgroundRunner : MonoBehaviour
     {

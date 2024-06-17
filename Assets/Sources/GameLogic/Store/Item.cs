@@ -1,10 +1,10 @@
 using System;
-using BattleIsland.SaveLoad;
-using BattleIsland.UI;
-using BattleIsland.SaveLoad.Data;
 using UnityEngine;
+using Assets.Sources.SaveLoad.Data;
+using Assets.Sources.SaveLoad;
+using Assets.Sources.UI;
 
-namespace BattleIsland.GameLogic.Store
+namespace Assets.Sources.GameLogic.Store
 {
     public abstract class Item : MonoBehaviour
     {

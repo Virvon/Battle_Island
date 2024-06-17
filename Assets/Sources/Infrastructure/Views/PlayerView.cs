@@ -1,10 +1,10 @@
 using System;
-using BattleIsland.GameLogic.FX;
-using BattleIsland.Input;
+using Assets.Sources.GameLogic.FX;
+using Assets.Sources.Input;
 using Lean.Localization;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View
+namespace Assets.Sources.Infrastructure.Views
 {
     [RequireComponent(typeof(Rigidbody), typeof(Shield))]
     public class PlayerView : MovementObject, IDamageable

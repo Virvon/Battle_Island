@@ -1,14 +1,14 @@
 using System;
 using System.Collections;
-using BattleIsland.Animation;
-using BattleIsland.Audio;
-using BattleIsland.GameLogic.FX;
-using BattleIsland.GameLogic.Obstacle;
+using Assets.Sources.Animation;
+using Assets.Sources.Audio;
+using Assets.Sources.GameLogic.FX;
+using Assets.Sources.GameLogic.Obstacle;
 using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace BattleIsland.Infrastructure.View.Weapon
+namespace Assets.Sources.Infrastructure.Views.Weapon
 {
     [RequireComponent(typeof(WeaponView), typeof(NavMeshAgent), typeof(WeaponAudio))]
     public class WeaponShootView : MonoBehaviour

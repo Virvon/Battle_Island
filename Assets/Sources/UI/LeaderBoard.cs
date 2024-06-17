@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using BattleIsland.GameLogic.Spawner;
-using BattleIsland.Infrastructure.View;
+using Assets.Sources.GameLogic.Spawners;
+using Assets.Sources.Infrastructure.Views;
 using UnityEngine;
 
-namespace BattleIsland.UI
+namespace Assets.Sources.UI
 {
     public class LeaderBoard : MonoBehaviour
     {

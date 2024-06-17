@@ -1,8 +1,8 @@
 using System.Collections;
-using BattleIsland.GameLogic.Learning.Triggers;
+using Assets.Sources.GameLogic.Learning.Triggers;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning.LearningElements
+namespace Assets.Sources.GameLogic.Learning.LearningElements
 {
     public class Learning : MonoBehaviour
     {

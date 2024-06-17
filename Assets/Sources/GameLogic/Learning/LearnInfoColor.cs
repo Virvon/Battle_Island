@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning
+namespace Assets.Sources.GameLogic.Learning
 {
     [RequireComponent(typeof(LearnPanel))]
     public class LearnInfoColor : MonoBehaviour

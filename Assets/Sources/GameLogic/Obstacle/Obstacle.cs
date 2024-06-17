@@ -1,8 +1,8 @@
 using System;
-using BattleIsland.Infrastructure.View.Weapon;
+using Assets.Sources.Infrastructure.Views.Weapon;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Obstacle
+namespace Assets.Sources.GameLogic.Obstacle
 {
     public class Obstacle : MonoBehaviour
     {

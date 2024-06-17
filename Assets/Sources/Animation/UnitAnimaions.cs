@@ -1,8 +1,8 @@
 using System.Collections;
-using BattleIsland.Infrastructure.View;
+using Assets.Sources.Infrastructure.Views;
 using UnityEngine;
 
-namespace BattleIsland.Animation
+namespace Assets.Sources.Animation
 {
     [RequireComponent(typeof(MovementObject))]
     public class UnitAnimaions : MonoBehaviour

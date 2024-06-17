@@ -4,7 +4,7 @@ using Agava.YandexGames;
 using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.Bootstrap
+namespace Assets.Sources.Infrastructure.Bootstrap
 {
     public class GameInit : MonoBehaviour
     {

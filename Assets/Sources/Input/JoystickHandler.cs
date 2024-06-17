@@ -2,8 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using PlayerInput = BattleIsland.Input.PlayerInput;
 
-namespace BattleIsland.Input
+namespace Assets.Sources.Input
 {
     public class JoystickHandler : DirectionInput, IDragHandler
     {

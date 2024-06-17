@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Spawner
+namespace Assets.Sources.GameLogic.Spawners
 {
     public static class NamesGenerator
     {

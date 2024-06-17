@@ -1,9 +1,9 @@
-using BattleIsland.Infrastructure.Presenter;
-using BattleIsland.Infrastructure.View;
+using Assets.Sources.Infrastructure.Presenters;
+using Assets.Sources.Infrastructure.Views;
 using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.Setup
+namespace Assets.Sources.Infrastructure.Setups
 {
     [RequireComponent(typeof(PlayerView))]
     public class PlayerSetup : MonoBehaviour

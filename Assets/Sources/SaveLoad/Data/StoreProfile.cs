@@ -1,7 +1,7 @@
 using System;
-using BattleIsland.GameLogic.Store;
+using Assets.Sources.GameLogic.Store;
 
-namespace BattleIsland.SaveLoad.Data
+namespace Assets.Sources.SaveLoad.Data
 {
     [Serializable]
     public class StoreProfile

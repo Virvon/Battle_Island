@@ -1,8 +1,8 @@
-﻿using BattleIsland.Infrastructure.Presenter;
-using BattleIsland.Infrastructure.View.Menu;
+﻿using Assets.Sources.Infrastructure.Presenters;
+using Assets.Sources.Infrastructure.Views.Menu;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.Setup.Menu
+namespace Assets.Sources.Infrastructure.Setups.Menu
 {
     public class MenuSetup : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace BattleIsland.Infrastructure.Setup.Menu
 
         private void Awake()
         {
-            Infrustructure.Model.Menu menu = new Infrustructure.Model.Menu();
+            BattleIsland.Infrustructure.Model.Menu menu = new ();
             MenuPresenter menuPresenter = new(menu);
             _menuView.Init(menuPresenter);
         }

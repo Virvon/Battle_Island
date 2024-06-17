@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BattleIsland.Animation
+namespace Assets.Sources.Animation
 {
     [RequireComponent(typeof(Animator))]
     public class WeaponAnimations : MonoBehaviour

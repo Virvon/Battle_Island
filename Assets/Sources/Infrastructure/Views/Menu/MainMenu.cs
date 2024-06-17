@@ -1,10 +1,10 @@
-using BattleIsland.GameLogic.Store;
+using Assets.Sources.GameLogic.Store;
+using Assets.Sources.SaveLoad;
+using Assets.Sources.SaveLoad.Data;
 using BattleIsland.Infrustructure.Model;
-using BattleIsland.SaveLoad;
-using BattleIsland.SaveLoad.Data;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View.Menu
+namespace Assets.Sources.Infrastructure.Views.Menu
 {
     public class MainMenu : MenuView
     {

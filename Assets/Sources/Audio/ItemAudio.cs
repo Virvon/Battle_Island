@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using BattleIsland.GameLogic.Store;
+using Assets.Sources.GameLogic.Store;
 using UnityEngine;
 
-namespace BattleIsland.Audio
+namespace Assets.Sources.Audio
 {
     public class ItemAudio : MonoBehaviour
     {

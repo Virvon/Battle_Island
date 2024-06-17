@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace BattleIsland.UI
+namespace Assets.Sources.UI
 {
     public class GameTimer : MonoBehaviour
     {

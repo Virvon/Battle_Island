@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Obstacle
+namespace Assets.Sources.GameLogic.Obstacle
 {
     [RequireComponent(typeof(Obstacle))]
     public class ObstacleAnimation : MonoBehaviour

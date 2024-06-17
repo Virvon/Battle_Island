@@ -1,9 +1,9 @@
-using BattleIsland.SaveLoad;
-using BattleIsland.SaveLoad.Data;
+using Assets.Sources.SaveLoad;
+using Assets.Sources.SaveLoad.Data;
 using Lean.Localization;
 using UnityEngine;
 
-namespace BattleIsland.Localization
+namespace Assets.Sources.Localization
 {
     public class Localization : MonoBehaviour
     {

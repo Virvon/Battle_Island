@@ -1,6 +1,6 @@
 using System;
 
-namespace BattleIsland.GameLogic.Learning.Triggers
+namespace Assets.Sources.GameLogic.Learning.Triggers
 {
     public interface ITriggerable
     {

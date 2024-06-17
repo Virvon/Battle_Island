@@ -1,4 +1,4 @@
-﻿namespace BattleIsland.Infrastructure.View
+﻿namespace Assets.Sources.Infrastructure.Views
 {
     public interface IDamageable
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning.LearningElements
+namespace Assets.Sources.GameLogic.Learning.LearningElements
 {
     public class AttackLearning : Learning
     {

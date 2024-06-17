@@ -1,6 +1,6 @@
 using BattleIsland.Infrustructure.Model;
 
-namespace BattleIsland.GameLogic.Store
+namespace Assets.Sources.GameLogic.Store
 {
     public class MapStore : Store
     {

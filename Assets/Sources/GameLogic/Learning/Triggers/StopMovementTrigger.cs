@@ -1,8 +1,8 @@
 using System;
-using BattleIsland.Input;
+using Assets.Sources.Input;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning.Triggers
+namespace Assets.Sources.GameLogic.Learning.Triggers
 {
     public class StopMovementTrigger : MonoBehaviour, ITriggerable
     {

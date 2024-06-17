@@ -1,8 +1,8 @@
-﻿using BattleIsland.GameLogic.Learning.Triggers;
-using BattleIsland.Infrastructure.View.Menu;
+﻿using Assets.Sources.GameLogic.Learning.Triggers;
+using Assets.Sources.Infrastructure.Views.Menu;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning
+namespace Assets.Sources.GameLogic.Learning
 {
     public class LoadNextSceneTrigger : MonoBehaviour
     {

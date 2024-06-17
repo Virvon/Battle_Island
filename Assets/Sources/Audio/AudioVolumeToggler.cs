@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace BattleIsland.Audio
+namespace Assets.Sources.Audio
 {
     public class AudioVolumeToggler : MonoBehaviour
     {
