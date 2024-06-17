@@ -10,7 +10,8 @@ namespace BattleIsland.Infrastructure.Presenter
         private readonly GameObject _resultPanel;
         private readonly InBackgroundRunner _inBackgroundRunner;
 
-        public GameMenuPresenter(GameMenu gameMenu, GameObject resultPanel, InBackgroundRunner inBackgroundRunner) : base(gameMenu)
+        public GameMenuPresenter(GameMenu gameMenu, GameObject resultPanel, InBackgroundRunner inBackgroundRunner)
+            : base(gameMenu)
         {
             _gameMenu = gameMenu;
             _resultPanel = resultPanel;

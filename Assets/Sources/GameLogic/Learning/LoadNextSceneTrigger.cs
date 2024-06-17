@@ -1,4 +1,5 @@
-﻿using BattleIsland.Infrastructure.View;
+﻿using BattleIsland.GameLogic.Learning.Triggers;
+using BattleIsland.Infrastructure.View.Menu;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic.Learning
@@ -21,7 +22,7 @@ namespace BattleIsland.GameLogic.Learning
 
         private void OnValidate()
         {
-            if (_triggerBehavior && !(_triggerBehavior is ITriggerable))
+            if (_triggerBehavior && _triggerBehavior is not ITriggerable)
             {
                 Debug.LogError(nameof(_triggerBehavior) + " needs to implement " + nameof(ITriggerable));
                 _triggerBehavior = null;

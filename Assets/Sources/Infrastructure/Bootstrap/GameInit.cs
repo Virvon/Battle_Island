@@ -8,9 +8,10 @@ namespace BattleIsland.Infrastructure.Bootstrap
 {
     public class GameInit : MonoBehaviour
     {
+        public static Platform Platform;
+
         [SerializeField] private SceneId _startScene;
 
-        public static Platform Platform;
 
         private SceneLoader _sceneLoader;
 

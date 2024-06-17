@@ -1,4 +1,4 @@
-using BattleIsland.Infrastructure.View;
+using BattleIsland.Infrastructure.View.Weapon;
 using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 

@@ -1,4 +1,5 @@
 using BattleIsland.Infrastructure.View;
+using BattleIsland.Infrastructure.View.Weapon;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic.Spawner

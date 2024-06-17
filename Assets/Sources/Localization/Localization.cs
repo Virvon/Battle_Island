@@ -28,15 +28,11 @@ namespace BattleIsland.Localization
             Save(language);
         }
 
-        private void Save(string currentLanguage)
-        {
+        private void Save(string currentLanguage) =>
             SaveLoadService.Save(_saveKey, GetSaveProfile(currentLanguage));
-        }
 
-        private string Load()
-        {
-            return SaveLoadService.Load<LocalizationProfile>(_saveKey).CurrentLenguage;
-        }
+        private string Load() =>
+            SaveLoadService.Load<LocalizationProfile>(_saveKey).CurrentLenguage;
 
         private LocalizationProfile GetSaveProfile(string currentLanguage)
         {

@@ -4,7 +4,7 @@ using BattleIsland.SaveLoad;
 using BattleIsland.SaveLoad.Data;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View
+namespace BattleIsland.Infrastructure.View.Menu
 {
     public class LearnMenu : MenuView
     {

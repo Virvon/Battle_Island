@@ -8,7 +8,7 @@ using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace BattleIsland.Infrastructure.View
+namespace BattleIsland.Infrastructure.View.Weapon
 {
     [RequireComponent(typeof(WeaponView), typeof(NavMeshAgent), typeof(WeaponAudio))]
     public class WeaponShootView : MonoBehaviour
@@ -124,7 +124,7 @@ namespace BattleIsland.Infrastructure.View
             do
             {
                 yield return delay;
-            } 
+            }
             while (_weaponView.Rigidbody.velocity.magnitude > MinDistance);
 
             TryComeback();

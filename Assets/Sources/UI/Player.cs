@@ -33,7 +33,7 @@ namespace BattleIsland.UI
             return true;
         }
 
-        private void SaveMoney(string key) => 
+        private void SaveMoney(string key) =>
             SaveLoadService.Save(key, CreateSaveSnapshot());
 
         private int LoadMoney(string key)

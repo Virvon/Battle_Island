@@ -24,7 +24,7 @@ namespace BattleIsland.GameLogic.Enemy
             _parent.PositionChanged += OnPositionChanged;
         }
 
-        private void OnDisable() => 
+        private void OnDisable() =>
             _parent.PositionChanged -= OnPositionChanged;
 
         private void OnPositionChanged() =>

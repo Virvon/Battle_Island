@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View
+namespace BattleIsland.Infrastructure.View.Weapon
 {
     [RequireComponent(typeof(Collider), typeof(Rigidbody))]
     public class WeaponView : MonoBehaviour

@@ -8,6 +8,8 @@ namespace BattleIsland.GameLogic.Spawner
 {
     public class LearningPlayerSpawner : MonoBehaviour
     {
+        private const float SkinYPositionOffset = -1;
+
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private PlayerView _playerPrefab;
         [SerializeField] private WeaponsSpawner _weaponSpawner;
@@ -15,7 +17,8 @@ namespace BattleIsland.GameLogic.Spawner
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private CameraView _camera;
 
-        private DirectionInput DirectionInput => GameInit.Platform == Platform.Mobile ? _joystickHandler : _desktopInput;
+        private DirectionInput DirectionInput => GameInit.Platform == Platform.Mobile ?
+            _joystickHandler : _desktopInput;
 
         private void Start()
         {
@@ -30,16 +33,16 @@ namespace BattleIsland.GameLogic.Spawner
         {
             return Instantiate(
                 _playerPrefab,
-                _spawnPoint.position, 
+                _spawnPoint.position,
                 Quaternion.identity,
                 transform);
         }
 
-        private static void InsantiateSkin(PlayerView player)
+        private void InsantiateSkin(PlayerView player)
         {
             Instantiate(
-                SkinStore.SelectSkin,          
-                player.transform.position + new Vector3(0, -1, 0),   
+                SkinStore.SelectSkin,
+                player.transform.position + new Vector3(0, SkinYPositionOffset, 0),
                 player.transform.rotation, player.transform);
         }
 

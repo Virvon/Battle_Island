@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View
+namespace BattleIsland.Infrastructure.View.Weapon
 {
     [RequireComponent(typeof(WeaponView))]
     public class WeaponFollowParentView : MonoBehaviour
@@ -31,14 +29,10 @@ namespace BattleIsland.Infrastructure.View
             transform.rotation = _weaponView.IdlePosition.rotation;
         }
 
-        private void OnParentPositionChanged()
-        {
+        private void OnParentPositionChanged() =>
             ParentPositionChanged?.Invoke();
-        }
 
-        private void OnInited()
-        {
+        private void OnInited() =>
             _weaponView.Parent.PositionChanged += OnParentPositionChanged;
-        }
     }
 }

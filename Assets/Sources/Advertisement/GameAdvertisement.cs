@@ -1,4 +1,4 @@
-﻿using BattleIsland.Infrastructure.View;
+﻿using BattleIsland.Infrastructure.View.Menu;
 using UnityEngine;
 using UnityEngine.Audio;
 

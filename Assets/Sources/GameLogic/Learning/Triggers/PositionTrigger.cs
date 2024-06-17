@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning
+namespace BattleIsland.GameLogic.Learning.Triggers
 {
     public class PositionTrigger : MonoBehaviour, ITriggerable
     {
@@ -9,9 +9,11 @@ namespace BattleIsland.GameLogic.Learning
 
         public event Action Triggered;
 
-        private void OnEnable() => _spatialTrigger.PlayerEntered += OnPlayerEntered;
+        private void OnEnable() =>
+            _spatialTrigger.PlayerEntered += OnPlayerEntered;
 
-        private void OnDisable() => _spatialTrigger.PlayerEntered -= OnPlayerEntered;
+        private void OnDisable() =>
+            _spatialTrigger.PlayerEntered -= OnPlayerEntered;
 
         private void OnPlayerEntered()
         {

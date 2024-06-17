@@ -2,7 +2,7 @@ using System;
 using BattleIsland.Input;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning
+namespace BattleIsland.GameLogic.Learning.Triggers
 {
     public class StopMovementTrigger : MonoBehaviour, ITriggerable
     {
@@ -10,10 +10,13 @@ namespace BattleIsland.GameLogic.Learning
 
         public event Action Triggered;
 
-        private void OnEnable() => _directionInput.Deactivated += OnActivated;
+        private void OnEnable() =>
+            _directionInput.Deactivated += OnActivated;
 
-        private void OnDisable() => _directionInput.Deactivated -= OnActivated;
+        private void OnDisable() =>
+            _directionInput.Deactivated -= OnActivated;
 
-        private void OnActivated() => Triggered?.Invoke();
+        private void OnActivated() =>
+            Triggered?.Invoke();
     }
 }

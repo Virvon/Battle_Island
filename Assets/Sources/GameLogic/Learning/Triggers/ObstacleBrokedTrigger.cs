@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning
+namespace BattleIsland.GameLogic.Learning.Triggers
 {
     public class ObstacleBrokedTrigger : MonoBehaviour, ITriggerable
     {

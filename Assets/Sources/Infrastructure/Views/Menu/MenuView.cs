@@ -2,7 +2,7 @@ using BattleIsland.Infrastructure.Presenter;
 using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View
+namespace BattleIsland.Infrastructure.View.Menu
 {
     public abstract class MenuView : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using BattleIsland.Infrustructure.Model;
 using BattleIsland.UI;
 using UnityEngine;
 
-namespace BattleIsland.Infrastructure.View
+namespace BattleIsland.Infrastructure.View.Menu
 {
     public class GameMenuView : MenuView
     {

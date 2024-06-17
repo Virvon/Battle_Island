@@ -2,7 +2,7 @@ using System;
 using BattleIsland.Input;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Learning
+namespace BattleIsland.GameLogic.Learning.Triggers
 {
     public class MovementTrigger : MonoBehaviour, ITriggerable
     {

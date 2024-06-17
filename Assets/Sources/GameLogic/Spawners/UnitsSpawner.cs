@@ -11,6 +11,9 @@ namespace BattleIsland.GameLogic.Spawner
 {
     public class UnitsSpawner : MonoBehaviour
     {
+        private const int PointRadius = 10;
+        private const int SkinYPositionOffset = -1;
+
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Enemy.Enemy _enemyPrefab;
         [SerializeField] private PlayerView _playerPrefab;
@@ -50,7 +53,12 @@ namespace BattleIsland.GameLogic.Spawner
 
                 if (i != playerSpawnPoint)
                 {
-                    Enemy.Enemy enemy = Instantiate(_enemyPrefab, spawnPoints[i].position, Quaternion.identity, transform);
+                    Enemy.Enemy enemy = Instantiate(
+                        _enemyPrefab,
+                        spawnPoints[i].position,
+                        Quaternion.identity,
+                        transform);
+
                     enemies.Add(enemy);
                     character = enemy;
 
@@ -58,9 +66,18 @@ namespace BattleIsland.GameLogic.Spawner
                 }
                 else
                 {
-                    PlayerView player = Instantiate(_playerPrefab, spawnPoints[i].position, Quaternion.identity, transform);
+                    PlayerView player = Instantiate(
+                        _playerPrefab,
+                        spawnPoints[i].position,
+                        Quaternion.identity,
+                        transform);
 
-                    Instantiate(SkinStore.SelectSkin, player.transform.position + new Vector3(0, -1, 0), player.transform.rotation, player.transform);
+                    Instantiate(
+                        SkinStore.SelectSkin,
+                        player.transform.position + new Vector3(0, SkinYPositionOffset, 0),
+                        player.transform.rotation,
+                        player.transform);
+
                     InitPlayer(player);
                     character = player;
                     _camera.Init(player);
@@ -78,15 +95,18 @@ namespace BattleIsland.GameLogic.Spawner
         {
             for (var i = 0; i < enemies.Count; i++)
             {
-                MovementObject[] targets = _targets.Where(target => target != enemies[i]).ToArray();
+                MovementObject[] targets = _targets
+                    .Where(target => target != enemies[i])
+                    .ToArray();
 
-                enemies[i].Init(targets, _skins[UnityEngine.Random.Range(0, _skins.Length)], 10);
+                enemies[i].Init(targets, _skins[UnityEngine.Random.Range(0, _skins.Length)], PointRadius);
             }
         }
 
         private void InitPlayer(PlayerView player)
         {
-            DirectionInput directionInput = GameInit.Platform == Platform.Mobile ? _joystickHandler : _desktopInput;
+            DirectionInput directionInput = GameInit.Platform == Platform.Mobile ?
+                _joystickHandler : _desktopInput;
 
             directionInput.gameObject.SetActive(true);
             directionInput.Init(player);

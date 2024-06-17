@@ -39,9 +39,9 @@ namespace BattleIsland.Input
         public void OnDrag(PointerEventData eventData)
         {
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                _handleSlideArea, 
-                eventData.position, 
-                null, 
+                _handleSlideArea,
+                eventData.position,
+                null,
                 out Vector2 joystickPosition))
             {
                 joystickPosition.x *= 2 / _handleSlideArea.sizeDelta.x;
@@ -75,6 +75,8 @@ namespace BattleIsland.Input
         }
 
         private Vector2 GetNewHandlePosition() =>
-            new Vector2(Direction.x * (_handleSlideArea.sizeDelta.x / 2), Direction.y * (_handleSlideArea.sizeDelta.y / 2));
+            new Vector2(
+                Direction.x * (_handleSlideArea.sizeDelta.x / 2),
+                Direction.y * (_handleSlideArea.sizeDelta.y / 2));
     }
 }

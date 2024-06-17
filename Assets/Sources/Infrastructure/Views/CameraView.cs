@@ -20,9 +20,7 @@ namespace BattleIsland.Infrastructure.View
             OnTargetPositionChanget();
         }
 
-        private void OnTargetPositionChanget()
-        {
+        private void OnTargetPositionChanget() =>
             transform.position = _target.transform.position + _offset;
-        }
     }
 }

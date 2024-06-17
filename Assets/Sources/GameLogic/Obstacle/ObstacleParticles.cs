@@ -16,14 +16,10 @@ namespace BattleIsland.GameLogic.Obstacle
             _let.Broked += OnBroked;
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _let.Broked -= OnBroked;
-        }
 
-        private void OnBroked()
-        {
+        private void OnBroked() =>
             Instantiate(_particles, transform.position, Quaternion.identity);
-        }
     }
 }

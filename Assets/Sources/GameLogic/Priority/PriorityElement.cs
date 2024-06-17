@@ -5,6 +5,11 @@ namespace BattleIsland.GameLogic.Priority
 {
     public class PriorityElement
     {
+        private const int DefaultDistance = 150;
+        private const float MurderModifire = 1.3f;
+        private const float PriorityModifire = 1.5f;
+        private const float PriorityRangeModifire = 1.5f;
+
         public PriorityElement(MovementObject target) =>
             Target = target;
 
@@ -14,13 +19,16 @@ namespace BattleIsland.GameLogic.Priority
 
         public float CalculatePriorityValue(MovementObject parent)
         {
-            var priorityValue = 150 / (Target.transform.position - parent.transform.position).magnitude;
-            priorityValue += Target.MurdersCount * 1.3f;
+            float priorityValue = DefaultDistance /
+                (Target.transform.position - parent.transform.position).magnitude;
+            priorityValue += Target.MurdersCount * MurderModifire;
 
             if (Target is PlayerView)
-                priorityValue *= 1.5f;
+                priorityValue *= PriorityModifire;
 
-            priorityValue += Random.Range(-(priorityValue / 1.5f), priorityValue / 1.5f);
+            priorityValue += Random.Range(
+                -(priorityValue / PriorityRangeModifire),
+                priorityValue / PriorityRangeModifire);
 
             PriorityValue = priorityValue;
 

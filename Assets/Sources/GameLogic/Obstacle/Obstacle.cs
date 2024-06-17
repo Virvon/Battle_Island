@@ -1,5 +1,5 @@
 using System;
-using BattleIsland.Infrastructure.View;
+using BattleIsland.Infrastructure.View.Weapon;
 using UnityEngine;
 
 namespace BattleIsland.GameLogic.Obstacle
@@ -14,10 +14,8 @@ namespace BattleIsland.GameLogic.Obstacle
         public event Action Broked;
         public event Action Hited;
 
-        private void Start()
-        {
+        private void Start() =>
             _isBroking = false;
-        }
 
         private void OnCollisionEnter(Collision collision)
         {
