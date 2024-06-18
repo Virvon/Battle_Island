@@ -1,4 +1,4 @@
-namespace BattleIsland.Infrustructure.Model
+namespace Assets.Sources.Infrastructure.Models
 {
     public abstract class State
     {

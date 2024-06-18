@@ -1,6 +1,6 @@
 {
     "name": "ModelAssembly",
-    "rootNamespace": "BattleIsland.Infrustructure.Model",
+    "rootNamespace": "",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

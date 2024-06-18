@@ -1,6 +1,6 @@
+using Assets.Sources.Infrastructure.Models;
 using Assets.Sources.Infrastructure.Presenters;
 using Assets.Sources.Infrastructure.Views.Weapon;
-using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
 namespace Assets.Sources.Infrastructure.Setups

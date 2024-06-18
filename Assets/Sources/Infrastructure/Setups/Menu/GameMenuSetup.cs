@@ -1,7 +1,7 @@
-﻿using Assets.Sources.Infrastructure.Presenters;
+﻿using Assets.Sources.Infrastructure.Models;
+using Assets.Sources.Infrastructure.Presenters;
 using Assets.Sources.Infrastructure.Views.Menu;
 using Assets.Sources.UI;
-using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
 namespace Assets.Sources.Infrastructure.Setups.Menu

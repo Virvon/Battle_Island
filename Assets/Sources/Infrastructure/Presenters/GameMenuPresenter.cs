@@ -1,5 +1,5 @@
-﻿using Assets.Sources.UI;
-using BattleIsland.Infrustructure.Model;
+﻿using Assets.Sources.Infrastructure.Models;
+using Assets.Sources.UI;
 using UnityEngine;
 
 namespace Assets.Sources.Infrastructure.Presenters

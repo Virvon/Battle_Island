@@ -1,7 +1,5 @@
-using System;
+using Assets.Sources.Infrastructure.Models;
 using System.Collections;
-using Agava.YandexGames;
-using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
 namespace Assets.Sources.Infrastructure.Bootstrap
@@ -11,7 +9,6 @@ namespace Assets.Sources.Infrastructure.Bootstrap
         public static Platform Platform;
 
         [SerializeField] private SceneId _startScene;
-
 
         private SceneLoader _sceneLoader;
 

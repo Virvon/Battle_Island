@@ -1,7 +1,7 @@
 using Assets.Sources.GameLogic.Spawners;
+using Assets.Sources.Infrastructure.Models;
 using Assets.Sources.Infrastructure.Presenters;
 using Assets.Sources.UI;
-using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
 namespace Assets.Sources.Infrastructure.Views.Menu

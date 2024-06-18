@@ -4,7 +4,7 @@ using Assets.Sources.Animation;
 using Assets.Sources.Audio;
 using Assets.Sources.GameLogic.FX;
 using Assets.Sources.GameLogic.Obstacle;
-using BattleIsland.Infrustructure.Model;
+using Assets.Sources.Infrastructure.Models;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -58,17 +58,18 @@ namespace Assets.Sources.Infrastructure.Views.Weapon
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.collider.TryGetComponent(out Obstacle let) || collision.collider.TryGetComponent(out WeaponView weapon))
+            if (collision.collider.TryGetComponent(out Obstacle let)
+                || collision.collider.TryGetComponent(out WeaponView weapon))
                 CollisionEntered?.Invoke(transform.rotation * Vector3.forward, collision.contacts[0].normal);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out IDamageable iDamageble))
+            if (other.TryGetComponent(out IDamageable damageble))
             {
-                if ((MonoBehaviour)iDamageble != _weaponView.Parent)
+                if ((MonoBehaviour)damageble != _weaponView.Parent)
                 {
-                    iDamageble.TakeDamage();
+                    damageble.TakeDamage();
                     _weaponView.Parent.TakeMurder();
 
                     _weaponAudio.PlayHitAudio();

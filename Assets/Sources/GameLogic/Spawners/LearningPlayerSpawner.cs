@@ -1,7 +1,7 @@
+using Assets.Sources.GameLogic.Store;
 using Assets.Sources.Infrastructure.Bootstrap;
 using Assets.Sources.Infrastructure.Views;
 using Assets.Sources.Input;
-using BattleIsland.GameLogic.Store;
 using UnityEngine;
 
 namespace Assets.Sources.GameLogic.Spawners
@@ -43,7 +43,8 @@ namespace Assets.Sources.GameLogic.Spawners
             Instantiate(
                 SkinStore.SelectSkin,
                 player.transform.position + new Vector3(0, SkinYPositionOffset, 0),
-                player.transform.rotation, player.transform);
+                player.transform.rotation,
+                player.transform);
         }
 
         private void InitPlayer(PlayerView player)

@@ -1,9 +1,8 @@
-using Assets.Sources.GameLogic.Store;
 using UnityEngine;
 
-namespace BattleIsland.GameLogic.Store
+namespace Assets.Sources.GameLogic.Store
 {
-    public class SkinStore : Assets.Sources.GameLogic.Store.Store
+    public class SkinStore : Store
     {
         public static GameObject SelectSkin { get; private set; }
 

@@ -1,4 +1,4 @@
-using BattleIsland.Infrustructure.Model;
+using Assets.Sources.Infrastructure.Models;
 using UnityEngine;
 using UnityEngine.UI;
 

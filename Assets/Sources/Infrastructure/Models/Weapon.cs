@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-namespace BattleIsland.Infrustructure.Model
+namespace Assets.Sources.Infrastructure.Models
 {
     public class Weapon
     {
         private State _state;
 
-        public Weapon() => 
+        public Weapon() =>
             _state = new IdleState();
 
         public event Action Shotted;

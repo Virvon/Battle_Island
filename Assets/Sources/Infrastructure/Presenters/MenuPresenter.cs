@@ -1,4 +1,4 @@
-﻿using BattleIsland.Infrustructure.Model;
+﻿using Assets.Sources.Infrastructure.Models;
 
 namespace Assets.Sources.Infrastructure.Presenters
 {

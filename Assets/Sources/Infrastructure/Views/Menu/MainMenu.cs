@@ -1,7 +1,7 @@
 using Assets.Sources.GameLogic.Store;
+using Assets.Sources.Infrastructure.Models;
 using Assets.Sources.SaveLoad;
 using Assets.Sources.SaveLoad.Data;
-using BattleIsland.Infrustructure.Model;
 using UnityEngine;
 
 namespace Assets.Sources.Infrastructure.Views.Menu

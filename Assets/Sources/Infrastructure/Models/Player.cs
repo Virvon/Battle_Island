@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BattleIsland.Infrustructure.Model
+namespace Assets.Sources.Infrastructure.Models
 {
     public class Player
     {

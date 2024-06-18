@@ -1,8 +1,8 @@
 using System;
-using TMPro;
-using Lean.Localization;
-using UnityEngine;
 using Assets.Sources.UI;
+using Lean.Localization;
+using TMPro;
+using UnityEngine;
 
 namespace Assets.Sources.GameLogic.Store
 {

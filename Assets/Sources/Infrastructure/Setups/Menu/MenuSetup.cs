@@ -10,7 +10,7 @@ namespace Assets.Sources.Infrastructure.Setups.Menu
 
         private void Awake()
         {
-            BattleIsland.Infrustructure.Model.Menu menu = new ();
+            Models.Menu menu = new ();
             MenuPresenter menuPresenter = new(menu);
             _menuView.Init(menuPresenter);
         }
